@@ -15,6 +15,13 @@
     "sprite",
     "svg"
   ],
+  "files": [
+    "lib/",
+    "web/",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
   "author": "kisenka",
   "license": "MIT",
   "bugs": {
