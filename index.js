@@ -10,7 +10,6 @@ var utils = require('./lib/utils');
  *
  * @typedef {{
     name: String,
-    prefix: String,
     svgo: Boolean|SVGOConfig,
     spriteModule: String,
  * }} loaderConfig
