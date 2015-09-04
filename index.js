@@ -1,36 +1,16 @@
 var path = require('path');
 var loaderUtils = require('loader-utils');
 var extend = require('extend');
+var defaultConfig = require('./config');
 var SVGDoc = require('./lib/svg-document');
 var procs = require('./lib/processings');
 var utils = require('./lib/utils');
-
-/**
- * Default loader config
- *
- * @typedef {{
-    name: String,
-    svgo: Boolean|SVGOConfig,
-    spriteModule: String,
- * }} loaderConfig
- */
-var defaultConfig = {
-   // Sprite image naming pattern. Supported patterns: `[name]`, `[pathhash]`.
-  name: '[name]',
-
-  // Use SVGO for optimization. Boolean or SVGO config supported.
-  // See https://github.com/svg/svgo/blob/master/docs/how-it-works/en.md#1-config.
-  svgo: true,
-
-  // Sprite module name. You can define your own sprite module (based on `./lib/web/sprite` or not).
-  spriteModule: path.resolve(__dirname, 'lib/web/global-sprite')
-};
 
 module.exports = function (content) {
   this.cacheable && this.cacheable();
 
   var query = loaderUtils.parseQuery(this.query);
-  /** @type {loaderConfig} */
+  /** @type {SVGSpriteLoaderConfig} */
   var config = extend({}, defaultConfig, query);
   var resourcePath = this.resourcePath;
   var basename = path.basename(resourcePath);
@@ -45,10 +25,19 @@ module.exports = function (content) {
     content = procs.svgo(content, typeof config.svgo === 'boolean' ? null : config.svgo);
 
   var doc = new SVGDoc(content);
-  var id = utils.generateIdFromFilepath(resourcePath, config.name);
-  procs.prefixize(doc, id + '_');
 
-  // Check raster image pixel ratio based on file name (e.g. image@2x.png)
+  // Calculate sprite symbol id
+  var id = loaderUtils.interpolateName(this, config.name, {
+    context: this.options.context,
+    content: content
+  });
+  if (config.name.indexOf('[pathhash]') !== -1)
+    id = utils.generateHashFromPath(resourcePath);
+
+  if (config.prefixize)
+    procs.prefixize(doc, id + '_');
+
+  // Check raster image pixel ratio from file name (e.g. image@2x.png)
   if (isRasterImage) {
     var pixelRatio = utils.getPixelRatioFromFilename(basename);
     var scale = Number((1 / pixelRatio).toFixed(1));
