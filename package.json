@@ -18,6 +18,7 @@
   "files": [
     "lib/",
     "index.js",
+    "config.js",
     "README.md",
     "LICENSE"
   ],
