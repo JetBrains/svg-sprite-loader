@@ -2,13 +2,27 @@
 
 It's like [style-loader](https://github.com/webpack/style-loader) but for SVG.
 
-- Create a single SVG sprite from a set of images in the browser runtime.
-  When you require an image like `require('svg-sprite!./image.svg')` it will return a symbol id so you can reference it later in `<svg><use xlink:href="#id"/></svg>`.
-- Raster images (PNG, JPG and GIF) will be wrapped with an `<image>` tag. Files like `image@2x.png` will be transformed with proper scale.
-- By default sprite renders when `DOMContentLoaded` event fires and injects as first child in `document.body`.
-  If you need custom behavior, use `spriteModule` config option to specify module path of your sprite implementation.
-  You can extend a default [`lib/web/sprite.js`](lib/web/sprite.js), or create your own. In the latter case you only need to implement the `add` method that accepts the symbol data as a string.
+## Features
+
+- Creates a single SVG sprite from a set of images.
+- Raster images support (PNG, JPG and GIF).
 - [SVGO](https://github.com/svg/svgo) is included.
+- Custom sprite implementation support.
+
+## How it works
+
+When you require an image, loader transforms it to SVG symbol and add to the array in special [sprite](lib/web/sprite.js) class.
+When browser event `DOMContentLoaded` fires sprite will be rendered and injected as first child of `document.body`.
+Require statement e.g. `require('svg-sprite!./image.svg')` returns a symbol id, so you can reference it later
+in `<svg><use xlink:href="#id"/></svg>`. Raster images  will be inlined (base64) and wrapped with an `<image>` tag.
+Files like `image@2x.png` will be transformed with proper scale.
+
+### Custom sprite implementation
+
+By default sprite renders when `DOMContentLoaded` event fires and injects as first child in `document.body`.
+If you need custom behavior, use `spriteModule` config option to specify module path of your sprite implementation.
+You can extend a default [`lib/web/sprite.js`](lib/web/sprite.js), or create your own.
+In the latter case you only need to implement the `add` method that accepts the symbol data as a string.
 
 ## Installation
 
@@ -17,7 +31,6 @@ npm install svg-sprite-loader --save-dev
 ```
 
 ## Example config
-
 ```js
 module.exports = {
   module: {
@@ -33,33 +46,53 @@ module.exports = {
         },
         spriteModule: 'utils/my-custom-sprite'
       })
-    }
-    ]
+    }]
   }
 };
 ```
 
 ## Configuration
 
-* `name` - configures a custom symbol id naming. Default is `[name]`. Followning name patterns are supported:
+* `name` configures a custom symbol id naming. Default is `[name]`. Following name patterns are supported:
   * `[ext]` the extension of the image.
   * `[name]` the basename of the image.
   * `[path]` the path of the image.
   * `[hash]` the hash or the image content.
   * `[pathhash]` the hash or the image path.
-* `prefixize` - isolates an image content by prefixing its `id`, `xlink:href` è `url(#id)` elements. Default is `true`.
-* `svgo` - image optimization. Can be true/false or an [SVGO config object](https://github.com/svg/svgo/blob/master/docs/how-it-works/en.md#1-config). Default is `true`.
-* `spriteModule` - defines custom sprite implementation module path.
+* `prefixize` isolates an image content by prefixing its `id`, `xlink:href` and `url(#id)` elements. Default is `true`.
+* `svgo` image optimization. Can be `true`/`false` or an [SVGO config object](https://github.com/svg/svgo/blob/master/docs/how-it-works/en.md#1-config). Default is `true`.
+* `spriteModule` defines [custom sprite implementation](#custom-sprite-implementation) module path.
 
 ## Examples
 
 Single image
 ```js
-require('svg-sprite!./image.svg');
+var id = require('svg-sprite!./image.svg');
+// => 'image'
 ```
 
 Set of images
 ```js
-var files = require.context('svg-sprite!images/logos', false, /\.svg$/);
+var files = require.context('svg-sprite!images/logos', false, /(twitter|facebook|youtube)\.svg$/);
 files.keys().forEach(files);
+```
+
+Custom sprite behavior
+```js
+// my-sprite.js
+var Sprite = require('node_modules/svg-sprite-loader/lib/web/sprite');
+module.exports = new Sprite();
+
+// my-app.jsx
+var sprite = require('my-sprite');
+
+class MyApplication extends React.Component {
+  componentWillMount() {
+    sprite.elem = sprite.render(document.body);
+  }
+
+  compenentWillUnmount() {
+    sprite.elem.parentNode.removeChild(sprite.elem);
+  }
+}
 ```
