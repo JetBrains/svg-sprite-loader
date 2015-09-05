@@ -11,7 +11,7 @@ It's like [style-loader](https://github.com/webpack/style-loader) but for SVG.
 
 ## How it works
 
-When you require an image, loader transforms it to SVG symbol and add to the array in special [sprite](lib/web/sprite.js) class.
+When you require an image, loader transforms it to SVG symbol and add it to the array in special [sprite](lib/web/sprite.js) class.
 When browser event `DOMContentLoaded` fires sprite will be rendered and injected as first child of `document.body`.
 Require statement e.g. `require('svg-sprite!./image.svg')` returns a symbol id, so you can reference it later
 in `<svg><use xlink:href="#id"/></svg>`. Raster images  will be inlined (base64) and wrapped with an `<image>` tag.
