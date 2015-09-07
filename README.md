@@ -91,7 +91,7 @@ class MyApplication extends React.Component {
     sprite.elem = sprite.render(document.body);
   }
 
-  compenentWillUnmount() {
+  componentWillUnmount() {
     sprite.elem.parentNode.removeChild(sprite.elem);
   }
 }
@@ -118,6 +118,6 @@ module.exports = Icon;
 module.exports.GLYPHS = GLYPHS;
 
 // some-component.jsx
-var Icon = requre('components/icon');
+var Icon = require('components/icon');
 <Icon glyph={Icon.GLYPHS.UNICORN}>
 ```
