@@ -96,3 +96,28 @@ class MyApplication extends React.Component {
   }
 }
 ```
+
+Using with React
+```js
+// icon.jsx
+var GLYPHS = {
+  PONY: require('img/pony.svg'),
+  UNICORN: require('img/unicorn.svg')
+};
+
+class Icon extends React.Component {
+  render() {
+    var glyph = this.props.glyph;
+    return (
+      <svg className="icon" dangerouslySetInnerHTML={{__html: '<use xlink:href="#' + glyph + '"></use>'}}/>
+    )
+  }
+}
+
+module.exports = Icon;
+module.exports.GLYPHS = GLYPHS;
+
+// some-component.jsx
+var Icon = requre('components/icon');
+<Icon glyph={Icon.GLYPHS.UNICORN}>
+```
