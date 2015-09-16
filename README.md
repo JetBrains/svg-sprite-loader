@@ -1,12 +1,9 @@
 # Webpack SVG sprite loader
 
-It's like [style-loader](https://github.com/webpack/style-loader) but for SVG.
-
-## Features
+It's like [style-loader](https://github.com/webpack/style-loader) but for SVG:
 
 - Creates a single SVG sprite from a set of images.
 - Raster images support (PNG, JPG and GIF).
-- [SVGO](https://github.com/svg/svgo) is included.
 - Custom sprite implementation support.
 
 ## How it works
@@ -39,11 +36,6 @@ module.exports = {
       loader: 'svg-sprite?' + JSON.stringify({
         name: '[name]_[hash]',
         prefixize: true,
-        svgo: {
-          plugins: [{
-            cleanupIDs: false
-          }]
-        },
         spriteModule: 'utils/my-custom-sprite'
       })
     }]
@@ -60,7 +52,6 @@ module.exports = {
   * `[hash]` the hash or the image content.
   * `[pathhash]` the hash or the image path.
 * `prefixize` isolates an image content by prefixing its `id`, `xlink:href` and `url(#id)` elements. Default is `true`.
-* `svgo` image optimization. Can be `true`/`false` or an [SVGO config object](https://github.com/svg/svgo/blob/master/docs/how-it-works/en.md#1-config). Default is `true`.
 * `spriteModule` defines [custom sprite implementation](#custom-sprite-implementation) module path.
 
 ## Examples

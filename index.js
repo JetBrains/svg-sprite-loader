@@ -21,9 +21,6 @@ module.exports = function (content) {
   if (isRasterImage)
     content = procs.rasterImageToSVG(resourcePath);
 
-  if (config.svgo)
-    content = procs.svgo(content, typeof config.svgo === 'boolean' ? null : config.svgo);
-
   var doc = new SVGDoc(content);
 
   // Calculate sprite symbol id
