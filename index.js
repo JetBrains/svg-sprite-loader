@@ -49,7 +49,6 @@ module.exports = function (content) {
   return [
     'var sprite = require("' + config.spriteModule.replace(/\\/g, "/") + '")',
     'var image = ' + JSON.stringify(content),
-    'sprite.add(image)',
-    'module.exports = ' + JSON.stringify(id) + ';'
+    'module.exports = sprite.add(image, "' + id + '");'
   ].join(';\n');
 };
