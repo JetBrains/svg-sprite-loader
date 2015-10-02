@@ -51,6 +51,7 @@ module.exports = {
   * `[path]` the path of the image.
   * `[hash]` the hash or the image content.
   * `[pathhash]` the hash or the image path.
+* `angularBaseWorkaround` Adds workaround for issue with combination of `<base>` and History API which is [typical for Angular.js](https://github.com/angular/angular.js/issues/8934). Default is `false`.
 * `prefixize` isolates an image content by prefixing its `id`, `xlink:href` and `url(#id)` elements. Default is `true`.
 * `spriteModule` defines [custom sprite implementation](#custom-sprite-implementation) module path.
 
