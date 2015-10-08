@@ -113,3 +113,30 @@ module.exports.GLYPHS = GLYPHS;
 var Icon = require('components/icon');
 <Icon glyph={Icon.GLYPHS.UNICORN}>
 ```
+
+Usage with React 0.14
+
+```js
+// icon.jsx
+const Icon = ({glyph, width, height, className}) => (
+  <svg className={className} width={width} height={height}>
+    <use xlinkHref={`${glyph}`} />
+  </svg>
+);
+
+Icon.defaultProps = {
+  width: 16,
+  height: 16,
+  className: 'icon'
+}
+
+export default Icon;
+
+// some-component.jsx
+import Icon from './icon';
+import help from './images/icons/Help.svg';
+
+<Icon glyph={help} />
+```
+
+
