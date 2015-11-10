@@ -1,6 +1,6 @@
 {
   "name": "svg-sprite-loader",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "SVG sprite webpack loader",
   "main": "index.js",
   "scripts": {
