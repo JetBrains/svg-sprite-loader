@@ -47,7 +47,7 @@ module.exports = function (content) {
   content = doc.toString(SVGDoc.OUTPUT_FORMAT.SYMBOL);
 
   return [
-    config.angularBaseWorkaround ? 'require("' + path.resolve(__dirname, 'lib/web/angular-base-workaround') + '");' : '',
+    config.angularBaseWorkaround ? 'require("' + path.resolve(__dirname, 'lib/web/angular-base-workaround').replace(/\\/g, "/") + '");' : '',
     'var sprite = require("' + config.spriteModule.replace(/\\/g, "/") + '");',
     'var image = ' + JSON.stringify(content),
     'module.exports = sprite.add(image, "' + id + '");'
