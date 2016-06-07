@@ -44,7 +44,7 @@ module.exports = function (content) {
 
   doc.$svg.attr('id', id);
 
-  content = doc.toString(SVGDoc.OUTPUT_FORMAT.SYMBOL);
+  content = doc.toString(SVGDoc.OUTPUT_FORMAT.SYMBOL, query.removeAttrs || null);
 
   return [
     config.angularBaseWorkaround ? 'require("' + path.resolve(__dirname, 'lib/web/angular-base-workaround').replace(/\\/g, "/") + '");' : '',
