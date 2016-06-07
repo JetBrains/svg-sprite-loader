@@ -45,11 +45,18 @@ module.exports = function (content) {
   doc.$svg.attr('id', id);
 
   content = doc.toString(SVGDoc.OUTPUT_FORMAT.SYMBOL);
+  var output;
 
-  return [
-    config.angularBaseWorkaround ? 'require("' + path.resolve(__dirname, 'lib/web/angular-base-workaround').replace(/\\/g, "/") + '");' : '',
-    'var sprite = require("' + config.spriteModule.replace(/\\/g, "/") + '");',
-    'var image = ' + JSON.stringify(content),
-    'module.exports = sprite.add(image, "' + id + '");'
-  ].join(';\n');
+  if (config.extract) {
+    output = ['module.exports = ' + JSON.stringify(content) + ';'];
+  } else {
+    output = [
+      config.angularBaseWorkaround ? 'require("' + path.resolve(__dirname, 'lib/web/angular-base-workaround').replace(/\\/g, "/") + '");' : '',
+      'var sprite = require("' + config.spriteModule.replace(/\\/g, "/") + '");',
+      'var image = ' + JSON.stringify(content) + ';',
+      'module.exports = sprite.add(image, "' + id + '");'
+    ];
+  }
+
+  return output.join('\n');
 };
