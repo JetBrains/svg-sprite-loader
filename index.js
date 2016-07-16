@@ -8,10 +8,16 @@ var utils = require('./lib/utils');
 
 module.exports = function (content) {
   this.cacheable && this.cacheable();
+  /** @type {SVGSpriteLoaderConfig} */
+  var config;
 
   var query = loaderUtils.parseQuery(this.query);
-  /** @type {SVGSpriteLoaderConfig} */
-  var config = extend({}, defaultConfig, query);
+  if ('config' in query) {
+    config = extend({}, defaultConfig, loaderUtils.getLoaderConfig(this, query.config));
+  } else {
+    config = extend({}, defaultConfig, query);
+  }
+
   var resourcePath = this.resourcePath;
   var basename = path.basename(resourcePath);
   var isRasterImage = utils.isRasterImage(resourcePath);
