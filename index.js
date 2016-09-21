@@ -53,14 +53,18 @@ module.exports = function (content) {
   content = doc.toString(SVGDoc.OUTPUT_FORMAT.SYMBOL);
   var output;
 
+  var exportCode = config.esModule
+    ? 'module.exports.__esModule = true;\n module.exports["default"] = '
+    : 'module.exports = ';
+
   if (config.extract) {
-    output = ['module.exports = ' + JSON.stringify(content) + ';'];
+    output = [exportCode + JSON.stringify(content) + ';'];
   } else {
     output = [
       config.angularBaseWorkaround ? 'require("' + path.resolve(__dirname, 'lib/web/angular-base-workaround').replace(/\\/g, "/") + '");' : '',
       'var sprite = require("' + config.spriteModule.replace(/\\/g, "/") + '");',
       'var image = ' + JSON.stringify(content) + ';',
-      'module.exports = sprite.add(image, "' + id + '");'
+      exportCode + 'sprite.add(image, "' + id + '");'
     ];
   }
 
