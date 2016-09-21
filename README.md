@@ -54,7 +54,7 @@ module.exports = {
 * `angularBaseWorkaround` Adds workaround for issue with combination of `<base>` and History API which is [typical for Angular.js](https://github.com/angular/angular.js/issues/8934). Default is `false`.
 * `prefixize` isolates an image content by prefixing its `id`, `xlink:href` and `url(#id)` elements. Default is `true`.
 * `spriteModule` defines [custom sprite implementation](#custom-sprite-implementation) module path.
-* `esModule` whether to transiple module to es compatible format. When true, loader will produce `module.exports.__esModule = true; module.exports['default'] = svg`. Default is `false`. Useful for transipler other than Babel.
+* `esModule` whether to transpile module to ES compatible format. When true, loader will produce `module.exports.__esModule = true; module.exports['default'] = svg`. Default is `false`. Useful for transpilers other than Babel.
 
 ## Examples
 
