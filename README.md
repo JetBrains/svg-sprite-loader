@@ -42,6 +42,22 @@ module.exports = {
   }
 };
 ```
+or
+```js
+module.exports = {
+  module: {
+    loaders: [{
+      test: /\.svg$/,
+      loader: 'svg-sprite?' + JSON.stringify({
+        name: 'icon-[1]',
+        prefixize: true,
+        regExp: './my-folder/(.*)\\.svg'
+      })
+    }]
+  }
+};
+// path-to-project/my-foleder/name.svg > #icon-name
+```
 
 ## Configuration
 

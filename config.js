@@ -17,5 +17,6 @@ module.exports = {
   prefixize: true,
   spriteModule: path.resolve(__dirname, 'lib/web/global-sprite'),
   extract: false,
-  esModule: false
+  esModule: false,
+  regExp: null
 };
