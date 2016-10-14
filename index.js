@@ -57,7 +57,11 @@ module.exports = function (content) {
     ? 'module.exports.__esModule = true;\n module.exports["default"] = '
     : 'module.exports = ';
 
-  if (config.extract) {
+  var extractMode = config.extract === true
+    || this.loaders[0].path.indexOf('extract-text-webpack-plugin') != -1
+    || this._compiler.name == 'extract-text-webpack-plugin';
+
+  if (extractMode) {
     output = [exportCode + JSON.stringify(content) + ';'];
   } else {
     output = [
