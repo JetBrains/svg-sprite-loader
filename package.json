@@ -33,6 +33,7 @@
     "extend": "^3.0.0",
     "image-size": "^0.3.5",
     "loader-utils": "^0.2.11",
+    "postcss": "^5.2.10",
     "sniffr": "1.1.4"
   }
 }

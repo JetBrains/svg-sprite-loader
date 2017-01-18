@@ -40,6 +40,8 @@ module.exports = function (content) {
   if (config.prefixize)
     procs.prefixize(doc, id + '_');
 
+  procs.prefixCssSelectors(doc, '#' + id);
+
   // Check raster image pixel ratio from file name (e.g. image@2x.png)
   if (isRasterImage) {
     var pixelRatio = utils.getPixelRatioFromFilename(basename);
