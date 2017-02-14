@@ -32,7 +32,8 @@ module.exports = function (content) {
   // Calculate sprite symbol id
   var id = loaderUtils.interpolateName(this, config.name, {
     context: this.options.context,
-    content: content
+    content: content,
+    regExp: config.regExp
   });
   if (config.name.indexOf('[pathhash]') !== -1)
     id = utils.generateHashFromPath(resourcePath);
