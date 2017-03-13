@@ -16,7 +16,8 @@ with SVG's `<use>` tag:
 ```html
 <svg>
 	<use xlink:href="#id" />
-</svg>```
+</svg>
+```
 
 Raster images  will be inlined (using base64) and wrapped with an `<image>` tag.
 Files like `image@2x.png` will be transformed with proper scale.
