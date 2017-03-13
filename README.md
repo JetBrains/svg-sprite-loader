@@ -1,23 +1,29 @@
-# Webpack SVG sprite loader
+# SVG Sprite Webpack Loader
 
-It's like [style-loader](https://github.com/webpack/style-loader) but for SVG:
+It's like [style-loader](https://github.com/webpack/style-loader), but for SVGs. Features:
 
-- Creates a single SVG sprite from a set of images.
-- Raster images support (PNG, JPG and GIF).
-- Custom sprite implementation support.
+- Create a single SVG sprite from a set of images
+- Raster image support (PNG, JPG and GIF)
+- Custom sprite implementations
 
 ## How it works
+When you require an image, SVG sprite webpack loader will transform it into an SVG symbol and add it to the array using a special [sprite](lib/web/sprite.js) class.
+When the browser event `DOMContentLoaded` fires, an image sprite will then be rendered and injected as the first child of `document.body`.
 
-When you require an image, loader transforms it to SVG symbol and add it to the array in special [sprite](lib/web/sprite.js) class.
-When browser event `DOMContentLoaded` fires sprite will be rendered and injected as first child of `document.body`.
-Require statement e.g. `require('svg-sprite!./image.svg')` returns a symbol id, so you can reference it later
-in `<svg><use xlink:href="#id"/></svg>`. Raster images  will be inlined (base64) and wrapped with an `<image>` tag.
+By default, require statements like `require('svg-sprite!./image.svg')` will return a symbol ID, so you can reference it later
+with SVG's `<use>` tag:
+
+```html
+<svg>
+	<use xlink:href="#id" />
+</svg>```
+
+Raster images  will be inlined (using base64) and wrapped with an `<image>` tag.
 Files like `image@2x.png` will be transformed with proper scale.
 
 ### Custom sprite implementation
+If you need custom behavior, use the `spriteModule` config option to specify the path of your sprite implementation module.
 
-By default sprite renders when `DOMContentLoaded` event fires and injects as first child in `document.body`.
-If you need custom behavior, use `spriteModule` config option to specify module path of your sprite implementation.
 You can extend a default [`lib/web/sprite.js`](lib/web/sprite.js), or create your own.
 In the latter case you only need to implement the `add` method that accepts the symbol data as a string.
 
@@ -42,7 +48,7 @@ module.exports = {
   }
 };
 ```
-or
+or, using regular expressions to capture the SVG's filename:
 ```js
 module.exports = {
   module: {
@@ -60,33 +66,32 @@ module.exports = {
 ```
 
 ## Configuration
-
-* `name` configures a custom symbol id naming. Default is `[name]`. Following name patterns are supported:
-  * `[ext]` the extension of the image.
-  * `[name]` the basename of the image.
-  * `[path]` the path of the image.
-  * `[hash]` the hash or the image content.
-  * `[pathhash]` the hash or the image path.
-* `angularBaseWorkaround` Adds workaround for issue with combination of `<base>` and History API which is [typical for Angular.js](https://github.com/angular/angular.js/issues/8934). Default is `false`.
+* `name` configures a custom symbol ID naming. Default is `[name]`. The ollowing name patterns are supported:
+  * `[ext]` - the extension of the image
+  * `[name]` - the basename of the image
+  * `[path]` - the path of the image
+  * `[hash]` - the hash or the image content
+  * `[pathhash]` - the hash or the image path
+* `angularBaseWorkaround` adds a workaround for issues with combining `<base>` and the history API (which is [typical for Angular.js](https://github.com/angular/angular.js/issues/8934)). Default is `false`.
 * `prefixize` isolates an image content by prefixing its `id`, `xlink:href` and `url(#id)` elements. Default is `true`.
-* `spriteModule` defines [custom sprite implementation](#custom-sprite-implementation) module path.
-* `esModule` whether to transpile module to ES compatible format. When this option is set to `true`, loader will produce `module.exports.__esModule = true; module.exports['default'] = svg`. Default is `false`. Useful for transpilers other than Babel.
+* `spriteModule` defines [custom sprite implementation](#custom-sprite-implementation) module path
+* `esModule` configures whether to transpile the module to an ES-compatible format. When this option is set to `true`, the loader will produce `module.exports.__esModule = true; module.exports['default'] = svg`. Default is `false`. (This is useful for transpilers other than Babel.)
 
 ## Examples
 
-Single image
+Single image:
 ```js
 var id = require('svg-sprite!./image.svg');
 // => 'image'
 ```
 
-Set of images
+Set of images:
 ```js
 var files = require.context('svg-sprite!images/logos', false, /(twitter|facebook|youtube)\.svg$/);
 files.keys().forEach(files);
 ```
 
-Custom sprite behavior
+Custom sprite behavior:
 ```js
 // my-sprite.js
 var Sprite = require('node_modules/svg-sprite-loader/lib/web/sprite');
@@ -106,7 +111,7 @@ class MyApplication extends React.Component {
 }
 ```
 
-Using with React
+Using with React:
 ```js
 // icon.jsx
 var GLYPHS = {
@@ -131,8 +136,7 @@ var Icon = require('components/icon');
 <Icon glyph={Icon.GLYPHS.UNICORN}>
 ```
 
-Usage with React 0.14
-
+Using with React 0.14+:
 ```js
 // icon.jsx
 export default function Icon({glyph, width = 16 , height = 16, className = 'icon'}){
@@ -149,5 +153,3 @@ import help from './images/icons/Help.svg';
 
 <Icon glyph={help} />
 ```
-
-
