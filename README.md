@@ -62,11 +62,12 @@ module.exports = {
     }]
   }
 };
-// path-to-project/my-foleder/name.svg > #icon-name
+// path-to-project/my-folder/name.svg > #icon-name
 ```
 
 ## Configuration
-* `name` configures a custom symbol ID naming. Default is `[name]`. The ollowing name patterns are supported:
+
+* `name` configures a custom symbol ID name. Default is `[name]`. The following name patterns are supported:
   * `[ext]` - the extension of the image
   * `[name]` - the basename of the image
   * `[path]` - the path of the image
