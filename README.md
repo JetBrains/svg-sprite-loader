@@ -85,8 +85,8 @@ SVG Sprite Loader works well with [the `<base>` tag](https://developer.mozilla.o
 There are a few ways to get around this:
 - If you use Angular.js 1.x, simply enable the `angularBaseWorkaround` config option described above
 - If you use Angular 2.x or newer, you can remove the `<base>` tag and [provide the router with an appropriate `APP_BASE_HREF` value](https://angular.io/docs/ts/latest/guide/router.html#!#html5-urls-and-the-lt-base-href-)
-- If you're using another framework, you you have to: 
-  - resolve the image full URL using `window.location` (so its usage may look like `<use xlink:href="https://yoursite.com/your/full/path#id">`), 
+- If you're using another framework, you have to: 
+  - resolve the full image URL using `window.location` (so its usage may look like `<use xlink:href="https://yoursite.com/your/full/path#id">`), 
   - trigger the `spriteLoaderLocationUpdated` event when a new location has been loaded. The `angularBaseWorkaround` option [is one example](https://github.com/kisenka/svg-sprite-loader/blob/master/lib/web/angular-base-workaround.js#L6) of this implementation.
 
 ## Examples
