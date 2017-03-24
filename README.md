@@ -15,7 +15,7 @@ with SVG's `<use>` tag:
 
 ```html
 <svg>
-	<use xlink:href="#id" />
+  <use xlink:href="#id" />
 </svg>
 ```
 
@@ -74,10 +74,18 @@ module.exports = {
   * `[path]` - the path of the image
   * `[hash]` - the hash or the image content
   * `[pathhash]` - the hash or the image path
-* `angularBaseWorkaround` adds a workaround for issues with combining `<base>` and the history API (which is [typical for Angular.js](https://github.com/angular/angular.js/issues/8934)). Default is `false`.
+* `angularBaseWorkaround` adds a workaround for Angular.js 1.x issues with combining `<base>` and the history API (which is [typical for Angular.js](https://github.com/angular/angular.js/issues/8934)). Default is `false`.
 * `prefixize` isolates an image content by prefixing its `id`, `xlink:href` and `url(#id)` elements. Default is `true`.
 * `spriteModule` defines [custom sprite implementation](#custom-sprite-implementation) module path
 * `esModule` configures whether to transpile the module to an ES-compatible format. When this option is set to `true`, the loader will produce `module.exports.__esModule = true; module.exports['default'] = svg`. Default is `false`. (This is useful for transpilers other than Babel.)
+
+#### Using the loader with a `<base>` tag
+SVG Sprite Loader works well with [the `<base>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base) in normal cases, however, in situations where the `<base>` tag is used with the browser's `history` API to simulate location changing, this will often break SVG `xlink:href` inclusion.
+
+There are a few ways to get around this:
+- If you use Angular.js 1.x, simply enable the `angularBaseWorkaround` config option described above
+- If you use Angular 2.x, you can remove the `<base>` tag and [provide the router with an appropriate `APP_BASE_HREF` value](https://angular.io/docs/ts/latest/guide/router.html#!#html5-urls-and-the-lt-base-href-)
+- If you're using another framework, you can either resolve the full URL using `window.location` (so it returns `xlink:href="https://yoursite.com/your/full/path#id"`, for example), or you can trigger the `spriteLoaderLocationUpdated` event when a new location has been loaded. The `angularBaseWorkaround` option [is one example](https://github.com/kisenka/svg-sprite-loader/blob/master/lib/web/angular-base-workaround.js#L6) of this implementation.
 
 ## Examples
 
