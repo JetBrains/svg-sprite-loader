@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "airbnb-base"
+  ],
+  "env": {
+    "jest": true,
+    "es6": true
+  },
+  "rules": {
+    "no-unneeded-ternary": "error",
+    "arrow-body-style":  "off",
+    "no-return-assign": "off",
+    "no-param-reassign": "off",
+    "comma-dangle": ["error", "never"],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["utils/*.js", "**/*.test.js"]}]
+  }
+}
