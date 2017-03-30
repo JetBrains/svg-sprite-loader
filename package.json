@@ -4,7 +4,8 @@
   "description": "SVG sprite webpack loader",
   "main": "lib/loader.js",
   "scripts": {
-    "test": "jest --config jest.conf.json"
+    "test": "jest --config jest.conf.json",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "eslint": "^3.18.0",
     "eslint-config-airbnb-base": "^11.1.2",
     "eslint-plugin-import": "^2.2.0",
-    "jest": "^19.0.2"
+    "jest": "^19.0.2",
+    "standard-version": "^4.0.0"
   }
 }
