@@ -3,14 +3,15 @@
     "airbnb-base"
   ],
   "env": {
-    "jest": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "rules": {
     "no-unneeded-ternary": "error",
     "arrow-body-style":  "off",
     "no-return-assign": "off",
     "no-param-reassign": "off",
+    "no-underscore-dangle": "off",
     "comma-dangle": ["error", "never"],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": ["utils/*.js", "**/*.test.js"]}]
   }
