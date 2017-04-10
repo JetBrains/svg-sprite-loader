@@ -1,7 +1,0 @@
-{
-  "testEnvironment": "node",
-  "transform": {
-    "\\.test\\.js$": "babel-jest"
-  },
-  "setupTestFrameworkScriptFile": "./utils/setup-test-env.js"
-}
