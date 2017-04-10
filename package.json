@@ -29,7 +29,7 @@
   "homepage": "https://github.com/kisenka/webpack-svg-sprite-loader#readme",
   "dependencies": {
     "loader-utils": "^1.1.0",
-    "lodash": "^4.17.4",
+    "lodash.merge": "^4.6.0",
     "postcss": "^5.2.10",
     "sniffr": "1.1.4",
     "svg-baker": "^1.2.0",
