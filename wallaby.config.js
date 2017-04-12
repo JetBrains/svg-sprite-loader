@@ -1,13 +1,15 @@
-const chai = require('chai');
+// const chai = require('chai');
 
 module.exports = () => {
   const config = {
     files: [
-      'lib/**/*.js'
+      { pattern: 'lib/*.js' },
+      { pattern: 'lib/**/*.js' },
+      { pattern: 'test/tests-*.js', instrument: false }
     ],
 
     tests: [
-      'test/*.test.js'
+      { pattern: 'test/*.test.js' }
     ],
 
     testFramework: 'mocha',
@@ -21,7 +23,7 @@ module.exports = () => {
       const mocha = wallaby.testFramework;
 
       mocha.ui('bdd');
-      chai.should();
+      // chai.should();
     }
   };
 
