@@ -1,20 +1,33 @@
 const path = require('path');
-const { ok } = require('assert');
 const Promise = require('bluebird');
 const merge = require('lodash.merge');
+const { ok } = require('assert');
 const { InMemoryCompiler, MemoryFileSystem, createCachedInputFileSystem } = require('webpack-toolkit');
 
+const packageName = require('../package.json').name;
 const fixturesPath = path.resolve(__dirname, 'fixtures');
+exports.fixturesPath = fixturesPath;
+
 const loaderPath = require.resolve('../lib/loader.js');
+exports.loaderPath = loaderPath;
+
 const rootDir = path.resolve(__dirname, '..');
+exports.rootDir = rootDir;
+
+exports.notOk = (value, message) => ok(!value, message);
 
 /**
  * @param {Object} [config]
- * @return {InMemoryCompiler}
+ * @return {Promise<InMemoryCompiler>}
  */
 function createCompiler(config = {}) {
   const cfg = merge({
-    context: fixturesPath
+    context: fixturesPath,
+    resolve: {
+      alias: {
+        [packageName]: rootDir
+      }
+    }
   }, config);
 
   if (!cfg.files) {
@@ -39,6 +52,8 @@ function createCompiler(config = {}) {
     });
 }
 
+exports.createCompiler = createCompiler;
+
 /**
  * @param {Object} [config]
  * @return {Promise<Compilation>}
@@ -47,13 +62,14 @@ function compile(config) {
   return createCompiler(config).then(compiler => compiler.run());
 }
 
-const notOk = (value, message) => ok(!value, message);
+exports.compile = compile;
 
-module.exports = {
-  createCompiler,
-  compile,
-  notOk,
-  fixturesPath,
-  loaderPath,
-  rootDir
-};
+/**
+ * @param {Object} [config]
+ * @return {Promise<Compilation>}
+ */
+function compileAndNotReject(config) {
+  return createCompiler(config).then(compiler => compiler.run(false));
+}
+
+exports.compileAndNotReject = compileAndNotReject;
