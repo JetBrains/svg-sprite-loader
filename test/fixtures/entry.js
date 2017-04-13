@@ -1,1 +1,1 @@
-require('./img/twitter.svg');
+require('./img/image.svg');
