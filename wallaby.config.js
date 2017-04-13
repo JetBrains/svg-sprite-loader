@@ -1,5 +1,3 @@
-// const chai = require('chai');
-
 module.exports = () => {
   const config = {
     files: [
@@ -16,14 +14,13 @@ module.exports = () => {
 
     env: {
       type: 'node',
-      runner: 'node'  // or full path to any node executable
+      runner: 'node'
     },
 
+    // eslint-disable-next-line no-shadow
     setup: (wallaby) => {
       const mocha = wallaby.testFramework;
-
       mocha.ui('bdd');
-      // chai.should();
     }
   };
 
