@@ -5,6 +5,7 @@
   "main": "lib/loader.js",
   "scripts": {
     "test": "mocha test/*.test.js",
+    "lint": "eslint --quiet .",
     "release": "standard-version"
   },
   "repository": {
