@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-expressions */
 const { strictEqual, ok } = require('assert');
-const { loaderPath } = require('./tests-utils');
+const { loaderPath, notOk } = require('./tests-utils');
 const {
   generateSpritePlaceholder,
   replaceSpritePlaceholder,
   replaceInModuleSource,
-  getAffectedModules,
+  isModuleShouldBeExtracted,
   getMatchedRule
 } = require('../lib/utils');
 
@@ -43,17 +43,24 @@ describe('utils', () => {
     });
   });
 
-  describe('getAffectedModules', () => {
-    const fixtures = [
-      { request: `${loaderPath}!./img.svg` },
-      { request: 'css-loader!./img.svg' }
-    ];
+  describe('isModuleShouldBeExtracted', () => {
+    const request = `${loaderPath}!./img.svg`;
 
-    it('should work like a charm', () => {
-      const res = getAffectedModules(fixtures);
-      strictEqual(res.length, 1);
-      strictEqual(res[0], fixtures[0]);
-    });
+    notOk(isModuleShouldBeExtracted({
+      request,
+      loaders: [{ loader: loaderPath }]
+    }));
+
+    ok(isModuleShouldBeExtracted({
+      request,
+      loaders: [{ loader: loaderPath, options: { extract: true } }]
+    }));
+
+    ok(isModuleShouldBeExtracted({
+      request,
+      loaders: [{ loader: loaderPath }],
+      issuer: { resource: 'style.css' }
+    }));
   });
 
   describe('getMatchedRule', () => {
