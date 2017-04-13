@@ -3,8 +3,8 @@ const Promise = require('bluebird');
 const merge = require('lodash.merge');
 const { ok } = require('assert');
 const { InMemoryCompiler, MemoryFileSystem, createCachedInputFileSystem } = require('webpack-toolkit');
-
 const packageName = require('../package.json').name;
+
 const fixturesPath = path.resolve(__dirname, 'fixtures');
 exports.fixturesPath = fixturesPath;
 
