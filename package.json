@@ -45,7 +45,11 @@
     "eslint-config-airbnb-base": "^11.1.2",
     "eslint-plugin-import": "^2.2.0",
     "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "html-loader": "^0.4.5",
     "mocha": "^3.2.0",
+    "svgo": "^0.7.2",
+    "svgo-loader": "^1.2.1",
     "webpack": "^2.3.3",
     "webpack-toolkit": "^0.9.0"
   }
