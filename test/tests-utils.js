@@ -1,4 +1,5 @@
 const path = require('path');
+const { ok } = require('assert');
 const merge = require('lodash.merge');
 const {
   InMemoryCompiler,
@@ -14,8 +15,11 @@ function compile(config) {
   return new InMemoryCompiler(cfg, { inputFS }).run(false);
 }
 
+const notOk = (value, message) => ok(!value, message);
+
 module.exports = {
   compile,
+  notOk,
   fixturesPath,
   loaderPath
 };

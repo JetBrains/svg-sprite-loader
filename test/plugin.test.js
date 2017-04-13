@@ -1,32 +1,36 @@
-const { strictEqual, ok } = require('assert');
+const { strictEqual, equal, ok } = require('assert');
+const merge = require('lodash.merge');
 const { compile, fixturesPath, loaderPath } = require('./tests-utils');
 const Plugin = require('../lib/plugin');
+const ExtractPlugin = require('extract-text-webpack-plugin');
+
+const spriteLoaderRule = (cfg) => {
+  return merge({
+    test: /\.svg$/,
+    loader: loaderPath
+  }, cfg || {});
+};
+
+const extractPluginRule = () => {
+  return {
+    test: /\.css$/,
+    loader: ExtractPlugin.extract({ use: 'css-loader' })
+  };
+};
+
+/**
+ * TODO should emit only built chunks
+ */
 
 describe('plugin', () => {
-  it('works ok', (done) => {
-    compile({
-      entry: './styles.css',
-      module: {
-        rules: [
-          {
-            test: /\.svg$/,
-            loader: loaderPath,
-            options: {
-              extract: true,
-              spriteFilename: '[chunkname].svg'
-            }
-          },
-          {
-            test: /\.css$/,
-            loader: 'css-loader'
-          }
-        ]
-      },
+  it('should properly detect modules to extract', async () => {
+    const compilation = await compile({
+      entry: './entry',
+      module: { rules: [spriteLoaderRule()] },
       plugins: [new Plugin()]
-    }).then(e => {
-      debugger;
-      done()
-    })
+    });
 
+    const assetsCount = Object.keys(compilation.assets).length;
+    equal(assetsCount, 1);
   });
 });
