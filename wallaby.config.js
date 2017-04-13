@@ -3,7 +3,11 @@ module.exports = () => {
     files: [
       { pattern: 'lib/*.js' },
       { pattern: 'lib/**/*.js' },
-      { pattern: 'test/tests-*.js', instrument: false }
+      { pattern: 'test/tests-*.js', instrument: false },
+
+      // static files
+      { pattern: 'test/fixtures/*', load: false, instrument: false },
+      { pattern: 'test/fixtures/**/*', load: false, instrument: false }
     ],
 
     tests: [
