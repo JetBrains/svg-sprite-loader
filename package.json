@@ -4,9 +4,10 @@
   "description": "SVG sprite webpack loader",
   "main": "lib/loader.js",
   "scripts": {
-    "test": "mocha test/*.test.js",
+    "coverage": "istanbul cover --report html --report lcov _mocha test/*.test.js",
     "lint": "eslint --quiet .",
-    "release": "standard-version"
+    "release": "standard-version",
+    "test": "mocha test/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "html-loader": "^0.4.5",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "svgo": "^0.7.2",
     "svgo-loader": "^1.2.1",
