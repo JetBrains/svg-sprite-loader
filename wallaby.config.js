@@ -31,7 +31,7 @@ module.exports = () => {
       const OldInMemoryCompiler = webpackToolkit.InMemoryCompiler;
       if (!OldInMemoryCompiler.patched) {
         // eslint-disable-next-line no-multi-assign
-        const NewInMemoryCompiler = webpackToolkit.InMemoryCompiler = function (cfg) {
+        const NewInMemoryCompiler = webpackToolkit.InMemoryCompiler = function patched(cfg) {
           cfg.resolveLoader = { modules: [`${wallaby.localProjectDir}/node_modules`] };
           NewInMemoryCompiler.prototype = OldInMemoryCompiler.prototype;
           // eslint-disable-next-line prefer-rest-params

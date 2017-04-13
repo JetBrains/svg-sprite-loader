@@ -1,7 +1,7 @@
-const { ok, strictEqual } = require('assert');
+const { ok } = require('assert');
 const merge = require('lodash.merge');
 const ExtractPlugin = require('extract-text-webpack-plugin');
-const { compile, createCompiler, compileAndNotReject, loaderPath } = require('./tests-utils');
+const { compile, compileAndNotReject, loaderPath } = require('./tests-utils');
 const Plugin = require('../lib/plugin');
 const defaults = require('../lib/config');
 const Exceptions = require('../lib/exceptions');
