@@ -1,33 +1,19 @@
 const { ok } = require('assert');
-const merge = require('lodash.merge');
 const ExtractPlugin = require('extract-text-webpack-plugin');
-const { compile, compileAndNotReject, loaderPath } = require('./tests-utils');
+const {
+  compile,
+  loaderPath,
+  extractCSSRule,
+  extractHTMLRule,
+  spriteLoaderRule,
+  compileAndNotReject
+} = require('./tests-utils');
+
 const Plugin = require('../lib/plugin');
 const defaults = require('../lib/config');
 const Exceptions = require('../lib/exceptions');
 
 const defaultSpriteFilename = defaults.loader.spriteFilename;
-
-const spriteLoaderRule = (cfg) => {
-  return merge({
-    test: /\.svg$/,
-    loader: loaderPath
-  }, cfg || {});
-};
-
-const extractCSSRule = () => {
-  return {
-    test: /\.css$/,
-    loader: ExtractPlugin.extract({ use: 'css-loader' })
-  };
-};
-
-const extractHTMLRule = () => {
-  return {
-    test: /\.html$/,
-    loader: ExtractPlugin.extract({ use: 'html-loader' })
-  };
-};
 
 describe('plugin', () => {
   let CSSExtractor;

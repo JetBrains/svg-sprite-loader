@@ -3,6 +3,7 @@ const Promise = require('bluebird');
 const merge = require('lodash.merge');
 const { ok } = require('assert');
 const { InMemoryCompiler, MemoryFileSystem, createCachedInputFileSystem } = require('webpack-toolkit');
+const ExtractPlugin = require('extract-text-webpack-plugin');
 const packageName = require('../package.json').name;
 
 const fixturesPath = path.resolve(__dirname, 'fixtures');
@@ -73,3 +74,30 @@ function compileAndNotReject(config) {
 }
 
 exports.compileAndNotReject = compileAndNotReject;
+
+function spriteLoaderRule(cfg) {
+  return merge({
+    test: /\.svg$/,
+    loader: loaderPath
+  }, cfg || {});
+}
+
+exports.spriteLoaderRule = spriteLoaderRule;
+
+function extractCSSRule() {
+  return {
+    test: /\.css$/,
+    loader: ExtractPlugin.extract({ use: 'css-loader' })
+  };
+}
+
+exports.extractCSSRule = extractCSSRule;
+
+function extractHTMLRule() {
+  return {
+    test: /\.html$/,
+    loader: ExtractPlugin.extract({ use: 'html-loader' })
+  };
+}
+
+exports.extractHTMLRule = extractHTMLRule;
