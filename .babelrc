@@ -1,0 +1,12 @@
+{
+  "presets": [
+    ["es2015", {"modules": false}]
+  ],
+  "plugins": [
+//    ["transform-runtime", {
+//      "helpers": true,
+//      "polyfill": false,
+//      "regenerator": false
+//    }]
+  ]
+}
