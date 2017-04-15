@@ -1,6 +1,6 @@
 const path = require('path');
 const Promise = require('bluebird');
-const merge = require('lodash.merge');
+const merge = require('deepmerge');
 const { ok } = require('assert');
 const { InMemoryCompiler, MemoryFileSystem, createCachedInputFileSystem } = require('webpack-toolkit');
 const ExtractPlugin = require('extract-text-webpack-plugin');
@@ -9,7 +9,7 @@ const packageName = require('../package.json').name;
 const fixturesPath = path.resolve(__dirname, 'fixtures');
 exports.fixturesPath = fixturesPath;
 
-const loaderPath = require.resolve('../lib/loader.js');
+const loaderPath = require.resolve('../');
 exports.loaderPath = loaderPath;
 
 const rootDir = path.resolve(__dirname, '..');

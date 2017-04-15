@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-expressions */
 const { strictEqual } = require('assert');
 const configure = require('../lib/configurator');
+const defaults = require('../lib/config');
+
+const { PACKAGE_NAME } = defaults;
 
 describe('configurator', () => {
   let context;
@@ -25,14 +28,19 @@ describe('configurator', () => {
     };
   });
 
-  it('should properly autodetect runtime', () => {
+  it('should properly autodetect runtime modules', () => {
     const options = context.options;
-
-    options.target = 'web';
-    strictEqual(configure({ context }).runtime, 'browser');
+    let config;
 
     options.target = 'node';
-    strictEqual(configure({ context }).runtime, 'default');
+    config = configure({ context });
+    strictEqual(config.spriteModule, defaults.spriteModule);
+    strictEqual(config.symbolModule, defaults.symbolModule);
+
+    options.target = 'web';
+    config = configure({ context });
+    strictEqual(config.spriteModule, `${PACKAGE_NAME}/runtime/browser-sprite`);
+    strictEqual(config.symbolModule, `${PACKAGE_NAME}/runtime/browser-symbol`);
   });
 
   it('should properly autodetect extract mode', () => {

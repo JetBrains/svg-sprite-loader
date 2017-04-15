@@ -1,1 +1,1 @@
---require test/tests-setup.js
+--require test/_setup.js

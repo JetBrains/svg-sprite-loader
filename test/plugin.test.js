@@ -1,4 +1,4 @@
-const { ok } = require('assert');
+const { ok, strictEqual } = require('assert');
 const ExtractPlugin = require('extract-text-webpack-plugin');
 const {
   compile,
@@ -7,13 +7,13 @@ const {
   extractHTMLRule,
   spriteLoaderRule,
   compileAndNotReject
-} = require('./tests-utils');
+} = require('./_utils');
 
 const Plugin = require('../lib/plugin');
 const defaults = require('../lib/config');
 const Exceptions = require('../lib/exceptions');
 
-const defaultSpriteFilename = defaults.loader.spriteFilename;
+const defaultSpriteFilename = defaults.spriteFilename;
 
 describe('plugin', () => {
   let CSSExtractor;
@@ -31,39 +31,24 @@ describe('plugin', () => {
         module: { rules: [spriteLoaderRule()] }
       });
 
-      ok(errors.length === 1);
+      strictEqual(errors.length, 1);
       ok(errors[0].error instanceof Exceptions.LoaderException);
     });
 
     it('should emit error if invalid runtime passed', async () => {
       const { errors } = await compileAndNotReject({
         entry: './entry',
-        module: { rules: [spriteLoaderRule({ options: { runtime: 'qwe' } })] },
+        module: { rules: [spriteLoaderRule({ options: { runtimeGenerator: 'qwe', symbolId: 'qwe' } })] },
         plugins: [new Plugin()]
       });
 
-      ok(errors.length === 1);
+      strictEqual(errors.length, 1);
       ok(errors[0].error instanceof Exceptions.InvalidRuntimeException);
     });
   });
 
   describe('handle warnings', () => {
-    it('should warn if several rules applied to module', async () => {
-      const { warnings } = await compile({
-        entry: './entry',
-        module: { rules: [
-          spriteLoaderRule(),
-          { test: /\.svg$/, loader: loaderPath }
-        ] },
-        plugins: [new Plugin()]
-      });
-
-      // TODO loader applies 2 times so warning also will me emitted 2 times
-      ok(warnings.length === 2);
-      ok(warnings[0].warning instanceof Exceptions.SeveralRulesAppliedException);
-    });
-
-    it('should warn if other loaders after this in extract mode', async () => {
+    it('should warn if there is remaining loaders in extract mode', async () => {
       const { warnings } = await compile({
         entry: './entry',
         module: { rules: [{
@@ -79,6 +64,21 @@ describe('plugin', () => {
 
       ok(warnings.length === 1);
       ok(warnings[0].warning instanceof Exceptions.RemainingLoadersInExtractModeException);
+    });
+
+    it('should warn if several rules applied to module', async () => {
+      const { warnings } = await compile({
+        entry: './entry',
+        module: { rules: [
+          spriteLoaderRule(),
+          { test: /\.svg$/, loader: loaderPath }
+        ] },
+        plugins: [new Plugin()]
+      });
+
+      // TODO loader applies 2 times so warning also will me emitted 2 times
+      ok(warnings.length === 2);
+      ok(warnings[0].warning instanceof Exceptions.SeveralRulesAppliedException);
     });
   });
 

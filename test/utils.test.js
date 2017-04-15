@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 const { strictEqual, ok } = require('assert');
-const { loaderPath, notOk } = require('./tests-utils');
+const { loaderPath, notOk } = require('./_utils');
 const {
   generateSpritePlaceholder,
   replaceSpritePlaceholder,
