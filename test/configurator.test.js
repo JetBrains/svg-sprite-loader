@@ -40,7 +40,6 @@ describe('configurator', () => {
     options.target = 'web';
     config = configure({ context });
     strictEqual(config.spriteModule, `${PACKAGE_NAME}/runtime/browser-sprite`);
-    strictEqual(config.symbolModule, `${PACKAGE_NAME}/runtime/browser-symbol`);
   });
 
   it('should properly autodetect extract mode', () => {

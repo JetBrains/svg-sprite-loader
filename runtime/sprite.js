@@ -1,12 +1,3 @@
-class Sprite {
-  constructor() {
-    this.symbols = [];
-  }
-
-  add(s) {
-    this.symbols.push(s);
-    return s;
-  }
-}
+import Sprite from 'svg-baker-runtime/lib/sprite';
 
 export default new Sprite();
