@@ -10,10 +10,10 @@ const {
 } = require('./_utils');
 
 const Plugin = require('../lib/plugin');
-const defaults = require('../lib/config');
+const loaderDefaults = require('../lib/config').loader;
 const Exceptions = require('../lib/exceptions');
 
-const defaultSpriteFilename = defaults.spriteFilename;
+const defaultSpriteFilename = loaderDefaults.spriteFilename;
 
 describe('plugin', () => {
   let CSSExtractor;

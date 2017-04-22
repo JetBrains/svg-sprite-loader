@@ -4,6 +4,7 @@ const configure = require('../lib/configurator');
 const defaults = require('../lib/config');
 
 const { PACKAGE_NAME } = defaults;
+const loaderDefaults = defaults.loader;
 
 describe('configurator', () => {
   let context;
@@ -34,8 +35,8 @@ describe('configurator', () => {
 
     options.target = 'node';
     config = configure({ context });
-    strictEqual(config.spriteModule, defaults.spriteModule);
-    strictEqual(config.symbolModule, defaults.symbolModule);
+    strictEqual(config.spriteModule, loaderDefaults.spriteModule);
+    strictEqual(config.symbolModule, loaderDefaults.symbolModule);
 
     options.target = 'web';
     config = configure({ context });
