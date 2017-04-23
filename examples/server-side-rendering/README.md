@@ -1,3 +1,10 @@
+# Server side rendering example
+
+### Input
+
+[entry.js](entry.js)
+
+```js
 import symbol from '../assets/twitter.svg';
 
 // Import sprite instance which already contains twitter logo required above
@@ -23,3 +30,9 @@ ${spriteContent}
 `;
 
 console.log(pageContent);
+```
+
+### Output
+
+- [build/main.js](build/main.js)
+- [build/page.html](build/page.html)
