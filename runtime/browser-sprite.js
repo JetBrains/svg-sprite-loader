@@ -1,4 +1,4 @@
-import BrowserSprite from 'svg-baker-runtime/lib/browser-sprite';
+import BrowserSprite from 'svg-baker-runtime/src/browser-sprite';
 
 const sprite = new BrowserSprite();
 

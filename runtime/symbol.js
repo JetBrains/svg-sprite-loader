@@ -1,1 +1,1 @@
-export { default } from 'svg-baker-runtime/lib/symbol';
+export { default } from 'svg-baker-runtime/src/symbol';
