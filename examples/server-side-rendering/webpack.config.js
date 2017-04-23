@@ -12,10 +12,6 @@ const config = merge(baseConfig, {
     path: path.resolve(__dirname, 'build')
   },
 
-  /**
-   * When target is 'node' svg-sprite-loader will use isomorphic runtime sprite module.
-   * @see svg-sprite-loader/runtime/sprite.js
-   */
   target: 'node',
 
   module: {
