@@ -53,6 +53,7 @@
     "istanbul": "^0.4.5",
     "minimist": "^1.2.0",
     "mocha": "^3.2.0",
+    "npm-run-all": "^4.0.2",
     "rollup": "^0.41.6",
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-commonjs": "^8.0.2",
@@ -65,6 +66,10 @@
   },
   "scripts": {
     "build:runtime": "node scripts/build-runtime.js",
+    "build:example:browser-sprite": "cd examples/browser-sprite && webpack",
+    "build:example:extract-sprite": "cd examples/extract-sprite && webpack",
+    "build:example:server-side-rendering": "cd examples/server-side-rendering && webpack && node build/main.js > build/page.html",
+    "build:examples": "npm-run-all --parallel build:example:*",
     "coverage": "istanbul cover --report html --report lcov _mocha test/*.test.js",
     "lint": "eslint --quiet .",
     "release": "standard-version",

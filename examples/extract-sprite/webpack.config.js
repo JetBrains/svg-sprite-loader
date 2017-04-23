@@ -1,6 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
-const merge = require('../node_modules/deepmerge');
-const TextExtractPlugin = require('../node_modules/extract-text-webpack-plugin');
+const merge = require('deepmerge');
+const TextExtractPlugin = require('extract-text-webpack-plugin');
 const baseConfig = require('../base-webpack.config');
 const SpritePlugin = require('../../plugin');
 
