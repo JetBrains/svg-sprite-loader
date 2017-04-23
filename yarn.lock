@@ -1312,8 +1312,8 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
 
 electron-to-chromium@^1.2.7:
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.7.tgz#9fb75a2417f28114425d364de118d1cfd681432b"
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.8.tgz#b2c8a2c79bb89fbbfd3724d9555e15095b5f5fb6"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -2966,6 +2966,10 @@ path-is-inside@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
 
+path-parse@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.5.tgz#3c1adf871ea9cd6c9431b6ea2bd74a0ff055c4c1"
+
 path-type@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-1.1.0.tgz#59c44f7ee491da704da415da5a4070ba4f8fe441"
@@ -3574,9 +3578,15 @@ resolve-from@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-1.0.1.tgz#26cbfe935d1aeeeabb29bc3fe5aeb01e93d44226"
 
-resolve@1.1.7, resolve@1.1.x, resolve@^1.1.6, resolve@^1.1.7:
+resolve@1.1.7, resolve@1.1.x:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
+
+resolve@^1.1.6, resolve@^1.1.7:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.3.3.tgz#655907c3469a8680dc2de3a275a8fdd69691f0e5"
+  dependencies:
+    path-parse "^1.0.5"
 
 restore-cursor@^1.0.1:
   version "1.0.1"
@@ -3880,8 +3890,8 @@ svg-baker-runtime@^1.2.1:
     svg-baker "^1.2.0"
 
 svg-baker@^1.2.0:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.1.tgz#e6fff1d2d7785f772dfa9bda29af302ea20a38d1"
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.2.tgz#2710230f686290b28a0ec3c8717c7377506b5da3"
   dependencies:
     bluebird "^3.5.0"
     clone "^2.1.1"
