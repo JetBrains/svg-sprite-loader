@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-const { strictEqual } = require('assert');
+const { strictEqual, ok } = require('assert');
 const configure = require('../lib/configurator');
 const defaults = require('../lib/config');
 
@@ -40,7 +40,7 @@ describe('configurator', () => {
 
     options.target = 'web';
     config = configure({ context });
-    strictEqual(config.spriteModule, `${PACKAGE_NAME}/runtime/browser-sprite`);
+    ok(config.spriteModule.includes(`${PACKAGE_NAME}/runtime/browser-sprite`));
   });
 
   it('should properly autodetect extract mode', () => {
