@@ -1,9 +1,8 @@
 import BrowserSprite from 'svg-baker-runtime/src/browser-sprite';
+import domready from 'domready';
 
-var sprite = new BrowserSprite();
+const sprite = new BrowserSprite();
 
-document.addEventListener('DOMContentLoaded', function() {
-  sprite.mount(document.body, true);
-}, false);
+domready(() => sprite.mount(document.body, true));
 
 export default sprite;
