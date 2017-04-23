@@ -667,13 +667,9 @@ var BrowserSprite = (function (Sprite$$1) {
 
 var sprite = new BrowserSprite();
 
-if (document.body) {
+document.addEventListener('DOMContentLoaded', function () {
   sprite.mount(document.body, true);
-} else {
-  document.addEventListener('DOMContentLoaded', function () {
-    sprite.mount(document.body, true);
-  }, false);
-}
+}, false);
 
 return sprite;
 
