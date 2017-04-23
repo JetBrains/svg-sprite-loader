@@ -1,8 +1,16 @@
 {
   "name": "svg-sprite-loader",
   "version": "0.3.0",
-  "description": "SVG sprite webpack loader",
+  "description": "SVG sprite loader for Webpack",
+  "homepage": "https://github.com/kisenka/webpack-svg-sprite-loader#readme",
   "main": "lib/loader.js",
+  "files": [
+    "lib/**",
+    "runtime/**",
+    "plugin.js",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kisenka/webpack-svg-sprite-loader.git"
@@ -12,17 +20,11 @@
     "sprite",
     "svg"
   ],
-  "files": [
-    "lib/",
-    "README.md",
-    "LICENSE"
-  ],
   "author": "kisenka",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kisenka/webpack-svg-sprite-loader/issues"
   },
-  "homepage": "https://github.com/kisenka/webpack-svg-sprite-loader#readme",
   "dependencies": {
     "bluebird": "^3.5.0",
     "deepmerge": "^1.3.2",
