@@ -1,10 +1,9 @@
 sudo: false
 language: node_js
 node_js:
-  - stable
-  - "6"
+  - "7.6"
 
-script: npm run bootstrap && npm run coverage
+script: npm run lint && npm test
 
 env:
   global:
