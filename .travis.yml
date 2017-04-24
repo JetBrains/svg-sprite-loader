@@ -3,12 +3,12 @@ language: node_js
 node_js:
   - "7.6"
 
-script: npm run lint && npm run build:runtime && npm test
+script: npm run lint && npm run build:runtime && npm run coverage
 
 env:
   global:
     - ISTANBUL_COVERAGE: yes
 
 after_success:
-  - npm i coveralls
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - npm run coverage-upload:coveralls
+  - npm run coverage-upload:codecov
