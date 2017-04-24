@@ -75,11 +75,14 @@ function compileAndNotReject(config) {
 
 exports.compileAndNotReject = compileAndNotReject;
 
-function spriteLoaderRule(cfg) {
-  return merge({
+function spriteLoaderRule(opts) {
+  const options = merge({}, opts || {});
+
+  return {
     test: /\.svg$/,
-    loader: loaderPath
-  }, cfg || {});
+    loader: loaderPath,
+    options
+  };
 }
 
 exports.spriteLoaderRule = spriteLoaderRule;

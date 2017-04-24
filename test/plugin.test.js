@@ -1,8 +1,9 @@
-const { ok, strictEqual } = require('assert');
+const path = require('path');
 const ExtractPlugin = require('extract-text-webpack-plugin');
 const {
   compile,
   loaderPath,
+  fixturesPath,
   extractCSSRule,
   extractHTMLRule,
   spriteLoaderRule,
@@ -15,57 +16,8 @@ const Exceptions = require('../lib/exceptions');
 
 const defaultSpriteFilename = loaderDefaults.spriteFilename;
 
-describe('plugin', () => {
-  let CSSExtractor;
-  let HTMLExtractor;
-
-  beforeEach(() => {
-    CSSExtractor = new ExtractPlugin('[name].css');
-    HTMLExtractor = new ExtractPlugin('[name].html');
-  });
-
-  describe('handle errors', () => {
-    it('should emit error if loader used without plugin', async () => {
-      const { errors } = await compileAndNotReject({
-        entry: './entry',
-        module: { rules: [spriteLoaderRule()] }
-      });
-
-      strictEqual(errors.length, 1);
-      ok(errors[0].error instanceof Exceptions.LoaderException);
-    });
-
-    it('should emit error if invalid runtime passed', async () => {
-      const { errors } = await compileAndNotReject({
-        entry: './entry',
-        module: { rules: [spriteLoaderRule({ options: { runtimeGenerator: 'qwe', symbolId: 'qwe' } })] },
-        plugins: [new Plugin()]
-      });
-
-      strictEqual(errors.length, 1);
-      ok(errors[0].error instanceof Exceptions.InvalidRuntimeException);
-    });
-  });
-
-  describe('handle warnings', () => {
-    it('should warn if there is remaining loaders in extract mode', async () => {
-      const { warnings } = await compile({
-        entry: './entry',
-        module: { rules: [{
-          test: /\.svg$/,
-          use: [
-            'file-loader',
-            { loader: loaderPath, options: { extract: true } },
-            'svgo-loader'
-          ]
-        }] },
-        plugins: [new Plugin()]
-      });
-
-      ok(warnings.length === 1);
-      ok(warnings[0].warning instanceof Exceptions.RemainingLoadersInExtractModeException);
-    });
-
+describe('loader and plugin', () => {
+  describe('normal mode', () => {
     it('should warn if several rules applied to module', async () => {
       const { warnings } = await compile({
         entry: './entry',
@@ -77,91 +29,188 @@ describe('plugin', () => {
       });
 
       // TODO loader applies 2 times so warning also will me emitted 2 times
-      ok(warnings.length === 2);
-      ok(warnings[0].warning instanceof Exceptions.SeveralRulesAppliedException);
+      warnings.should.be.lengthOf(2);
+      warnings[0].warning.should.be.instanceOf(Exceptions.SeveralRulesAppliedException);
+    });
+
+    it('should allow to use custom runtime generator', async () => {
+      const customRuntimeGeneratorPath = path.resolve(fixturesPath, 'custom-runtime-generator.js');
+
+      const { assets } = await compile({
+        entry: './entry.js',
+        module: {
+          rules: [
+            spriteLoaderRule({
+              runtimeGenerator: customRuntimeGeneratorPath
+            })
+          ]
+        }
+      });
+
+      assets['main.js'].source().should.contain('olala');
+    });
+
+    it('should emit error if invalid runtime passed', async () => {
+      const { errors } = await compileAndNotReject({
+        entry: './entry',
+        module: {
+          rules: [
+            spriteLoaderRule({ runtimeGenerator: 'qwe', symbolId: 'qwe' })
+          ]
+        }
+      });
+
+      errors.should.be.lengthOf(1);
+      errors[0].error.should.be.instanceOf(Exceptions.InvalidRuntimeException);
     });
   });
 
-  it('should properly detect modules to extract', async () => {
-    const { assets } = await compile({
-      entry: './entry',
-      module: { rules: [spriteLoaderRule()] },
-      plugins: [new Plugin()]
+  describe('extract mode', () => {
+    let CSSExtractor;
+    let HTMLExtractor;
+
+    beforeEach(() => {
+      CSSExtractor = new ExtractPlugin('[name].css');
+      HTMLExtractor = new ExtractPlugin('[name].html');
     });
 
-    ok(Object.keys(assets).length === 1);
-  });
+    it('should emit error if loader used without plugin in extract mode', async () => {
+      const { errors } = await compileAndNotReject({
+        entry: './entry',
+        module: {
+          rules: [
+            spriteLoaderRule({ extract: true })
+          ]
+        }
+      });
 
-  it('should allow to specify custom sprite filename', async () => {
-    const spriteFilename = 'qwe.svg';
-
-    const { assets } = await compile({
-      entry: './styles.css',
-      module: { rules: [
-        spriteLoaderRule({ options: { spriteFilename } }),
-        extractCSSRule()
-      ] },
-      plugins: [new Plugin(), CSSExtractor]
+      errors.should.be.lengthOf(1);
+      errors[0].error.should.be.instanceOf(Exceptions.ExtractPluginMissingException);
     });
 
-    ok(Object.keys(assets).length === 3);
-    ok(spriteFilename in assets);
-  });
+    it('should warn if there is remaining loaders in extract mode', async () => {
+      const { warnings } = await compile({
+        entry: './entry',
+        module: {
+          rules: [
+            {
+              test: /\.svg$/,
+              use: [
+                'file-loader',
+                { loader: loaderPath, options: { extract: true } },
+                'svgo-loader'
+              ]
+            }
+          ]
+        },
+        plugins: [new Plugin()]
+      });
 
-  it('should emit sprite for each chunk if [chunkname] presented in sprite filename', async () => {
-    const { assets } = await compile({
-      entry: {
-        styles: './styles.css',
-        styles2: './styles2.css'
-      },
-      module: { rules: [
-        spriteLoaderRule({ options: { spriteFilename: '[chunkname]-sprite.svg' } }),
-        extractCSSRule()
-      ] },
-      plugins: [new Plugin(), CSSExtractor]
+      warnings.should.be.lengthOf(1);
+      warnings[0].warning.should.be.instanceOf(Exceptions.RemainingLoadersInExtractModeException);
     });
 
-    ok(Object.keys(assets).length === 6);
-    ok('styles-sprite.svg' in assets);
-    ok('styles2-sprite.svg' in assets);
-  });
+    it('should automatically detect modules to extract', async () => {
+      const { assets } = await compile({
+        entry: './entry',
+        module: {
+          rules: [
+            spriteLoaderRule()
+          ]
+        },
+        plugins: [new Plugin()]
+      });
 
-  it('should replace with proper publicPath', async () => {
-    const publicPath = '/olala/';
-    const spriteFilename = defaultSpriteFilename;
-
-    const { assets } = await compile({
-      entry: './entry',
-      output: { publicPath },
-      module: { rules: [
-        spriteLoaderRule({ options: { extract: true, spriteFilename } })
-      ] },
-      plugins: [new Plugin()]
+      Object.keys(assets).should.be.lengthOf(1);
     });
 
-    ok(assets['main.js'].source().includes(publicPath + spriteFilename));
-  });
+    it('should allow to specify custom sprite filename', async () => {
+      const spriteFilename = 'qwe.svg';
 
-  it('should work with html-loader', async () => {
-    const spriteFilename = defaultSpriteFilename;
+      const { assets } = await compile({
+        entry: './styles.css',
+        module: {
+          rules: [
+            spriteLoaderRule({ spriteFilename }),
+            extractCSSRule()
+          ]
+        },
+        plugins: [
+          new Plugin(),
+          CSSExtractor
+        ]
+      });
 
-    const { assets } = await compile({
-      entry: './page.html',
-      module: { rules: [
-        spriteLoaderRule({ options: { spriteFilename } }),
-        extractHTMLRule()
-      ] },
-      plugins: [new Plugin(), HTMLExtractor]
+      Object.keys(assets).should.be.lengthOf(3);
+      assets.should.have.property(spriteFilename);
     });
 
-    ok(assets['main.html'].source().includes(`src="${spriteFilename}#`));
-  });
+    it('should emit sprite for each chunk if [chunkname] presented in sprite filename', async () => {
+      const { assets } = await compile({
+        entry: {
+          styles: './styles.css',
+          styles2: './styles2.css'
+        },
+        module: {
+          rules: [
+            spriteLoaderRule({ spriteFilename: '[chunkname]-sprite.svg' }),
+            extractCSSRule()
+          ]
+        },
+        plugins: [
+          new Plugin(),
+          CSSExtractor
+        ]
+      });
 
-  it('should allow to use custom runtime generator', () => {
-    // TODO
-  });
+      Object.keys(assets).should.be.lengthOf(6);
+      assets.should.have.property('styles-sprite.svg');
+      assets.should.have.property('styles2-sprite.svg');
+    });
 
-  it('should emit only built chunks', () => {
-    // TODO test with webpack-recompilation-emulator
+    it('should replace with proper publicPath', async () => {
+      const publicPath = '/olala/';
+      const spriteFilename = defaultSpriteFilename;
+
+      const { assets } = await compile({
+        entry: './entry',
+        output: { publicPath },
+        module: {
+          rules: [
+            spriteLoaderRule({
+              extract: true,
+              spriteFilename
+            })
+          ]
+        },
+        plugins: [new Plugin()]
+      });
+
+      assets['main.js'].source().should.contain(publicPath + spriteFilename);
+    });
+
+    it('should work with html-loader', async () => {
+      const spriteFilename = defaultSpriteFilename;
+
+      const { assets } = await compile({
+        entry: './page.html',
+        module: {
+          rules: [
+            spriteLoaderRule({ spriteFilename }),
+            extractHTMLRule()
+          ]
+        },
+        plugins: [
+          new Plugin(),
+          HTMLExtractor
+        ]
+      });
+
+      assets['main.html'].source().should.contain(`img src="${spriteFilename}#`);
+    });
+
+    it('should emit only built chunks', () => {
+      // TODO test with webpack-recompilation-emulator
+    });
   });
 });
