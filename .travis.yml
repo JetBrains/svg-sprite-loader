@@ -3,7 +3,7 @@ language: node_js
 node_js:
   - "7.6"
 
-script: npm run lint && npm test
+script: npm run lint && npm run build:runtime && npm test
 
 env:
   global:
