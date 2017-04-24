@@ -31,8 +31,8 @@ module.exports = (wallaby) => {
 
     reportConsoleErrorAsError: true,
 
-    // eslint-disable-next-line no-shadow
     setup: () => {
+      // eslint-disable-next-line no-undef
       window.__moduleBundler.loadTests();
     }
   };

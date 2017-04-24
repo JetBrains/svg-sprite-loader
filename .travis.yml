@@ -1,0 +1,15 @@
+sudo: false
+language: node_js
+node_js:
+  - stable
+  - "6"
+
+script: npm run bootstrap && npm run coverage
+
+env:
+  global:
+    - ISTANBUL_COVERAGE: yes
+
+after_success:
+  - npm i coveralls
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
