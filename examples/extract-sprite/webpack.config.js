@@ -11,7 +11,7 @@ const HTMLExtractor = new TextExtractPlugin('[name].html');
 const config = merge(baseConfig, {
   context: __dirname,
 
-  entry: './main.js',
+  entry: './main',
 
   output: {
     path: path.resolve(__dirname, 'build')

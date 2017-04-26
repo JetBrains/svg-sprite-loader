@@ -5,7 +5,7 @@ const baseConfig = require('../base-webpack.config');
 module.exports = merge(baseConfig, {
   context: __dirname,
 
-  entry: './entry',
+  entry: './main',
 
   output: {
     path: path.resolve(__dirname, 'build')
