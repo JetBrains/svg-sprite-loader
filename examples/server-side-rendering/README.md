@@ -37,4 +37,4 @@ console.log(pageContent);
 ### Output
 
 - [build/main.js](build/main.js)
-- [build/page.html](build/page.html)
+- [build/page.html](build/index.html)
