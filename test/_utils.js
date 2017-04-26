@@ -1,21 +1,30 @@
 const path = require('path');
+const { ok } = require('assert');
 const Promise = require('bluebird');
 const merge = require('deepmerge');
-const { ok } = require('assert');
-const { InMemoryCompiler, MemoryFileSystem, createCachedInputFileSystem } = require('webpack-toolkit');
 const ExtractPlugin = require('extract-text-webpack-plugin');
 const packageName = require('../package.json').name;
+const { webpack1 } = require('../lib/utils');
+const {
+  InMemoryCompiler,
+  MemoryFileSystem,
+  createCachedInputFileSystem
+} = require('webpack-toolkit');
 
 const fixturesPath = path.resolve(__dirname, 'fixtures');
-exports.fixturesPath = fixturesPath;
+module.exports.fixturesPath = fixturesPath;
 
-const loaderPath = require.resolve('../');
-exports.loaderPath = loaderPath;
+const loaderPath = require.resolve('..');
+module.exports.loaderPath = loaderPath;
 
 const rootDir = path.resolve(__dirname, '..');
-exports.rootDir = rootDir;
+module.exports.rootDir = rootDir;
 
-exports.notOk = (value, message) => ok(!value, message);
+function notOk(value, message) {
+  ok(!value, message);
+}
+
+module.exports.notOk = notOk;
 
 /**
  * @param {Object} [config]
@@ -53,7 +62,7 @@ function createCompiler(config = {}) {
     });
 }
 
-exports.createCompiler = createCompiler;
+module.exports.createCompiler = createCompiler;
 
 /**
  * @param {Object} [config]
@@ -63,7 +72,7 @@ function compile(config) {
   return createCompiler(config).then(compiler => compiler.run());
 }
 
-exports.compile = compile;
+module.exports.compile = compile;
 
 /**
  * @param {Object} [config]
@@ -73,34 +82,69 @@ function compileAndNotReject(config) {
   return createCompiler(config).then(compiler => compiler.run(false));
 }
 
-exports.compileAndNotReject = compileAndNotReject;
+module.exports.compileAndNotReject = compileAndNotReject;
 
-function spriteLoaderRule(opts) {
+
+function rules(...data) {
+  return {
+    [webpack1 ? 'loaders' : 'rules']: [...data]
+  };
+}
+
+module.exports.rules = rules;
+
+function rule(data) {
+  if (webpack1) {
+    data.query = data.options;
+    delete data.options;
+  }
+
+  return data;
+}
+
+module.exports.rule = rule;
+
+function multiRule(data) {
+  if (webpack1) {
+    data.loaders = data.use.map((ruleData) => {
+      return typeof ruleData !== 'string' ?
+        `${ruleData.loader}?${JSON.stringify(ruleData.options)}` :
+        ruleData;
+    });
+    delete data.use;
+  }
+
+  return data;
+}
+
+module.exports.multiRule = multiRule;
+
+function loaderRule(opts) {
   const options = merge({}, opts || {});
 
-  return {
+  return rule({
     test: /\.svg$/,
     loader: loaderPath,
     options
-  };
+  });
 }
 
-exports.spriteLoaderRule = spriteLoaderRule;
+module.exports.loaderRule = loaderRule;
 
 function extractCSSRule() {
-  return {
+  return multiRule({
     test: /\.css$/,
-    loader: ExtractPlugin.extract({ use: 'css-loader' })
-  };
+    use: ExtractPlugin.extract('css-loader').split('!')
+  });
 }
 
-exports.extractCSSRule = extractCSSRule;
+module.exports.extractCSSRule = extractCSSRule;
 
 function extractHTMLRule() {
-  return {
+  return rule({
     test: /\.html$/,
-    loader: ExtractPlugin.extract({ use: 'html-loader' })
-  };
+    loader: ExtractPlugin.extract('html-loader')
+  });
 }
 
-exports.extractHTMLRule = extractHTMLRule;
+module.exports.extractHTMLRule = extractHTMLRule;

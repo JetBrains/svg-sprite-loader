@@ -1,12 +1,15 @@
 const path = require('path');
 const ExtractPlugin = require('extract-text-webpack-plugin');
 const {
+  rule,
+  rules,
+  multiRule,
+  loaderRule,
   compile,
   loaderPath,
   fixturesPath,
   extractCSSRule,
   extractHTMLRule,
-  spriteLoaderRule,
   compileAndNotReject
 } = require('./_utils');
 
@@ -21,11 +24,10 @@ describe('loader and plugin', () => {
     it('should warn if several rules applied to module', async () => {
       const { warnings } = await compile({
         entry: './entry',
-        module: { rules: [
-          spriteLoaderRule(),
-          { test: /\.svg$/, loader: loaderPath }
-        ] },
-        plugins: [new Plugin()]
+        module: rules(
+          loaderRule(),
+          rule({ test: /\.svg$/, loader: loaderPath })
+        )
       });
 
       // TODO loader applies 2 times so warning also will me emitted 2 times
@@ -37,14 +39,10 @@ describe('loader and plugin', () => {
       const customRuntimeGeneratorPath = path.resolve(fixturesPath, 'custom-runtime-generator.js');
 
       const { assets } = await compile({
-        entry: './entry.js',
-        module: {
-          rules: [
-            spriteLoaderRule({
-              runtimeGenerator: customRuntimeGeneratorPath
-            })
-          ]
-        }
+        entry: './entry',
+        module: rules(
+          loaderRule({ runtimeGenerator: customRuntimeGeneratorPath })
+        )
       });
 
       assets['main.js'].source().should.contain('olala');
@@ -53,11 +51,9 @@ describe('loader and plugin', () => {
     it('should emit error if invalid runtime passed', async () => {
       const { errors } = await compileAndNotReject({
         entry: './entry',
-        module: {
-          rules: [
-            spriteLoaderRule({ runtimeGenerator: 'qwe', symbolId: 'qwe' })
-          ]
-        }
+        module: rules(
+          loaderRule({ runtimeGenerator: 'qwe', symbolId: 'qwe' })
+        )
       });
 
       errors.should.be.lengthOf(1);
@@ -77,11 +73,9 @@ describe('loader and plugin', () => {
     it('should emit error if loader used without plugin in extract mode', async () => {
       const { errors } = await compileAndNotReject({
         entry: './entry',
-        module: {
-          rules: [
-            spriteLoaderRule({ extract: true })
-          ]
-        }
+        module: rules(
+          loaderRule({ extract: true })
+        )
       });
 
       errors.should.be.lengthOf(1);
@@ -91,18 +85,16 @@ describe('loader and plugin', () => {
     it('should warn if there is remaining loaders in extract mode', async () => {
       const { warnings } = await compile({
         entry: './entry',
-        module: {
-          rules: [
-            {
-              test: /\.svg$/,
-              use: [
-                'file-loader',
-                { loader: loaderPath, options: { extract: true } },
-                'svgo-loader'
-              ]
-            }
-          ]
-        },
+        module: rules(
+          multiRule({
+            test: /\.svg$/,
+            use: [
+              'file-loader',
+              { loader: loaderPath, options: { extract: true } },
+              'svgo-loader'
+            ]
+          })
+        ),
         plugins: [new Plugin()]
       });
 
@@ -113,11 +105,9 @@ describe('loader and plugin', () => {
     it('should automatically detect modules to extract', async () => {
       const { assets } = await compile({
         entry: './entry',
-        module: {
-          rules: [
-            spriteLoaderRule()
-          ]
-        },
+        module: rules(
+          loaderRule()
+        ),
         plugins: [new Plugin()]
       });
 
@@ -129,15 +119,13 @@ describe('loader and plugin', () => {
 
       const { assets } = await compile({
         entry: './styles.css',
-        module: {
-          rules: [
-            spriteLoaderRule({ spriteFilename }),
-            extractCSSRule()
-          ]
-        },
+        module: rules(
+          loaderRule({ spriteFilename }),
+          extractCSSRule()
+        ),
         plugins: [
-          new Plugin(),
-          CSSExtractor
+          CSSExtractor,
+          new Plugin()
         ]
       });
 
@@ -151,15 +139,13 @@ describe('loader and plugin', () => {
           styles: './styles.css',
           styles2: './styles2.css'
         },
-        module: {
-          rules: [
-            spriteLoaderRule({ spriteFilename: '[chunkname]-sprite.svg' }),
-            extractCSSRule()
-          ]
-        },
+        module: rules(
+          loaderRule({ spriteFilename: '[chunkname]-sprite.svg' }),
+          extractCSSRule()
+        ),
         plugins: [
-          new Plugin(),
-          CSSExtractor
+          CSSExtractor,
+          new Plugin()
         ]
       });
 
@@ -175,14 +161,9 @@ describe('loader and plugin', () => {
       const { assets } = await compile({
         entry: './entry',
         output: { publicPath },
-        module: {
-          rules: [
-            spriteLoaderRule({
-              extract: true,
-              spriteFilename
-            })
-          ]
-        },
+        module: rules(
+          loaderRule({ extract: true, spriteFilename })
+        ),
         plugins: [new Plugin()]
       });
 
@@ -194,12 +175,10 @@ describe('loader and plugin', () => {
 
       const { assets } = await compile({
         entry: './page.html',
-        module: {
-          rules: [
-            spriteLoaderRule({ spriteFilename }),
-            extractHTMLRule()
-          ]
-        },
+        module: rules(
+          loaderRule({ spriteFilename }),
+          extractHTMLRule()
+        ),
         plugins: [
           new Plugin(),
           HTMLExtractor
