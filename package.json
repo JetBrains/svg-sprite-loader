@@ -69,11 +69,14 @@
     "webpack-toolkit": "^0.9.0"
   },
   "scripts": {
+    "bootstrap": "yarn && cd env/webpack-1 && yarn && cd ../webpack-2 && yarn",
     "build:examples": "node scripts/build-examples",
     "build:runtime": "node scripts/build-runtime.js",
     "coverage": "istanbul cover --report html --report lcov _mocha test/*.test.js",
     "coverage-upload:codecov": "codecov --file coverage/lcov.info",
     "coverage-upload:coveralls": "cat ./coverage/lcov.info | coveralls",
+    "env:webpack-1": "node scripts/set-env --env webpack-1",
+    "env:webpack-2": "node scripts/set-env --env webpack-2",
     "lint": "eslint --quiet .",
     "release": "standard-version",
     "test": "mocha test/*.test.js"
