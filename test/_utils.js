@@ -132,9 +132,14 @@ function loaderRule(opts) {
 module.exports.loaderRule = loaderRule;
 
 function extractCSSRule() {
+  // webpack 1 compat
+  const use = webpack1 ?
+    ExtractPlugin.extract('css-loader').split('!') :
+    ExtractPlugin.extract('css-loader');
+
   return multiRule({
     test: /\.css$/,
-    use: ExtractPlugin.extract('css-loader').split('!')
+    use
   });
 }
 
