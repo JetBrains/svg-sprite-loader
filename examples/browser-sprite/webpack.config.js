@@ -1,9 +1,8 @@
 const path = require('path');
 const merge = require('deepmerge');
 const baseConfig = require('../base-webpack.config');
-const SpritePlugin = require('../../plugin');
 
-const config = merge(baseConfig, {
+module.exports = merge(baseConfig, {
   context: __dirname,
 
   entry: './entry',
@@ -27,11 +26,5 @@ const config = merge(baseConfig, {
         ]
       }
     ]
-  },
-
-  plugins: [
-    new SpritePlugin()
-  ]
+  }
 });
-
-module.exports = config;
