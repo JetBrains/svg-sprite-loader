@@ -4,7 +4,7 @@ When webpack config target option is 'node' svg-sprite-loader will use isomorphi
 
 ### Input
 
-[entry.js](entry.js)
+[main.js](main.js)
 
 ```js
 import symbol from '../assets/twitter.svg';
