@@ -14,13 +14,13 @@ module.exports = function runtimeGenerator({ symbol, config, context, loaderCont
 
   const spriteRequest = stringifyRequest({ context }, spriteModule);
   const symbolRequest = stringifyRequest({ context }, symbolModule);
-  const displayName = pascalCase(symbol.id);
+  const displayName = `${pascalCase(symbol.id)}Icon`;
 
   return `
     import React, {PureComponent} from 'react';
-    import Icon from ${iconModuleRequest};
     import SpriteSymbol from ${symbolRequest};
     import sprite from ${spriteRequest};
+    import Icon from ${iconModuleRequest};
     
     const symbol = new SpriteSymbol(${stringifySymbol(symbol)});
     sprite.add(symbol);

@@ -9537,11 +9537,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
     __WEBPACK_IMPORTED_MODULE_3_svg_sprite_loader_runtime_browser_sprite_build___default.a.add(symbol);
     
-    class Twitter extends __WEBPACK_IMPORTED_MODULE_1__custom_runtime_generator_icon_jsx___default.a {}
-/* harmony export (immutable) */ __webpack_exports__["default"] = Twitter;
+    class TwitterIcon extends __WEBPACK_IMPORTED_MODULE_1__custom_runtime_generator_icon_jsx___default.a {}
+/* harmony export (immutable) */ __webpack_exports__["default"] = TwitterIcon;
 
     
-    Twitter.defaultProps.glyph = 'twitter';
+    TwitterIcon.defaultProps.glyph = 'twitter';
   
 
 /***/ }),

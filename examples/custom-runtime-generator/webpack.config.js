@@ -27,7 +27,7 @@ const config = merge(baseConfig, {
         options: {
           runtimeGenerator: require.resolve('./svg-to-icon-component-runtime-generator'),
           runtimeOptions: {
-            iconModule: './icon.jsx'
+            iconModule: './icon.jsx' // Relative to current build context folder
           }
         }
       }
