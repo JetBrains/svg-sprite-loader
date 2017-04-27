@@ -1299,8 +1299,8 @@ debug@2.6.0:
     ms "0.7.2"
 
 debug@^2.1.1, debug@^2.2.0:
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.4.tgz#7586a9b3c39741c0282ae33445c4e8ac74734fe0"
+  version "2.6.5"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.5.tgz#7a76247781acd4ef2a85f0fb8abf763cd1af249e"
   dependencies:
     ms "0.7.3"
 
@@ -2424,14 +2424,14 @@ js-tokens@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.1.tgz#08e9f132484a2c45a30907e9dc4d5567b7f114d7"
 
-js-yaml@3.6.1, js-yaml@3.x, js-yaml@^3.5.1:
+js-yaml@3.6.1, js-yaml@3.x:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.6.1.tgz#6e5fe67d8b205ce4d22fad05b7781e8dadcc4b30"
   dependencies:
     argparse "^1.0.7"
     esprima "^2.6.0"
 
-js-yaml@~3.7.0:
+js-yaml@^3.5.1, js-yaml@~3.7.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.7.0.tgz#5c967ddd837a9bfdca5f2de84253abe8a1c03b80"
   dependencies:
@@ -3483,10 +3483,10 @@ posthtml-parser@^0.2.0, posthtml-parser@^0.2.1:
     isobject "^2.1.0"
 
 posthtml-rename-id@^1.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/posthtml-rename-id/-/posthtml-rename-id-1.0.0.tgz#92fbf9e0983be915de74377fc85375148e0b48c5"
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/posthtml-rename-id/-/posthtml-rename-id-1.0.1.tgz#0408d2ae5325336d6fbeaaf8d1fdc39e4e78f1c6"
   dependencies:
-    escape-string-regexp "^1.0.5"
+    escape-string-regexp "1.0.5"
 
 posthtml-render@^1.0.5, posthtml-render@^1.0.6:
   version "1.0.6"
@@ -4176,8 +4176,8 @@ svg-baker-runtime@^1.2.1:
     svg-baker "^1.2.0"
 
 svg-baker@^1.2.0:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.2.tgz#2710230f686290b28a0ec3c8717c7377506b5da3"
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.3.tgz#0511cc8e5ef80c78318d8ed8c7f375424eb87035"
   dependencies:
     bluebird "^3.5.0"
     clone "^2.1.1"
