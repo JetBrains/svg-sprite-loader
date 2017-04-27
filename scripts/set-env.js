@@ -1,12 +1,15 @@
 const path = require('path');
+const fs = require('fs');
 const shell = require('shelljs');
 const { getCliArgs } = require('./utils');
 
 const rootDir = path.resolve(__dirname, '..');
 const envDir = path.resolve(rootDir, 'env');
+
 const packagesToLink = [
   'webpack',
-  'extract-text-webpack-plugin'
+  'extract-text-webpack-plugin',
+  'enhanced-resolve'
 ];
 
 const env = getCliArgs().env;
@@ -19,3 +22,5 @@ packagesToLink.forEach((pkg) => {
 packagesToLink.forEach((pkg) => {
   shell.exec(`cd ${rootDir} && yarn link ${pkg}`);
 });
+
+fs.writeFileSync(`${rootDir}/.current-env`, env);
