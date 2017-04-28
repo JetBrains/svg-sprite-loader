@@ -5,8 +5,6 @@ const loaderPath = require.resolve('./');
 const Plugin = require('./lib/plugin');
 
 const config = {
-  entry: './q',
-
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js'

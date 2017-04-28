@@ -19,11 +19,6 @@ const entries = [
     src: `${runtimeDir}/browser-sprite.js`,
     dest: `${runtimeDir}/browser-sprite.build.js`,
     moduleName: 'BrowserSprite'
-  },
-  {
-    src: `${runtimeDir}/symbol.js`,
-    dest: `${runtimeDir}/symbol.build.js`,
-    moduleName: 'SpriteSymbol'
   }
 ];
 
