@@ -20,11 +20,11 @@ Webpack loader for creating SVG sprites.
 
 ## Why it's cool
 
-- **Minimum initial configuration**. Most of options configured automatically.
-- **Runtime for browser**. Sprite rendered and injected in the page automatically, you just refers on image via `<svg><use xlink:href="#id"></use></svg>`.
-- **Isomorphic runtime for node/browser**. Makes possible to render sprite on server/browser manually.
+- **Minimum initial configuration**. Most of the options are configured automatically.
+- **Runtime for browser**. Sprites are rendered and injected in pages automatically, you just refer to images via `<svg><use xlink:href="#id"></use></svg>`.
+- **Isomorphic runtime for node/browser**. Can render sprites on server or in browser manually.
 - **Customizable**. Write/extend runtime module to implement custom sprite behaviour. Write/extend runtime generator to produce your own runtime, e.g. React component configured with imported symbol.
-- **External sprite file** generates for images imported from css/scss/sass/less/styl/html ([SVG stacking technique](https://css-tricks.com/svg-fragment-identifiers-work/#article-header-id-4)).
+- **External sprite file** generates sprites for images imported from css/scss/sass/less/styl/html ([SVG stacking technique](https://css-tricks.com/svg-fragment-identifiers-work/#article-header-id-4)).
 
 ## Installation
 
@@ -77,7 +77,7 @@ Example config:
 ### `symbolId` (default `[name]`)
 
 How `<symbol>` `id` attribute should be named.
-Full list of supported patterns see in [loader-utils#interpolatename docs](https://github.com/webpack/loader-utils#interpolatename).
+Complete list of supported patterns: [loader-utils#interpolatename docs](https://github.com/webpack/loader-utils#interpolatename).
 
 ### `esModule` (default `true`, autoconfigured)
 
@@ -89,8 +89,8 @@ By default depends on used webpack version: `true` for webpack >= 2, `false` oth
 
 ## Runtime configuration
 
-When you require an image, loader transforms it to SVG `<symbol>`, add to the special sprite store and return class instance 
-which represents symbol. It contains `id`, `viewBox` and `content` fields. It can be used later for referencing the sprite image, e.g: 
+When you require an image, loader transforms it to SVG `<symbol>`, adds it to the special sprite storage and returns class instance 
+that represents symbol. It contains `id`, `viewBox` and `content` fields and can later be used for referencing the sprite image, e.g: 
 
 ```js
 import twitterLogo from './logos/twitter.svg';
@@ -102,8 +102,8 @@ const rendered = `
 </svg>`;
 ```
 
-When browser event `DOMContentLoaded` fires sprite will be rendered and injected in the `document.body` automatically.
-If custom behaviour needed e.g. to specify different mounting point you can override default sprite:
+When browser event `DOMContentLoaded` is fired, sprite will automatically be rendered and injected in the `document.body`.
+If custom behaviour is needed (e.g. a different mounting point), you can override the default sprite:
   
 ```js
 import BrowserSprite from 'svg-baker-runtime/src/browser-sprite';
@@ -117,13 +117,13 @@ export default sprite; // don't forget to export!
 
 ### `spriteModule` (autoconfigured)
 
-Path to sprite module which will be compiled and executed at runtime.
+Path to sprite module that will be compiled and executed at runtime.
 By default it depends on [`target`](https://webpack.js.org/configuration/target) webpack config option:
 - `svg-sprite-loader/runtime/browser-sprite.build` for 'web' target.
 - `svg-sprite-loader/runtime/sprite.build` for other targets.
 
-If you need custom behavior, use this option to specify the path of your sprite implementation module. 
-Path will be resolved relatively to current webpack build folder, e.g. `utils/sprite.js` placed in current project dir should be written as `./utils/sprite`. 
+If you need custom behavior, use this option to specify a path of your sprite implementation module. 
+Path will be resolved relative to the current webpack build folder, e.g. `utils/sprite.js` placed in current project dir should be written as `./utils/sprite`. 
 
 It's highly recommended to extend default sprite classes:
 - [for browser-specific env](https://github.com/kisenka/svg-baker/blob/master/packages/svg-baker-runtime/src/browser-sprite.js)
@@ -131,17 +131,17 @@ It's highly recommended to extend default sprite classes:
 
 ### `symbolModule` (autoconfigured)
 
-Same as `spriteModule` but for sprite symbol. By default also depends on `target` webpack config option:
+Same as `spriteModule`, but for sprite symbol. By default also depends on `target` webpack config option:
 - `svg-sprite-loader/runtime/browser-symbol.build` for 'web' target.
 - `svg-sprite-loader/runtime/symbol.build` for other targets.
 
 ### `runtimeCompat` (default `false`)
 
-Should runtime be compatible with earlier v0.x loader versions. Will be removed in the next major version.
+Should runtime be compatible with earlier v0.x loader versions. This option will be removed in the next major version release.
 
 ### `runtimeGenerator` ([default generator](https://github.com/kisenka/svg-sprite-loader/blob/2.0/lib/runtime-generator.js))
 
-Path to node.js script which generates client runtime. 
+Path to node.js script that generates client runtime. 
 Use this option if you need to produce your own runtime, e.g. React component configured with imported symbol. [Example](examples/custom-runtime-generator).
 
 ### `runtimeOptions`
@@ -150,7 +150,7 @@ Arbitrary data passed to runtime generator. Reserved for future use.
 
 ## Extract configuration
 
-In extract mode loader should be configured with plugin, otherwise error is thrown. Example:
+In the extract mode loader should be configured with plugin, otherwise an error is thrown. Example:
 
 ```js
 // webpack.config.js
@@ -167,13 +167,13 @@ const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 ### `extract` (default `false`, autoconfigured)
 
-Turns loader in extract mode.
-Enables automatically if image was imported from css/scss/sass/less/styl/html files.
+Switches loader to the extract mode.
+Enabled automatically for images imported from css/scss/sass/less/styl/html files.
 
 ### `spriteFilename` (default `sprite.svg`)
 
-Filename of extracted sprite. Several sprites could be generated by specifying different loader rules restricted with `include` option.
-If rules intersects loader will warn about it. Example:
+Filename of extracted sprite. Multiple sprites can be generated by specifying different loader rules restricted with `include` option.
+In case of any conflicts loader will produce a warning:
 
 ```js
 module: {
@@ -203,8 +203,8 @@ module: {
 }
 ```
 
-Also it is possible to generate sprite for each chunk by using `[chunkname]` pattern in spriteFilename option. 
-This is experimental feature, use with caution!
+It is also possible to generate sprite for each chunk by using `[chunkname]` pattern in spriteFilename option. 
+This is experimental feature, so use with caution!
 
 ## Examples
 
