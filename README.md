@@ -17,6 +17,7 @@ Webpack loader for creating SVG sprites.
     - [`spriteModule`](#spritemodule-autoconfigured)
     - [`symbolModule`](#symbolmodule-autoconfigured)
     - [`runtimeGenerator`](#runtimegenerator-default-generator)
+    - [`runtimeCompat`](#runtimecompat-default-false-deprecated)
     - [`runtimeOptions`](#runtimeoptions)
   - [Extract configuration](#extract-configuration)
     - [`extract`](#extract-default-false-autoconfigured)
@@ -114,18 +115,8 @@ const rendered = `
 </svg>`;
 ```
 
-When browser event `DOMContentLoaded` is fired, sprite will automatically be rendered and injected in the `document.body`.
-If custom behaviour is needed (e.g. a different mounting point), you can override the default sprite. Example:
-  
-```js
-import BrowserSprite from 'svg-baker-runtime/src/browser-sprite';
-import domready from 'domready';
-
-const sprite = new BrowserSprite();
-domready(() => sprite.mount('#my-custom-mounting-point'));
-
-export default sprite; // don't forget to export!
-```
+When browser event `DOMContentLoaded` is fired, sprite will be automatically rendered and injected in the `document.body`.
+If custom behaviour is needed (e.g. a different mounting target) default sprite module could be overridden via `spriteModule` option. Check example below.
 
 ### `spriteModule` (autoconfigured)
 
@@ -135,7 +126,19 @@ By default it depends on [`target`](https://webpack.js.org/configuration/target)
 - `svg-sprite-loader/runtime/sprite.build` for other targets.
 
 If you need custom behavior, use this option to specify a path of your sprite implementation module. 
-Path will be resolved relative to the current webpack build folder, e.g. `utils/sprite.js` placed in current project dir should be written as `./utils/sprite`. 
+Path will be resolved relative to the current webpack build folder, e.g. `utils/sprite.js` placed in current project dir should be written as `./utils/sprite`.
+ 
+Example of sprite with custom mounting target (copypasted from [browser-sprite](https://github.com/kisenka/svg-sprite-loader/blob/master/runtime/browser-sprite.js)): 
+
+```js
+import BrowserSprite from 'svg-baker-runtime/src/browser-sprite';
+import domready from 'domready';
+
+const sprite = new BrowserSprite();
+domready(() => sprite.mount('#my-custom-mounting-target'));
+
+export default sprite; // don't forget to export!
+```
 
 It's highly recommended to extend default sprite classes:
 - [for browser-specific env](https://github.com/kisenka/svg-baker/blob/master/packages/svg-baker-runtime/src/browser-sprite.js)
@@ -147,18 +150,18 @@ Same as `spriteModule`, but for sprite symbol. By default also depends on `targe
 - `svg-sprite-loader/runtime/browser-symbol.build` for 'web' target.
 - `svg-sprite-loader/runtime/symbol.build` for other targets.
 
-### `runtimeCompat` (default `false`)
-
-Should runtime be compatible with earlier v0.x loader versions. This option will be removed in the next major version release.
-
 ### `runtimeGenerator` ([default generator](https://github.com/kisenka/svg-sprite-loader/blob/master/lib/runtime-generator.js))
 
 Path to node.js script that generates client runtime. 
-Use this option if you need to produce your own runtime, e.g. React component configured with imported symbol. [Example](examples/custom-runtime-generator).
+Use this option if you need to produce your own runtime, e.g. React component configured with imported symbol. [Example](https://github.com/kisenka/svg-sprite-loader/tree/master/examples/custom-runtime-generator).
+
+### `runtimeCompat` (default `false`, deprecated)
+
+Should runtime be compatible with earlier v0.x loader versions. This option will be removed in the next major version release.
 
 ### `runtimeOptions`
 
-Arbitrary data passed to runtime generator. Reserved for future use.
+Arbitrary data passed to runtime generator. Reserved for future use when other runtime generators will be created.
 
 ## Extract configuration
 
