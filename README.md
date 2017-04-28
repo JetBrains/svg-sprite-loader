@@ -4,7 +4,7 @@ Webpack loader for creating SVG sprites.
 
 > :tada: 2.0 is out, please read the [migration guide & overview](2.0.md).
 
-> :warning: For old v0.x versions of this loader, see [the README in the v0 branch](https://github.com/kisenka/svg-sprite-loader/blob/v0/README.md).
+> :warning: For old v0.x versions see [the README in the v0 branch](https://github.com/kisenka/svg-sprite-loader/blob/v0/README.md).
 
 ## Table of contents
 
