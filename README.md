@@ -1,167 +1,195 @@
-# SVG Sprite Webpack Loader
+# SVG sprite loader
 
-It's like [style-loader](https://github.com/webpack/style-loader), but for SVGs. Features:
+Webpack loader for creating SVG sprites.
 
-- Create a single SVG sprite from a set of images
-- Raster image support (PNG, JPG and GIF)
-- Custom sprite implementations
+> :tada: 2.0 is out, please read the [migration guide & overview](2.0.md).
 
-## How it works
-When you require an image, SVG sprite webpack loader will transform it into an SVG symbol and add it to the array using a special [sprite](lib/web/sprite.js) class.
-When the browser event `DOMContentLoaded` fires, an image sprite will then be rendered and injected as the first child of `document.body`.
+> :warning: For old v0.x versions of this loader, see [the README in the v0 branch](https://github.com/kisenka/svg-sprite-loader/blob/v0/README.md).
 
-By default, require statements like `require('svg-sprite!./image.svg')` will return a symbol ID, so you can reference it later
-with SVG's `<use>` tag:
+## Why it's cool
 
-```html
-<svg>
-  <use xlink:href="#id" />
-</svg>
-```
-
-Raster images  will be inlined (using base64) and wrapped with an `<image>` tag.
-Files like `image@2x.png` will be transformed with proper scale.
-
-### Custom sprite implementation
-If you need custom behavior, use the `spriteModule` config option to specify the path of your sprite implementation module.
-
-You can extend a default [`lib/web/sprite.js`](lib/web/sprite.js), or create your own.
-In the latter case you only need to implement the `add` method that accepts the symbol data as a string.
+- **Minimum initial configuration**. Most of options configured automatically.
+- **Runtime for browser**. Sprite rendered and injected in the page automatically, you just refers on image via `<svg><use xlink:href="#id"></use></svg>`.
+- **Isomorphic runtime for node/browser**. Makes possible to render sprite on server/browser manually.
+- **Customizable**. Write/extend runtime module to implement custom sprite behaviour. Write/extend runtime generator to produce your own runtime, e.g. React component configured with imported symbol.
+- **External sprite file** generates for images imported from css/scss/sass/less/styl/html ([SVG stacking technique](https://css-tricks.com/svg-fragment-identifiers-work/#article-header-id-4)).
 
 ## Installation
 
 ```bash
-npm install svg-sprite-loader --save-dev
-```
-
-## Example config
-```js
-module.exports = {
-  module: {
-    loaders: [{
-      test: /\.svg$/,
-      loader: 'svg-sprite?' + JSON.stringify({
-        name: '[name]_[hash]',
-        prefixize: true,
-        spriteModule: 'utils/my-custom-sprite'
-      })
-    }]
-  }
-};
-```
-or, using regular expressions to capture the SVG's filename:
-```js
-module.exports = {
-  module: {
-    loaders: [{
-      test: /\.svg$/,
-      loader: 'svg-sprite?' + JSON.stringify({
-        name: 'icon-[1]',
-        prefixize: true,
-        regExp: './my-folder/(.*)\\.svg'
-      })
-    }]
-  }
-};
-// path-to-project/my-folder/name.svg > #icon-name
+npm install svg-sprite-loader -D
+# via yarn
+yarn add svg-sprite-loader -D
 ```
 
 ## Configuration
 
-* `name` configures a custom symbol ID name. Default is `[name]`. The following name patterns are supported:
-  * `[ext]` - the extension of the image
-  * `[name]` - the basename of the image
-  * `[path]` - the path of the image
-  * `[hash]` - the hash or the image content
-  * `[pathhash]` - the hash or the image path
-* `angularBaseWorkaround` adds a workaround for Angular.js 1.x issues with combining `<base>` and the history API (which is [typical for Angular.js](https://github.com/angular/angular.js/issues/8934)). Default is `false`.
-* `prefixize` isolates an image content by prefixing its `id`, `xlink:href` and `url(#id)` elements. Default is `true`.
-* `spriteModule` defines [custom sprite implementation](#custom-sprite-implementation) module path
-* `esModule` configures whether to transpile the module to an ES-compatible format. When this option is set to `true`, the loader will produce `module.exports.__esModule = true; module.exports['default'] = svg`. Default is `false`. (This is useful for transpilers other than Babel.)
+Example config:
 
-#### Using the loader with a `<base>` tag
-SVG Sprite Loader works well with [the `<base>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base) in normal cases, however, in situations where the `<base>` tag is used with the browser's `history` API to simulate location changing, this will often break SVG `xlink:href` inclusion.
-
-There are a few ways to get around this:
-- If you use Angular.js 1.x, simply enable the `angularBaseWorkaround` config option described above
-- If you use Angular 2.x or newer, you can remove the `<base>` tag and [provide the router with an appropriate `APP_BASE_HREF` value](https://angular.io/docs/ts/latest/guide/router.html#!#html5-urls-and-the-lt-base-href-)
-- If you're using another framework, you have to: 
-  - resolve the full image URL using `window.location` (so its usage may look like `<use xlink:href="https://yoursite.com/your/full/path#id">`), 
-  - trigger the `spriteLoaderLocationUpdated` event when a new location has been loaded. The `angularBaseWorkaround` option [is one example](https://github.com/kisenka/svg-sprite-loader/blob/master/lib/web/angular-base-workaround.js#L6) of this implementation.
-
-## Examples
-
-Single image:
 ```js
-var id = require('svg-sprite!./image.svg');
-// => 'image'
-```
+// webpack 1
+{
+  test: /\.svg$/,
+  loader: 'svg-sprite-loader',
+  query: { ... }
+}
 
-Set of images:
-```js
-var files = require.context('svg-sprite!images/logos', false, /(twitter|facebook|youtube)\.svg$/);
-files.keys().forEach(files);
-```
+// webpack 1 multiple loaders
+{
+  test: /\.svg$/,
+  loaders: [
+    `svg-sprite-loader?${JSON.stringify({ ... })}`,
+    'svg-fill-loader',
+    'svgo-loader'
+  ]
+}
 
-Custom sprite behavior:
-```js
-// my-sprite.js
-var Sprite = require('node_modules/svg-sprite-loader/lib/web/sprite');
-module.exports = new Sprite();
+// webpack 2
+{
+  test: /\.svg$/,
+  loader: 'svg-sprite-loader',
+  options: { ... }
+}
 
-// my-app.jsx
-var sprite = require('my-sprite');
-
-class MyApplication extends React.Component {
-  componentWillMount() {
-    sprite.elem = sprite.render(document.body);
-  }
-
-  componentWillUnmount() {
-    sprite.elem.parentNode.removeChild(sprite.elem);
-  }
+// webpack 2 multiple loaders
+{
+  test: /\.svg$/,
+  use: [
+    { loader: 'svg-sprite-loader', options: { ... } },
+    'svg-fill-loader',
+    'svgo-loader'
+  ]
 }
 ```
 
-Using with React:
+### `symbolId` (default `[name]`)
+
+How `<symbol>` `id` attribute should be named.
+Full list of supported patterns see in [loader-utils#interpolatename docs](https://github.com/webpack/loader-utils#interpolatename).
+
+### `esModule` (default `true`, autoconfigured)
+
+Generated export format:
+- when `true` loader will produce `export default ...`.
+- when `false` the result is `module.exports = ...`.
+
+By default depends on used webpack version: `true` for webpack >= 2, `false` otherwise.
+
+## Runtime configuration
+
+When you require an image, loader transforms it to SVG `<symbol>`, add to the special sprite store and return class instance 
+which represents symbol. It contains `id`, `viewBox` and `content` fields. It can be used later for referencing the sprite image, e.g: 
+
 ```js
-// icon.jsx
-var GLYPHS = {
-  PONY: require('img/pony.svg'),
-  UNICORN: require('img/unicorn.svg')
-};
+import twitterLogo from './logos/twitter.svg';
+// symbol === SpriteSymbol<id: string, viewBox: string, content: string>
 
-class Icon extends React.Component {
-  render() {
-    var glyph = this.props.glyph;
-    return (
-      <svg className="icon" dangerouslySetInnerHTML={{__html: '<use xlink:href="' + glyph + '"></use>'}}/>
-    )
-  }
-}
-
-module.exports = Icon;
-module.exports.GLYPHS = GLYPHS;
-
-// some-component.jsx
-var Icon = require('components/icon');
-<Icon glyph={Icon.GLYPHS.UNICORN}>
+const rendered = `
+<svg viewBox="${twitterLogo.viewBox}">
+  <use xlink:href="#${twitterLogo.id}" />
+</svg>`;
 ```
 
-Using with React 0.14+:
+When browser event `DOMContentLoaded` fires sprite will be rendered and injected in the `document.body` automatically.
+If custom behaviour needed e.g. to specify different mounting point you can override default sprite:
+  
 ```js
-// icon.jsx
-export default function Icon({glyph, width = 16 , height = 16, className = 'icon'}){
-  return (
-    <svg className={className} width={width} height={height}>
-      <use xlinkHref={glyph} />
-    </svg>
-  );
-}
+import BrowserSprite from 'svg-baker-runtime/src/browser-sprite';
+import domready from 'domready';
 
-// some-component.jsx
-import Icon from './icon';
-import help from './images/icons/Help.svg';
+const sprite = new BrowserSprite();
+domready(() => sprite.mount('#my-custom-mounting-point'));
 
-<Icon glyph={help} />
+export default sprite; // don't forget to export!
 ```
+
+### `spriteModule` (autoconfigured)
+
+Path to sprite module which will be compiled and executed at runtime.
+By default it depends on [`target`](https://webpack.js.org/configuration/target) webpack config option:
+- `svg-sprite-loader/runtime/browser-sprite.build` for 'web' target.
+- `svg-sprite-loader/runtime/sprite.build` for other targets.
+
+If you need custom behavior, use this option to specify the path of your sprite implementation module. 
+Path will be resolved relatively to current webpack build folder, e.g. `utils/sprite.js` placed in current project dir should be written as `./utils/sprite`. 
+
+It's highly recommended to extend default sprite classes:
+- [for browser-specific env](https://github.com/kisenka/svg-baker/blob/master/packages/svg-baker-runtime/src/browser-sprite.js)
+- [for isomorphic env](https://github.com/kisenka/svg-baker/blob/master/packages/svg-baker-runtime/src/sprite.js)
+
+### `symbolModule` (autoconfigured)
+
+Same as `spriteModule` but for sprite symbol. By default also depends on `target` webpack config option:
+- `svg-sprite-loader/runtime/browser-symbol.build` for 'web' target.
+- `svg-sprite-loader/runtime/symbol.build` for other targets.
+
+### `runtimeCompat` (default `false`)
+
+Should runtime be compatible with earlier v0.x loader versions. Will be removed in the next major version.
+
+### `runtimeGenerator` ([default generator](https://github.com/kisenka/svg-sprite-loader/blob/2.0/lib/runtime-generator.js))
+
+Path to node.js script which generates client runtime. 
+Use this option if you need to produce your own runtime, e.g. React component configured with imported symbol. [Example](examples/custom-runtime-generator).
+
+### `runtimeOptions`
+
+Arbitrary data passed to runtime generator. Reserved for future use.
+
+## Extract configuration
+
+In extract mode loader should be configured with plugin, otherwise error is thrown. Example:
+
+```js
+// webpack.config.js
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+
+...
+
+{
+  plugins: [
+    new SpriteLoaderPlugin()
+  ]
+}
+```
+
+#### `extract` (default `false`, autoconfigured)
+
+Turns loader in extract mode.
+Enables automatically if image was imported from css/scss/sass/less/styl/html files.
+
+#### `spriteFilename` (default `sprite.svg`)
+
+Filename of extracted sprite. Several sprites could be generated by specifying different loader rules restricted with `include` option.
+If rules intersects loader will warn about it. Example:
+
+```js
+module: {
+  rules: [
+    // images from img/flags goes to flags-sprite.svg
+    {
+      test: /\.svg$/,
+      loader: 'svg-sprite-loader',
+      include: path.resolve('./img/flags'), 
+      options: {
+        extract: true,
+        spriteFilename: 'flags-sprite.svg'
+      }
+    },
+    
+    // images from img/icons goes to icons-sprite.svg
+    {
+      test: /\.svg$/,
+      loader: 'svg-sprite-loader',
+      include: path.resolve('./img/icons'),
+      options: {
+        extract: true,
+        spriteFilename: 'icons-sprite.svg'
+      }
+    }    
+  ]
+}
+```
+
+Also it is possible to generate sprite for each chunk by using `[chunkname]` pattern in spriteFilename option. 
+This is experimental feature, use with caution!

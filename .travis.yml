@@ -1,0 +1,14 @@
+sudo: false
+language: node_js
+node_js:
+  - "7.6"
+
+script: npm run lint && npm run build:runtime && npm run coverage
+
+env:
+  global:
+    - ISTANBUL_COVERAGE: yes
+
+after_success:
+  - npm run coverage-upload:coveralls
+  - npm run coverage-upload:codecov

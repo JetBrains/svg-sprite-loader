@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "devDependencies": {
+    "extract-text-webpack-plugin": "1",
+    "webpack": "1"
+  }
+}
