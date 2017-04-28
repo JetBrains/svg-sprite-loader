@@ -36,7 +36,9 @@ yarn add svg-sprite-loader -D
 
 ## Configuration
 
-Example config:
+<details>
+
+<summary>Example config</summary>
 
 ```js
 // webpack 1
@@ -73,6 +75,8 @@ Example config:
   ]
 }
 ```
+</details>
+
 
 ### `symbolId` (default `[name]`)
 
@@ -94,7 +98,7 @@ that represents symbol. It contains `id`, `viewBox` and `content` fields and can
 
 ```js
 import twitterLogo from './logos/twitter.svg';
-// symbol === SpriteSymbol<id: string, viewBox: string, content: string>
+// twitterLogo === SpriteSymbol<id: string, viewBox: string, content: string>
 
 const rendered = `
 <svg viewBox="${twitterLogo.viewBox}">
@@ -103,7 +107,7 @@ const rendered = `
 ```
 
 When browser event `DOMContentLoaded` is fired, sprite will automatically be rendered and injected in the `document.body`.
-If custom behaviour is needed (e.g. a different mounting point), you can override the default sprite:
+If custom behaviour is needed (e.g. a different mounting point), you can override the default sprite. Example:
   
 ```js
 import BrowserSprite from 'svg-baker-runtime/src/browser-sprite';
@@ -139,7 +143,7 @@ Same as `spriteModule`, but for sprite symbol. By default also depends on `targe
 
 Should runtime be compatible with earlier v0.x loader versions. This option will be removed in the next major version release.
 
-### `runtimeGenerator` ([default generator](https://github.com/kisenka/svg-sprite-loader/blob/2.0/lib/runtime-generator.js))
+### `runtimeGenerator` ([default generator](https://github.com/kisenka/svg-sprite-loader/blob/master/lib/runtime-generator.js))
 
 Path to node.js script that generates client runtime. 
 Use this option if you need to produce your own runtime, e.g. React component configured with imported symbol. [Example](examples/custom-runtime-generator).
