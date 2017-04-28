@@ -33,14 +33,15 @@ describe('configurator', () => {
     const options = context.options;
     let config;
 
-    options.target = 'node';
+    options.target = 'web';
     config = configure({ context });
     strictEqual(config.spriteModule, loaderDefaults.spriteModule);
     strictEqual(config.symbolModule, loaderDefaults.symbolModule);
 
-    options.target = 'web';
+    options.target = 'node';
     config = configure({ context });
-    ok(config.spriteModule.includes(`${PACKAGE_NAME}/runtime/browser-sprite`));
+    strictEqual(config.spriteModule, 'svg-sprite-loader/runtime/sprite.build');
+    strictEqual(config.symbolModule, 'svg-baker-runtime/symbol');
   });
 
   it('should properly autodetect extract mode', () => {
