@@ -1,0 +1,13 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.markdown-body {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.markdown-body h1 {
+  border-bottom: none;
+}
