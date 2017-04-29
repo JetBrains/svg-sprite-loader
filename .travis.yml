@@ -3,11 +3,11 @@ language: node_js
 node_js:
  - "7.6"
 
-script: yarn bootstrap && yarn env:webpack-1 && yarn lint && yarn build:runtime && yarn coverage && yarn env:webpack-2 && yarn coverage
+script: scripts/ci.sh
 
 env:
   global:
     - ISTANBUL_COVERAGE: yes
 
 after_success:
- - npm run coverage-upload:coveralls
+ - yarn coverage-upload:coveralls
