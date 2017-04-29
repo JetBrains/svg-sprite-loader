@@ -5,6 +5,8 @@ When loader is in extract mode, the returning value is extracted sprite file URL
 This makes possible to use [SVG stacking technique](https://css-tricks.com/svg-fragment-identifiers-work/#article-header-id-4) which 
  [supported by most of browsers](http://caniuse.com/#feat=svg-fragment) except of Safari (both desktop and mobile) and Android browser prior to 4.4.4.
 
+### [Demo](build/main.html)
+
 ### Import from JS
 
 [Input](main.js)
@@ -47,4 +49,7 @@ module.exports = 'sprite.svg#logo-usage';
 <img src="sprite.svg#logo-usage" alt="">
 ```
 
-- Generated sprite [sprite.svg](build/sprite.svg)
+- [sprite.svg](build/sprite.svg)
+- [main.html](build/main.html)
+- [main.css](build/main.css)
+- [main.js](build/main.js)

@@ -1,6 +1,8 @@
 # Server side rendering example
 
-When webpack config target option is 'node' svg-sprite-loader will use isomorphic runtime sprite module. 
+When webpack config target option is 'node' svg-sprite-loader will use isomorphic runtime sprite module.
+ 
+### [Demo](build/index.html)
 
 ### Input
 
@@ -37,4 +39,4 @@ console.log(pageContent);
 ### Output
 
 - [build/main.js](build/main.js)
-- [build/page.html](build/index.html)
+- [build/index.html](build/index.html)
