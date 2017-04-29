@@ -1,6 +1,6 @@
 # svg-sprite-loader examples
 
-Most of examples demo pages speak for themselves, you just need to view page source or use 'inspect element' browser feature.
+Most of examples demos are speaks for themselves, you just need to view page source or use 'inspect element' browser feature.
 
 - [Default browser runtime](browser-sprite) ([demo](browser-sprite/demo.html))
 - [Custom runtime generation](custom-runtime-generator) ([demo](custom-runtime-generator/demo.html))
