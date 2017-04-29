@@ -1,14 +1,20 @@
 sudo: false
 language: node_js
 node_js:
-  - "7.6"
+ - "7.6"
 
-script: npm run lint && npm run build:runtime && npm run coverage
+script:
+ - yarn bootstrap
+ - yarn lint
+ - yarn build:runtime
+ - yarn env:webpack-1
+ - yarn coverage
+ - yarn env:webpack-2
+ - yarn coverage
 
 env:
   global:
     - ISTANBUL_COVERAGE: yes
 
 after_success:
-  - npm run coverage-upload:coveralls
-  - npm run coverage-upload:codecov
+ - npm run coverage-upload:coveralls
