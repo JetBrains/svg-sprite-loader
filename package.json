@@ -77,7 +77,7 @@
     "coverage-upload:coveralls": "cat ./coverage/lcov.info | coveralls",
     "env:webpack-1": "node scripts/set-env --env webpack-1",
     "env:webpack-2": "node scripts/set-env --env webpack-2",
-    "lint": "eslint --quiet .",
+    "lint": "eslint --quiet lib runtime scripts test",
     "release": "standard-version",
     "test": "mocha test/*.test.js"
   }

@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-expressions */
-const { strictEqual, ok } = require('assert');
+const { strictEqual } = require('assert');
 const configure = require('../lib/configurator');
 const defaults = require('../lib/config');
 
-const { PACKAGE_NAME } = defaults;
 const loaderDefaults = defaults.loader;
 
 describe('configurator', () => {
