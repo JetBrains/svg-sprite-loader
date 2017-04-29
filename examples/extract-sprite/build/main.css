@@ -2,4 +2,5 @@
   width: 200px;
   height: 200px;
   background: url(sprite.svg#twitter-usage) no-repeat;
+  background-size: contain;
 }

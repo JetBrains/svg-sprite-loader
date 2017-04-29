@@ -16,12 +16,7 @@ module.exports = merge(baseConfig, {
       {
         test: /\.svg$/,
         use: [
-          {
-            loader: 'svg-sprite-loader',
-            options: {
-              symbolId: '[name]_[hash:base64:8]'
-            }
-          },
+          'svg-sprite-loader',
           'svgo-loader'
         ]
       }
