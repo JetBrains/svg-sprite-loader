@@ -33,7 +33,7 @@ Webpack loader for creating SVG sprites.
 - **Runtime for browser**. Sprites are rendered and injected in pages automatically, you just refer to images via `<svg><use xlink:href="#id"></use></svg>`.
 - **Isomorphic runtime for node/browser**. Can render sprites on server or in browser manually.
 - **Customizable**. Write/extend runtime module to implement custom sprite behaviour. Write/extend runtime generator to produce your own runtime, e.g. React component configured with imported symbol.
-- **External sprite file** generates sprites for images imported from css/scss/sass/less/styl/html ([SVG stacking technique](https://css-tricks.com/svg-fragment-identifiers-work/#article-header-id-4)).
+- **External sprite file** is generated for images imported from css/scss/sass/less/styl/html ([SVG stacking technique](https://css-tricks.com/svg-fragment-identifiers-work/#article-header-id-4)).
 
 ## Installation
 
