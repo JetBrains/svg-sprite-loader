@@ -35,7 +35,7 @@ export default class TwitterIcon extends Icon {}
 TwitterIcon.defaultProps.glyph = symbol.id;
 ```
 
-So when you import SVG, actually React component returns with configured glyph (see [live demo](index.html)):
+So when you import SVG, actually React component returns with configured glyph (see [live demo](demo.html)):
 
 ```js
 import TwitterIcon from '../assets/twitter.svg';
