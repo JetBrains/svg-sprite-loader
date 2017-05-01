@@ -41,8 +41,8 @@ ajv-keywords@^1.0.0, ajv-keywords@^1.1.1:
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-1.5.1.tgz#314dd0a4b3368fad3dfcdc54ede6171b886daf3c"
 
 ajv@^4.7.0, ajv@^4.9.1:
-  version "4.11.7"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-4.11.7.tgz#8655a5d86d0824985cc471a1d913fb6729a0ec48"
+  version "4.11.8"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-4.11.8.tgz#82ffb02b29e662ae53bdc20af15947706739c536"
   dependencies:
     co "^4.6.0"
     json-stable-stringify "^1.0.1"
@@ -178,8 +178,8 @@ async@1.x, async@^1.4.0:
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
 async@^2.1.2:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/async/-/async-2.3.0.tgz#1013d1051047dd320fe24e494d5c66ecaf6147d9"
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.4.0.tgz#4990200f18ea5b837c2cc4f8c031a6985c385611"
   dependencies:
     lodash "^4.14.0"
 
@@ -892,8 +892,8 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000662"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000662.tgz#616b17a525b52fec14611f88af3d5a9b5438c050"
+  version "1.0.30000664"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000664.tgz#e16316e5fdabb9c7209b2bf0744ffc8a14201f22"
 
 caseless@~0.11.0:
   version "0.11.0"
@@ -1299,8 +1299,8 @@ debug@2.6.0:
     ms "0.7.2"
 
 debug@^2.1.1, debug@^2.2.0:
-  version "2.6.5"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.5.tgz#7a76247781acd4ef2a85f0fb8abf763cd1af249e"
+  version "2.6.6"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.6.tgz#a9fa6fbe9ca43cf1e79f73b75c0189cbb7d6db5a"
   dependencies:
     ms "0.7.3"
 
@@ -1419,8 +1419,8 @@ domready@1.0.8:
   resolved "https://registry.yarnpkg.com/domready/-/domready-1.0.8.tgz#91f252e597b65af77e745ae24dd0185d5e26d58c"
 
 domutils@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.5.1.tgz#dcd8488a26f563d61079e48c9f7b7e32373682cf"
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.6.0.tgz#853de07f013287f976b7fe0461740222ea14ecbb"
   dependencies:
     dom-serializer "0"
     domelementtype "1"
@@ -1729,8 +1729,8 @@ expand-range@^1.8.1:
     fill-range "^2.1.0"
 
 extend@~3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.0.tgz#5a474353b9f3353ddd8176dfd37b91c83a46f1d4"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
 
 extglob@^0.3.1:
   version "0.3.2"
@@ -1798,8 +1798,8 @@ file-loader@^0.11.1:
     loader-utils "^1.0.2"
 
 filename-regex@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.0.tgz#996e3e80479b98b9897f15a8a58b3d084e926775"
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
 
 fill-range@^2.1.0:
   version "2.2.3"
@@ -1996,8 +1996,8 @@ growl@1.9.2:
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.9.2.tgz#0ea7743715db8d8de2c5ede1775e1b45ac85c02f"
 
 handlebars@^4.0.1:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.6.tgz#2ce4484850537f9c97a8026d5399b935c4ed4ed7"
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.7.tgz#e97325aeb8ea0b9e12b9c4dd73c4c312ad0ede59"
   dependencies:
     async "^1.4.0"
     optimist "^0.6.1"
@@ -2145,8 +2145,8 @@ https-browserify@0.0.1:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
 iconv-lite@~0.4.13:
-  version "0.4.16"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.16.tgz#65de3beeb39e2960d67f049f1634ffcbcde9014b"
+  version "0.4.17"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.17.tgz#4fdaa3b38acbc2c031b045d0edcdfe1ecab18c8d"
 
 icss-replace-symbols@^1.0.2:
   version "1.0.2"
@@ -2795,8 +2795,8 @@ magic-string@^0.19.0:
     vlq "^0.2.1"
 
 math-expression-evaluator@^1.2.14:
-  version "1.2.16"
-  resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.16.tgz#b357fa1ca9faefb8e48d10c14ef2bcb2d9f0a7c9"
+  version "1.2.17"
+  resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.17.tgz#de819fdbcd84dccd8fae59c6aeb79615b9d266ac"
 
 memory-fs@^0.4.0, memory-fs@~0.4.1:
   version "0.4.1"
@@ -3492,12 +3492,6 @@ posthtml-render@^1.0.5, posthtml-render@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/posthtml-render/-/posthtml-render-1.0.6.tgz#1b88b8e7860a8ebdfe2f2a1310a4642a55cf5bda"
 
-posthtml-svg-fill@^1.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/posthtml-svg-fill/-/posthtml-svg-fill-1.0.0.tgz#94014d1fb964ca92dbb90791e322460ab8e89e9a"
-  dependencies:
-    merge-options "0.0.64"
-
 posthtml-svg-mode@^1.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/posthtml-svg-mode/-/posthtml-svg-mode-1.0.0.tgz#cddc04e1c41853d5986c019f511b3aaa94710c95"
@@ -3730,8 +3724,8 @@ regenerate@^1.2.1:
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.2.tgz#d1941c67bad437e1be76433add5b385f95b19260"
 
 regenerator-runtime@^0.10.0:
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.4.tgz#74cb6598d3ba2eb18694e968a40e2b3b4df9cf93"
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
 
 regenerator-transform@0.9.11:
   version "0.9.11"
@@ -4027,8 +4021,8 @@ source-list-map@^1.1.1:
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-1.1.1.tgz#1a33ac210ca144d1e561f906ebccab5669ff4cb4"
 
 source-map-support@^0.4.0, source-map-support@^0.4.2:
-  version "0.4.14"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.14.tgz#9d4463772598b86271b4f523f6c1f4e02a7d6aef"
+  version "0.4.15"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.15.tgz#03202df65c06d2bd8c7ec2362a193056fef8d3b1"
   dependencies:
     source-map "^0.5.6"
 
@@ -4176,8 +4170,8 @@ svg-baker-runtime@^1.2.1:
     svg-baker "^1.2.0"
 
 svg-baker@^1.2.0:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.3.tgz#0511cc8e5ef80c78318d8ed8c7f375424eb87035"
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.4.tgz#a204ca10d07741ca2709031ea0be71143b3fdbc9"
   dependencies:
     bluebird "^3.5.0"
     clone "^2.1.1"
@@ -4185,7 +4179,6 @@ svg-baker@^1.2.0:
     loader-utils "^1.1.0"
     merge-options "0.0.64"
     posthtml-rename-id "^1.0"
-    posthtml-svg-fill "^1.0"
     posthtml-svg-mode "^1.0"
     query-string "^4.3.2"
     traverse "^0.6.6"
@@ -4267,8 +4260,8 @@ to-arraybuffer@^1.0.0:
   resolved "https://registry.yarnpkg.com/to-arraybuffer/-/to-arraybuffer-1.0.1.tgz#7d229b1fcc637e466ca081180836a7aabff83f43"
 
 to-fast-properties@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.2.tgz#f3f5c0c3ba7299a7ef99427e44633257ade43320"
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
 
 tough-cookie@~2.3.0:
   version "2.3.2"
