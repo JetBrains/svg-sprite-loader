@@ -3408,6 +3408,12 @@ postcss-ordered-values@^2.1.0:
     postcss "^5.0.4"
     postcss-value-parser "^3.0.1"
 
+postcss-prefix-selector@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/postcss-prefix-selector/-/postcss-prefix-selector-1.6.0.tgz#b495949d639c63147145648326853216f3c10900"
+  dependencies:
+    postcss "^5.0.8"
+
 postcss-reduce-idents@^2.2.2:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/postcss-reduce-idents/-/postcss-reduce-idents-2.4.0.tgz#c2c6d20cc958284f6abfbe63f7609bf409059ad3"
@@ -3466,7 +3472,7 @@ postcss-zindex@^2.0.1:
     postcss "^5.0.4"
     uniqs "^2.0.0"
 
-postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.2, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.2.16:
+postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.2, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.2.16, postcss@^5.2.17:
   version "5.2.17"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-5.2.17.tgz#cf4f597b864d65c8a492b2eabe9d706c879c388b"
   dependencies:
@@ -4178,6 +4184,22 @@ svg-baker@^1.2.0:
     image-size "^0.5.1"
     loader-utils "^1.1.0"
     merge-options "0.0.64"
+    posthtml-rename-id "^1.0"
+    posthtml-svg-mode "^1.0"
+    query-string "^4.3.2"
+    traverse "^0.6.6"
+
+svg-baker@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.6.tgz#ac248af722b20c8933161c463a65c1b5f896ef9e"
+  dependencies:
+    bluebird "^3.5.0"
+    clone "^2.1.1"
+    image-size "^0.5.1"
+    loader-utils "^1.1.0"
+    merge-options "0.0.64"
+    postcss "^5.2.17"
+    postcss-prefix-selector "^1.6.0"
     posthtml-rename-id "^1.0"
     posthtml-svg-mode "^1.0"
     query-string "^4.3.2"
