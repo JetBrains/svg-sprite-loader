@@ -102,8 +102,8 @@ By default depends on used webpack version: `true` for webpack >= 2, `false` oth
 
 ## Runtime configuration
 
-When you require an image, loader transforms it to SVG `<symbol>`, adds it to the special sprite storage and returns class instance 
-that represents symbol. It contains `id`, `viewBox` and `content` fields and can later be used for referencing the sprite image, e.g: 
+When you require an image, loader transforms it to SVG `<symbol>`, adds it to the special sprite storage and returns class instance
+that represents symbol. It contains `id`, `viewBox` and `content` fields and can later be used for referencing the sprite image, e.g:
 
 ```js
 import twitterLogo from './logos/twitter.svg';
@@ -125,10 +125,10 @@ By default it depends on [`target`](https://webpack.js.org/configuration/target)
 - `svg-sprite-loader/runtime/browser-sprite.build` for 'web' target.
 - `svg-sprite-loader/runtime/sprite.build` for other targets.
 
-If you need custom behavior, use this option to specify a path of your sprite implementation module. 
+If you need custom behavior, use this option to specify a path of your sprite implementation module.
 Path will be resolved relative to the current webpack build folder, e.g. `utils/sprite.js` placed in current project dir should be written as `./utils/sprite`.
- 
-Example of sprite with custom mounting target (copypasted from [browser-sprite](https://github.com/kisenka/svg-sprite-loader/blob/master/runtime/browser-sprite.js)): 
+
+Example of sprite with custom mounting target (copypasted from [browser-sprite](https://github.com/kisenka/svg-sprite-loader/blob/master/runtime/browser-sprite.js)):
 
 ```js
 import BrowserSprite from 'svg-baker-runtime/src/browser-sprite';
@@ -152,7 +152,7 @@ Same as `spriteModule`, but for sprite symbol. By default also depends on `targe
 
 ### `runtimeGenerator` ([default generator](https://github.com/kisenka/svg-sprite-loader/blob/master/lib/runtime-generator.js))
 
-Path to node.js script that generates client runtime. 
+Path to node.js script that generates client runtime.
 Use this option if you need to produce your own runtime, e.g. React component configured with imported symbol. [Example](https://github.com/kisenka/svg-sprite-loader/tree/master/examples/custom-runtime-generator).
 
 ### `runtimeCompat` (default `false`, deprecated)
@@ -197,13 +197,13 @@ module: {
     {
       test: /\.svg$/,
       loader: 'svg-sprite-loader',
-      include: path.resolve('./img/flags'), 
+      include: path.resolve('./img/flags'),
       options: {
         extract: true,
         spriteFilename: 'flags-sprite.svg'
       }
     },
-    
+
     // images from img/icons goes to icons-sprite.svg
     {
       test: /\.svg$/,
@@ -213,13 +213,15 @@ module: {
         extract: true,
         spriteFilename: 'icons-sprite.svg'
       }
-    }    
+    }
   ]
 }
 ```
 
-It is also possible to generate sprite for each chunk by using `[chunkname]` pattern in spriteFilename option. 
+It is also possible to generate sprite for each chunk by using `[chunkname]` pattern in spriteFilename option.
 This is experimental feature, so use with caution!
+
+To use the build hash you can use the `[hash]` or `[hash:size]` syntax.
 
 ## Examples
 

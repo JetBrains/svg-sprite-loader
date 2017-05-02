@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractPlugin = require('extract-text-webpack-plugin');
+const { ok } = require('assert');
 const {
   rule,
   rules,
@@ -12,7 +13,6 @@ const {
   extractHTMLRule,
   compileAndNotReject
 } = require('./_utils');
-
 const Plugin = require('../lib/plugin');
 const loaderDefaults = require('../lib/config').loader;
 const Exceptions = require('../lib/exceptions');
@@ -158,6 +158,30 @@ describe('loader and plugin', () => {
       Object.keys(assets).should.be.lengthOf(6);
       assets.should.have.property('styles-sprite.svg');
       assets.should.have.property('styles2-sprite.svg');
+    });
+
+    it('should interpolate hash in the file name', async () => {
+      const { assets } = await compile({
+        entry: {
+          styles: './styles.css',
+          styles2: './styles2.css'
+        },
+        module: rules(
+          multiRule({
+            test: /\.svg$/,
+            use: [
+              { loader: loaderPath, options: { spriteFilename: '[hash:6]-sprite.svg' } },
+              'svgo-loader'
+            ]
+          }),
+          extractCSSRule()
+        ),
+        plugins: [
+          CSSExtractor,
+          new Plugin()
+        ]
+      });
+      ok(Object.keys(assets).some(filename => /[a-f0-9]{6}-sprite\.svg/.test(filename)));
     });
 
     it('should replace with proper publicPath', async () => {
