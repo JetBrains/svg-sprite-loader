@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-expressions */
 const { strictEqual, ok } = require('assert');
-const { loaderPath, notOk } = require('./_utils');
+const { loaderPath } = require('./_utils');
 const {
   generateSpritePlaceholder,
   replaceSpritePlaceholder,
   replaceInModuleSource,
   isModuleShouldBeExtracted,
   getMatchedRule,
+  getLoadersRules,
   webpack1
 } = require('../lib/utils');
 
@@ -81,6 +82,29 @@ describe('utils', () => {
     it('should always return last matched rule', () => {
       strictEqual(getMatchedRule('image.svg', [rules[0]]), rules[0]);
       strictEqual(getMatchedRule('image.svg', rules), rules[1]);
+    });
+  });
+
+  describe('getLoadersRules', () => {
+    const rules = [{ test: /\.svg$/, loader: 'tralala-loader' }];
+    let compilerMock;
+
+    beforeEach(() => {
+      compilerMock = {
+        options: {
+          module: {}
+        }
+      };
+    });
+
+    it('should work with webpack 1', () => {
+      compilerMock.options.module.loaders = rules;
+      getLoadersRules(compilerMock).should.be.deep.equal(rules);
+    });
+
+    it('should work with webpack 2', () => {
+      compilerMock.options.module.rules = rules;
+      getLoadersRules(compilerMock).should.be.deep.equal(rules);
     });
   });
 });
