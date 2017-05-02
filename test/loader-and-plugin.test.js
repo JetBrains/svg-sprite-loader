@@ -140,7 +140,13 @@ describe('loader and plugin', () => {
           styles2: './styles2.css'
         },
         module: rules(
-          loaderRule({ spriteFilename: '[chunkname]-sprite.svg' }),
+          multiRule({
+            test: /\.svg$/,
+            use: [
+              { loader: loaderPath, options: { spriteFilename: '[chunkname]-sprite.svg' } },
+              'svgo-loader'
+            ]
+          }),
           extractCSSRule()
         ),
         plugins: [

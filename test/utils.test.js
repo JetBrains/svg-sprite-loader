@@ -6,7 +6,8 @@ const {
   replaceSpritePlaceholder,
   replaceInModuleSource,
   isModuleShouldBeExtracted,
-  getMatchedRule
+  getMatchedRule,
+  webpack1
 } = require('../lib/utils');
 
 describe('utils', () => {
@@ -45,22 +46,29 @@ describe('utils', () => {
 
   describe('isModuleShouldBeExtracted', () => {
     const request = `${loaderPath}!./img.svg`;
+    const optionsProp = webpack1 ? 'query' : 'options';
 
-    notOk(isModuleShouldBeExtracted({
+    isModuleShouldBeExtracted({
       request,
       loaders: [{ loader: loaderPath }]
-    }));
+    }).should.be.false;
 
-    ok(isModuleShouldBeExtracted({
+    isModuleShouldBeExtracted({
       request,
-      loaders: [{ loader: loaderPath, options: { extract: true } }]
-    }));
+      loaders: [{ loader: loaderPath, [optionsProp]: { extract: true } }]
+    }).should.be.true;
 
-    ok(isModuleShouldBeExtracted({
+    // webpack 1 format
+    isModuleShouldBeExtracted({
+      request,
+      loaders: [`${loaderPath}?extract=true`]
+    }).should.be.true;
+
+    isModuleShouldBeExtracted({
       request,
       loaders: [{ loader: loaderPath }],
       issuer: { resource: 'style.css' }
-    }));
+    }).should.be.true;
   });
 
   describe('getMatchedRule', () => {
