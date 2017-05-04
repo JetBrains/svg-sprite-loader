@@ -12,7 +12,7 @@ if (!env) {
 }
 const envDir = path.resolve(rootDir, `${rootDir}/env/${env}`);
 // eslint-disable-next-line import/no-dynamic-require
-const envPackages = require(`${envDir}/package.json`).packages;
+const envPackages = require(`${envDir}/package.json`).envPackages;
 
 const envData = {
   name: env,
@@ -36,4 +36,4 @@ envPackages.forEach(packageName => exec(`yarn link ${packageName} || true`));
 const envFileData = JSON.stringify(envData, null, 2);
 
 echo(envFileData);
-fs.writeFileSync(`${rootDir}/.env`, envFileData);
+fs.writeFileSync(`${rootDir}/.current-env`, envFileData);
