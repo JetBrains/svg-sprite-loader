@@ -3,5 +3,10 @@
   "devDependencies": {
     "extract-text-webpack-plugin": "2",
     "webpack": "2"
-  }
+  },
+  "envPackages": [
+    "enhanced-resolve",
+    "extract-text-webpack-plugin",
+    "webpack"
+  ]
 }

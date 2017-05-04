@@ -3,24 +3,37 @@ const fs = require('fs');
 const shell = require('shelljs');
 const { getCliArgs } = require('./utils');
 
-const rootDir = path.resolve(__dirname, '..');
-const envDir = path.resolve(rootDir, 'env');
-
-const packagesToLink = [
-  'webpack',
-  'extract-text-webpack-plugin',
-  'enhanced-resolve'
-];
-
+const { cd, echo, exec } = shell;
 const env = getCliArgs().env;
-const targetDir = `${envDir}/${env}/node_modules`;
+const rootDir = path.resolve(__dirname, '..');
 
-packagesToLink.forEach((pkg) => {
-  shell.exec(`cd ${targetDir}/${pkg} && yarn unlink && yarn link`);
+if (!env) {
+  throw new Error('--env option should be provided');
+}
+const envDir = path.resolve(rootDir, `${rootDir}/env/${env}`);
+// eslint-disable-next-line import/no-dynamic-require
+const envPackages = require(`${envDir}/package.json`).packages;
+
+const envData = {
+  name: env,
+  packages: []
+};
+
+envPackages.forEach((packageName) => {
+  const packageDir = `${envDir}/node_modules/${packageName}`;
+  // eslint-disable-next-line import/no-dynamic-require,global-require
+  const version = require(`${packageDir}/package.json`).version;
+  envData.packages.push(`${packageName}@${version}`);
+
+  cd(packageDir);
+  exec('yarn unlink || true');
+  exec('yarn link');
 });
 
-packagesToLink.forEach((pkg) => {
-  shell.exec(`cd ${rootDir} && yarn link ${pkg}`);
-});
+cd(rootDir);
+envPackages.forEach(packageName => exec(`yarn link ${packageName} || true`));
 
-fs.writeFileSync(`${rootDir}/.current-env`, env);
+const envFileData = JSON.stringify(envData, null, 2);
+
+echo(envFileData);
+fs.writeFileSync(`${rootDir}/.env`, envFileData);
