@@ -1,6 +1,6 @@
 {
   "name": "svg-sprite-loader",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "SVG sprite loader for Webpack",
   "homepage": "https://github.com/kisenka/webpack-svg-sprite-loader#readme",
   "main": "lib/loader.js",
@@ -65,6 +65,7 @@
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "shelljs": "0.7.7",
+    "standard-version": "4.0.0",
     "svgo": "^0.7.2",
     "svgo-loader": "^1.2.1",
     "wallaby-webpack": "0.0.38",
