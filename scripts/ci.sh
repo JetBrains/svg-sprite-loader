@@ -3,10 +3,10 @@
 set -ev
 
 yarn bootstrap
-yarn lint
+yarn env:webpack-1
 yarn build:runtime
 
-yarn env:webpack-1
+yarn lint
 yarn test
 yarn env:webpack-2
 yarn coverage
