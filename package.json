@@ -43,8 +43,10 @@
     "babel-preset-react": "6.24.1",
     "chai": "^3.5.0",
     "codecov": "2.1.0",
+    "commitizen": "2.9.6",
     "coveralls": "2.13.0",
     "css-loader": "^0.28.0",
+    "cz-conventional-changelog": "^2.0.0",
     "eslint": "^3.18.0",
     "eslint-config-airbnb-base": "^11.1.2",
     "eslint-plugin-import": "^2.2.0",
@@ -68,10 +70,16 @@
     "wallaby-webpack": "0.0.38",
     "webpack-toolkit": "0.11.0"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "scripts": {
     "bootstrap": "yarn && cd env/webpack-1 && yarn && cd ../webpack-2 && yarn",
     "build:examples": "node scripts/build-examples",
     "build:runtime": "node scripts/build-runtime.js",
+    "commit": "git-cz",
     "coverage": "istanbul cover --report html --report lcov _mocha test/*.test.js",
     "coverage-upload:codecov": "codecov --file coverage/lcov.info",
     "coverage-upload:coveralls": "cat ./coverage/lcov.info | coveralls",
