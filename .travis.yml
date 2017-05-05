@@ -1,7 +1,12 @@
 sudo: false
 language: node_js
+
 node_js:
- - "7.6"
+ - 7.6
+
+branches:
+  only:
+    - master
 
 script: scripts/ci.sh
 
