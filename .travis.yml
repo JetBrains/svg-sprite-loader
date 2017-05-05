@@ -5,8 +5,8 @@ node_js:
  - 7.6
 
 branches:
-  only:
-    - master
+  except:
+    - v0
 
 script: scripts/ci.sh
 
