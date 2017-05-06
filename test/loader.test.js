@@ -100,8 +100,20 @@ describe('loader and plugin', () => {
 
     describe('interoperability', () => {
       describe('extract-text-webpack-plugin', () => {
-        it.only('should properly extract sprite from extractable CSS', () => {
+        it('should properly extract sprite from extractable CSS', async () => {
+          const extractor = extractPlugin('[name].css');
+          const { assets } = await compile({
+            entry: './entry.css',
+            module: rules(
+              svgRule(),
+              extractCSSRule(extractor)
+            ),
+            plugins: [new SpritePlugin(), extractor]
+          });
 
+          Object.keys(assets).should.be.lengthOf(3);
+          assets.should.have.property(defaultSpriteFilename);
+          assets['main.css'].source().should.includes(defaultSpriteFilename);
         });
 
         it('should work properly with `allChunks: true` config option', async () => {
@@ -127,6 +139,27 @@ describe('loader and plugin', () => {
           assets.should.have.property(spriteFilename);
           assets['styles.css'].source().should.includes(spriteFilename);
           assets['styles2.css'].source().should.includes(spriteFilename);
+        });
+
+        it('should emit sprite for each extracted chunk if [chunkname] provided in `spriteFilename`', async () => {
+          const extractor = extractPlugin('[name].css');
+          const { assets } = await compile({
+            entry: {
+              'entry-with-styles': './entry-with-styles',
+              'entry-with-styles2': './entry-with-styles2'
+            },
+            module: rules(
+              svgRule({ extract: true, spriteFilename: '[chunkname].svg' }),
+              extractCSSRule(extractor)
+            ),
+            plugins: [new SpritePlugin(), extractor]
+          });
+
+          Object.keys(assets).should.be.lengthOf(6);
+          assets.should.have.property('entry-with-styles.svg');
+          assets.should.have.property('entry-with-styles2.svg');
+          assets['entry-with-styles.css'].source().should.includes('entry-with-styles.svg');
+          assets['entry-with-styles2.css'].source().should.includes('entry-with-styles2.svg');
         });
       });
     });
