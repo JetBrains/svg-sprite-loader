@@ -1,19 +1,19 @@
 const path = require('path');
-const ExtractPlugin = require('extract-text-webpack-plugin');
 const {
   rule,
   rules,
   multiRule,
-  loaderRule,
+  svgRule,
   compile,
   loaderPath,
   fixturesPath,
+  extractPlugin,
   extractCSSRule,
   extractHTMLRule,
   compileAndNotReject
 } = require('./utils');
 
-const Plugin = require('../lib/plugin');
+const SpritePlugin = require('../lib/plugin');
 const loaderDefaults = require('../lib/config').loader;
 const Exceptions = require('../lib/exceptions');
 
@@ -26,7 +26,7 @@ describe('loader and plugin', () => {
         const { errors } = await compileAndNotReject({
           entry: './entry',
           module: rules(
-            loaderRule({ runtimeGenerator: 'qwe', symbolId: 'qwe' })
+            svgRule({ runtimeGenerator: 'qwe', symbolId: 'qwe' })
           )
         });
 
@@ -38,7 +38,7 @@ describe('loader and plugin', () => {
         const { warnings } = await compile({
           entry: './entry',
           module: rules(
-            loaderRule(),
+            svgRule(),
             rule({ test: /\.svg$/, loader: loaderPath })
           )
         });
@@ -55,7 +55,7 @@ describe('loader and plugin', () => {
       const { assets } = await compile({
         entry: './entry',
         module: rules(
-          loaderRule({ runtimeGenerator: customRuntimeGeneratorPath })
+          svgRule({ runtimeGenerator: customRuntimeGeneratorPath })
         )
       });
 
@@ -64,20 +64,12 @@ describe('loader and plugin', () => {
   });
 
   describe('extract mode', () => {
-    let CSSExtractor;
-    let HTMLExtractor;
-
-    beforeEach(() => {
-      CSSExtractor = new ExtractPlugin('[name].css');
-      HTMLExtractor = new ExtractPlugin('[name].html');
-    });
-
     describe('exceptions', () => {
       it('should emit error if loader used without plugin in extract mode', async () => {
         const { errors } = await compileAndNotReject({
           entry: './entry',
           module: rules(
-            loaderRule({ extract: true })
+            svgRule({ extract: true })
           )
         });
 
@@ -98,7 +90,7 @@ describe('loader and plugin', () => {
               ]
             })
           ),
-          plugins: [new Plugin()]
+          plugins: [new SpritePlugin()]
         });
 
         warnings.should.be.lengthOf(1);
@@ -108,8 +100,29 @@ describe('loader and plugin', () => {
 
     describe('interoperability', () => {
       describe('extract-text-webpack-plugin', () => {
-        it.only('should work properly with `allChunks: true` config option', async () => {
-          // TODO
+        it.only('should properly extract sprite from extractable CSS', () => {
+
+        });
+
+        it('should work properly with `allChunks: true` config option', async () => {
+          const spriteFilename = 'qwe.svg';
+          const extractor = extractPlugin('[name].css', { allChunks: true });
+
+          const { assets } = await compile({
+            entry: './styles.css',
+            module: rules(
+              svgRule({ spriteFilename }),
+              extractCSSRule(extractor)
+            ),
+            plugins: [
+              new SpritePlugin(),
+              extractor
+            ]
+          });
+
+          Object.keys(assets).should.be.lengthOf(3);
+          assets.should.have.property(spriteFilename);
+          assets['main.css'].source().should.includes(spriteFilename);
         });
       });
     });
@@ -118,9 +131,9 @@ describe('loader and plugin', () => {
       const { assets } = await compile({
         entry: './entry',
         module: rules(
-          loaderRule()
+          svgRule()
         ),
-        plugins: [new Plugin()]
+        plugins: [new SpritePlugin()]
       });
 
       Object.keys(assets).should.be.lengthOf(1);
@@ -132,12 +145,12 @@ describe('loader and plugin', () => {
       const { assets } = await compile({
         entry: './styles.css',
         module: rules(
-          loaderRule({ spriteFilename }),
+          svgRule({ spriteFilename }),
           extractCSSRule()
         ),
         plugins: [
           CSSExtractor,
-          new Plugin()
+          new SpritePlugin()
         ]
       });
 
@@ -163,7 +176,7 @@ describe('loader and plugin', () => {
         ),
         plugins: [
           CSSExtractor,
-          new Plugin()
+          new SpritePlugin()
         ]
       });
 
@@ -180,9 +193,9 @@ describe('loader and plugin', () => {
         entry: './entry',
         output: { publicPath },
         module: rules(
-          loaderRule({ extract: true, spriteFilename })
+          svgRule({ extract: true, spriteFilename })
         ),
-        plugins: [new Plugin()]
+        plugins: [new SpritePlugin()]
       });
 
       assets['main.js'].source().should.contain(publicPath + spriteFilename);
@@ -194,11 +207,11 @@ describe('loader and plugin', () => {
       const { assets } = await compile({
         entry: './page.html',
         module: rules(
-          loaderRule({ spriteFilename }),
+          svgRule({ spriteFilename }),
           extractHTMLRule()
         ),
         plugins: [
-          new Plugin(),
+          new SpritePlugin(),
           HTMLExtractor
         ]
       });
