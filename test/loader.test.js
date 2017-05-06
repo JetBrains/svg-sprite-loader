@@ -109,7 +109,10 @@ describe('loader and plugin', () => {
           const extractor = extractPlugin('[name].css', { allChunks: true });
 
           const { assets } = await compile({
-            entry: './styles.css',
+            entry: {
+              styles: './styles.css',
+              styles2: './styles2.css'
+            },
             module: rules(
               svgRule({ spriteFilename }),
               extractCSSRule(extractor)
@@ -120,9 +123,10 @@ describe('loader and plugin', () => {
             ]
           });
 
-          Object.keys(assets).should.be.lengthOf(3);
+          Object.keys(assets).should.be.lengthOf(5);
           assets.should.have.property(spriteFilename);
-          assets['main.css'].source().should.includes(spriteFilename);
+          assets['styles.css'].source().should.includes(spriteFilename);
+          assets['styles2.css'].source().should.includes(spriteFilename);
         });
       });
     });
