@@ -21,18 +21,32 @@ const defaultSpriteFilename = loaderDefaults.spriteFilename;
 
 describe('loader and plugin', () => {
   describe('normal mode', () => {
-    it('should warn if several rules applied to module', async () => {
-      const { warnings } = await compile({
-        entry: './entry',
-        module: rules(
-          loaderRule(),
-          rule({ test: /\.svg$/, loader: loaderPath })
-        )
+    describe('exceptions', () => {
+      it('should emit error if invalid runtime passed', async () => {
+        const { errors } = await compileAndNotReject({
+          entry: './entry',
+          module: rules(
+            loaderRule({ runtimeGenerator: 'qwe', symbolId: 'qwe' })
+          )
+        });
+
+        errors.should.be.lengthOf(1);
+        errors[0].error.should.be.instanceOf(Exceptions.InvalidRuntimeException);
       });
 
-      // TODO loader applies 2 times so warning also will me emitted 2 times
-      warnings.should.be.lengthOf(2);
-      warnings[0].warning.should.be.instanceOf(Exceptions.SeveralRulesAppliedException);
+      it('should warn if several rules applied to module', async () => {
+        const { warnings } = await compile({
+          entry: './entry',
+          module: rules(
+            loaderRule(),
+            rule({ test: /\.svg$/, loader: loaderPath })
+          )
+        });
+
+        // TODO loader applies 2 times so warning also will me emitted 2 times
+        warnings.should.be.lengthOf(2);
+        warnings[0].warning.should.be.instanceOf(Exceptions.SeveralRulesAppliedException);
+      });
     });
 
     it('should allow to use custom runtime generator', async () => {
@@ -47,18 +61,6 @@ describe('loader and plugin', () => {
 
       assets['main.js'].source().should.contain('olala');
     });
-
-    it('should emit error if invalid runtime passed', async () => {
-      const { errors } = await compileAndNotReject({
-        entry: './entry',
-        module: rules(
-          loaderRule({ runtimeGenerator: 'qwe', symbolId: 'qwe' })
-        )
-      });
-
-      errors.should.be.lengthOf(1);
-      errors[0].error.should.be.instanceOf(Exceptions.InvalidRuntimeException);
-    });
   });
 
   describe('extract mode', () => {
@@ -70,36 +72,46 @@ describe('loader and plugin', () => {
       HTMLExtractor = new ExtractPlugin('[name].html');
     });
 
-    it('should emit error if loader used without plugin in extract mode', async () => {
-      const { errors } = await compileAndNotReject({
-        entry: './entry',
-        module: rules(
-          loaderRule({ extract: true })
-        )
+    describe('exceptions', () => {
+      it('should emit error if loader used without plugin in extract mode', async () => {
+        const { errors } = await compileAndNotReject({
+          entry: './entry',
+          module: rules(
+            loaderRule({ extract: true })
+          )
+        });
+
+        errors.should.be.lengthOf(1);
+        errors[0].error.should.be.instanceOf(Exceptions.ExtractPluginMissingException);
       });
 
-      errors.should.be.lengthOf(1);
-      errors[0].error.should.be.instanceOf(Exceptions.ExtractPluginMissingException);
+      it('should warn if there is remaining loaders in extract mode', async () => {
+        const { warnings } = await compile({
+          entry: './entry',
+          module: rules(
+            multiRule({
+              test: /\.svg$/,
+              use: [
+                'file-loader',
+                { loader: loaderPath, options: { extract: true } },
+                'svgo-loader'
+              ]
+            })
+          ),
+          plugins: [new Plugin()]
+        });
+
+        warnings.should.be.lengthOf(1);
+        warnings[0].warning.should.be.instanceOf(Exceptions.RemainingLoadersInExtractModeException);
+      });
     });
 
-    it('should warn if there is remaining loaders in extract mode', async () => {
-      const { warnings } = await compile({
-        entry: './entry',
-        module: rules(
-          multiRule({
-            test: /\.svg$/,
-            use: [
-              'file-loader',
-              { loader: loaderPath, options: { extract: true } },
-              'svgo-loader'
-            ]
-          })
-        ),
-        plugins: [new Plugin()]
+    describe('interoperability', () => {
+      describe('extract-text-webpack-plugin', () => {
+        it.only('should work properly with `allChunks: true` config option', async () => {
+          // TODO
+        });
       });
-
-      warnings.should.be.lengthOf(1);
-      warnings[0].warning.should.be.instanceOf(Exceptions.RemainingLoadersInExtractModeException);
     });
 
     it('should automatically detect modules to extract', async () => {
