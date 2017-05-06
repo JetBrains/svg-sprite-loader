@@ -1,5 +1,5 @@
 const merge = require('deepmerge');
-const ExtractPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { isWebpack1 } = require('../../lib/utils');
 const { loaderPath } = require('../_config');
 const createCompiler = require('./create-compiler');
@@ -48,7 +48,7 @@ function multiRule(data) {
   return data;
 }
 
-function loaderRule(opts) {
+function svgRule(opts) {
   const options = merge({}, opts || {});
 
   return rule({
@@ -58,31 +58,60 @@ function loaderRule(opts) {
   });
 }
 
-function extractCSSRule() {
+/**
+ * @see for webpack 1 - https://github.com/webpack-contrib/extract-text-webpack-plugin/blob/webpack-1/README.md#api
+ * @see for webpack 2 - https://github.com/webpack-contrib/extract-text-webpack-plugin#options
+ * @param {string} filename
+ * @param {Object} [options]
+ * @return {ExtractTextPlugin}
+ */
+function extractPlugin(filename, options) {
   // webpack 1 compat
-  const use = isWebpack1 ?
-    ExtractPlugin.extract('css-loader').split('!') :
-    ExtractPlugin.extract('css-loader');
+  if (isWebpack1) {
+    return new ExtractTextPlugin(filename, options);
+  }
 
+  let args = filename;
+  if (typeof options !== 'object') {
+    args = Object.assign({}, options);
+    args.filename = filename;
+  }
+
+  return new ExtractTextPlugin(args);
+}
+
+/**
+ * @see for webpack 1 - https://github.com/webpack-contrib/extract-text-webpack-plugin/blob/webpack-1/README.md#api
+ * @see for webpack 2 - https://github.com/webpack-contrib/extract-text-webpack-plugin#options
+ * @param {ExtractTextPlugin} plugin
+ * @return {Rule}
+ */
+function extractCSSRule(plugin) {
+  const loader = 'css-loader';
+
+  // webpack 1 compat
   return multiRule({
     test: /\.css$/,
-    use
+    use: isWebpack1 ?
+      plugin.extract(loader).split('!') :
+      plugin.extract(loader)
   });
 }
 
-function extractHTMLRule() {
+function extractHTMLRule(plugin) {
   return rule({
     test: /\.html$/,
-    loader: ExtractPlugin.extract('html-loader')
+    loader: plugin.extract('html-loader')
   });
 }
 
 module.exports.rule = rule;
 module.exports.rules = rules;
 module.exports.multiRule = multiRule;
-module.exports.loaderRule = loaderRule;
-module.exports.extractCSSRule = extractCSSRule;
+module.exports.svgRule = svgRule;
 module.exports.compile = compile;
 module.exports.compileAndNotReject = compileAndNotReject;
 module.exports.createCompiler = createCompiler;
 module.exports.extractHTMLRule = extractHTMLRule;
+module.exports.extractCSSRule = extractCSSRule;
+module.exports.extractPlugin = extractPlugin;
