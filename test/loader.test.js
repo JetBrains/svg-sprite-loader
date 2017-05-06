@@ -11,7 +11,7 @@ const {
   extractCSSRule,
   extractHTMLRule,
   compileAndNotReject
-} = require('./_utils');
+} = require('./utils');
 
 const Plugin = require('../lib/plugin');
 const loaderDefaults = require('../lib/config').loader;
