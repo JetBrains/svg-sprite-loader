@@ -1,5 +1,6 @@
 const path = require('path');
 const merge = require('deepmerge');
+const Promise = require('bluebird');
 const { InMemoryCompiler, MemoryFileSystem, createCachedInputFileSystem } = require('webpack-toolkit');
 const packageName = require('../../lib/config').PACKAGE_NAME;
 const { fixturesPath, rootDir } = require('../_config');
