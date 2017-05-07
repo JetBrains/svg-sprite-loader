@@ -1,11 +1,13 @@
+---
 engines:
   nodesecurity:
     enabled: true
   fixme:
     enabled: true
- eslint:
+  eslint:
     enabled: true
 
 exclude_paths:
 - examples/
 - env/
+- test/
