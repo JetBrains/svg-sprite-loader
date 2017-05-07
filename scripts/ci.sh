@@ -9,4 +9,4 @@ yarn build:runtime
 yarn lint
 yarn test
 yarn env:webpack-2
-yarn coverage
+yarn test-with-coverage

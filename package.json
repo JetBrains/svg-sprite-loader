@@ -42,9 +42,8 @@
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "6.24.1",
     "chai": "^3.5.0",
-    "codecov": "2.1.0",
+    "codeclimate-test-reporter": "0.4.1",
     "commitizen": "2.9.6",
-    "coveralls": "2.13.0",
     "css-loader": "^0.28.0",
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^3.18.0",
@@ -81,13 +80,12 @@
     "build:examples": "node scripts/build-examples",
     "build:runtime": "node scripts/build-runtime.js",
     "commit": "git-cz",
-    "coverage": "istanbul cover --report html --report lcov _mocha test/*.test.js",
-    "coverage-upload:codecov": "codecov --file coverage/lcov.info",
-    "coverage-upload:coveralls": "cat ./coverage/lcov.info | coveralls",
     "env:webpack-1": "node scripts/set-env --env webpack-1",
     "env:webpack-2": "node scripts/set-env --env webpack-2",
     "lint": "eslint --quiet lib runtime scripts test",
     "release": "standard-version",
-    "test": "mocha test/*.test.js"
+    "test": "mocha test/*.test.js",
+    "test-with-coverage": "istanbul cover --report html --report lcov _mocha test/*.test.js",
+    "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
   }
 }

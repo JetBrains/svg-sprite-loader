@@ -15,4 +15,4 @@ env:
     - ISTANBUL_COVERAGE: yes
 
 after_success:
- - yarn coverage-upload:coveralls
+ - yarn upload-coverage
