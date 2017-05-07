@@ -87,21 +87,21 @@ function extractPlugin(filename, options) {
  * @return {Rule}
  */
 function extractCSSRule(plugin) {
-  const loader = 'css-loader';
-
   // webpack 1 compat
   return multiRule({
     test: /\.css$/,
-    use: isWebpack1 ?
-      plugin.extract(loader).split('!') :
-      plugin.extract(loader)
+    use: isWebpack1
+      ? plugin.extract('css-loader').split('!')
+      : plugin.extract('css-loader')
   });
 }
 
 function extractHTMLRule(plugin) {
-  return rule({
+  return multiRule({
     test: /\.html$/,
-    loader: plugin.extract('html-loader')
+    use: isWebpack1
+      ? plugin.extract('html-loader').split('!')
+      : plugin.extract('html-loader')
   });
 }
 
