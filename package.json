@@ -32,6 +32,7 @@
     "domready": "1.0.8",
     "escape-string-regexp": "1.0.5",
     "loader-utils": "^1.1.0",
+    "make-unique": "1.0.4",
     "svg-baker": "^1.2.6",
     "svg-baker-runtime": "^1.2.1",
     "url-slug": "2.0.0"

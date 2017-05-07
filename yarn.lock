@@ -134,7 +134,7 @@ array-union@^1.0.1:
   dependencies:
     array-uniq "^1.0.1"
 
-array-uniq@^1.0.1:
+array-uniq@^1.0.1, array-uniq@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/array-uniq/-/array-uniq-1.0.3.tgz#af6ac877a25cc7f74e058894753858dfdb24fdb6"
 
@@ -3253,6 +3253,12 @@ magic-string@^0.19.0:
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.19.0.tgz#198948217254e3e0b93080e01146b7c73b2a06b2"
   dependencies:
     vlq "^0.2.1"
+
+make-unique@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/make-unique/-/make-unique-1.0.4.tgz#373b448a638bce5f0201f0ccb87a0f1b57e539bb"
+  dependencies:
+    array-uniq "^1.0.3"
 
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
