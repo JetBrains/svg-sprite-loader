@@ -1,5 +1,7 @@
 # SVG sprite loader
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kisenka/svg-sprite-loader.svg)](https://greenkeeper.io/)
+
 Webpack loader for creating SVG sprites.
 
 > :tada: 2.0 is out, please read the [migration guide & overview](2.0.md).
