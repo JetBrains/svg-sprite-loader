@@ -12,3 +12,8 @@ ratings:
   - lib/
   - runtime/
   - scripts/
+
+exclude_paths:
+- examples/
+- env/
+- test/
