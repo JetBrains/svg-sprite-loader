@@ -23,7 +23,8 @@ const config = merge(baseConfig, {
         test: /\.svg$/,
         loader: 'svg-sprite-loader',
         options: {
-          extract: true
+          extract: true,
+          spriteFilename: 'sprite-[hash:6].svg'
         }
       },
       {

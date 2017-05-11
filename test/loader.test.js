@@ -303,11 +303,11 @@ describe('loader and plugin', () => {
       assets.should.have.property('entry2-sprite.svg');
     });
 
-    it('should allow to use [spritehash] substitution token in `spriteFilename`', async () => {
+    it('should allow to use [hash] substitution token in `spriteFilename`', async () => {
       const { assets } = await compile({
         entry: './entry',
         module: rules(
-          svgRule({ extract: true, spriteFilename: 'sprite-[spritehash:8].svg' })
+          svgRule({ extract: true, spriteFilename: 'sprite-[hash:8].svg' })
         ),
         plugins: [new SpritePlugin()]
       });

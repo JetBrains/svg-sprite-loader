@@ -84,7 +84,7 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony default export */ __webpack_exports__["default"] = ("sprite.svg#twitter");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "sprite-c9cbc8.svg#twitter-usage");
 
 /***/ }),
 /* 3 */
