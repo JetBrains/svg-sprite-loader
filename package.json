@@ -33,7 +33,7 @@
     "escape-string-regexp": "1.0.5",
     "loader-utils": "^1.1.0",
     "svg-baker": "^1.2.6",
-    "svg-baker-runtime": "^1.2.1",
+    "svg-baker-runtime": "^1.2.94",
     "url-slug": "2.0.0"
   },
   "devDependencies": {
