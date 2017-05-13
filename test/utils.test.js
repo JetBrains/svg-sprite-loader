@@ -3,11 +3,12 @@ const { strictEqual, ok } = require('assert');
 const { loaderPath } = require('./_utils');
 const {
   generateSpritePlaceholder,
-  replaceSpritePlaceholder,
-  replaceInModuleSource,
-  isModuleShouldBeExtracted,
-  getMatchedRule,
   getLoadersRules,
+  getMatchedRule,
+  interpolateSpriteFilename,
+  isModuleShouldBeExtracted,
+  replaceInModuleSource,
+  replaceSpritePlaceholder,
   webpack1
 } = require('../lib/utils');
 
@@ -105,6 +106,38 @@ describe('utils', () => {
     it('should work with webpack 2', () => {
       compilerMock.options.module.rules = rules;
       getLoadersRules(compilerMock).should.be.deep.equal(rules);
+    });
+  });
+
+  describe('interpolateSpriteFilename', () => {
+    it('should return the input if there is nothing to interpolate', () => {
+      const fileName = interpolateSpriteFilename('test.svg', {});
+
+      strictEqual(fileName, 'test.svg');
+    });
+
+    it('should replace `[chunkname]` with the name of the chunk', () => {
+      const fileName = interpolateSpriteFilename('foo.[chunkname].svg', {
+        chunkName: 'bar'
+      });
+
+      strictEqual(fileName, 'foo.bar.svg');
+    });
+
+    it('should replace `[hash]` with the full build hash', () => {
+      const fileName = interpolateSpriteFilename('foo.[hash].svg', {
+        fullHash: 'bar'
+      });
+
+      strictEqual(fileName, 'foo.bar.svg');
+    });
+
+    it('should allow specifying a hash length', () => {
+      const fileName = interpolateSpriteFilename('foo.[hash:6].svg', {
+        fullHash: '1234567890'
+      });
+
+      strictEqual(fileName, 'foo.123456.svg');
     });
   });
 });
