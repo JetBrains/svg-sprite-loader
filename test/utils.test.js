@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 const { strictEqual, ok } = require('assert');
-const { loaderPath } = require('./_utils');
+const { loaderPath } = require('./_config');
 const {
   generateSpritePlaceholder,
   replaceSpritePlaceholder,
@@ -8,7 +8,7 @@ const {
   isModuleShouldBeExtracted,
   getMatchedRule,
   getLoadersRules,
-  webpack1
+  isWebpack1
 } = require('../lib/utils');
 
 describe('utils', () => {
@@ -47,7 +47,7 @@ describe('utils', () => {
 
   describe('isModuleShouldBeExtracted', () => {
     const request = `${loaderPath}!./img.svg`;
-    const optionsProp = webpack1 ? 'query' : 'options';
+    const optionsProp = isWebpack1 ? 'query' : 'options';
 
     isModuleShouldBeExtracted({
       request,

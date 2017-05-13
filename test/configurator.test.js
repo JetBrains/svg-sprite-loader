@@ -64,9 +64,14 @@ describe('configurator', () => {
     context.version = 1;
     strictEqual(configure({ context }).esModule, false);
 
-    // Should always be falsy if compiled in extract-text-webpack-plugin child compiler
+    /**
+     * Should always be falsy if compiled with extract-text-webpack-plugin or html-webpack-plugin
+     */
     context.version = 2;
     context._compiler.name = 'extract-text-webpack-plugin';
+    strictEqual(configure({ context }).esModule, false);
+
+    context._compiler.name = 'html-webpack-plugin';
     strictEqual(configure({ context }).esModule, false);
   });
 });

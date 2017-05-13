@@ -63,44 +63,37 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  "width": 273,
+  "height": 222,
+  "viewBox": "0 0 273.4 222.2",
+  "url": "sprite.svg#twitter-usage"
+});
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "sprite-c9cbc8.svg#twitter-usage");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__ = __webpack_require__(0);
 
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+// => {width: string, height: string, viewBox: string, url: string}
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_css__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__main_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_html__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__main_html__);
+console.log(__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */]);
 
-
-
-
+window.addEventListener('DOMContentLoaded', () => {
+  const image = `<img src="build/${__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */].url}" width="${__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */].width}" height="${__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */].height}">`;
+  document.body.innerHTML = image;
+});
 
 
 /***/ })

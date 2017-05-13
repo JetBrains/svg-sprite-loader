@@ -49,7 +49,7 @@ module.exports = 'sprite.svg#logo-usage';
 <img src="sprite.svg#logo-usage" alt="">
 ```
 
-- [sprite.svg](build/sprite.svg)
+- [sprite.svg](build/sprite-c9cbc8.svg)
 - [main.html](build/main.html)
 - [main.css](build/main.css)
 - [main.js](build/main.js)
