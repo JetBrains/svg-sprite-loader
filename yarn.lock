@@ -1703,16 +1703,9 @@ domutils@1.1:
   dependencies:
     domelementtype "1"
 
-domutils@1.5.1:
+domutils@1.5.1, domutils@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.5.1.tgz#dcd8488a26f563d61079e48c9f7b7e32373682cf"
-  dependencies:
-    dom-serializer "0"
-    domelementtype "1"
-
-domutils@^1.5.1:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.6.0.tgz#853de07f013287f976b7fe0461740222ea14ecbb"
   dependencies:
     dom-serializer "0"
     domelementtype "1"
@@ -4852,17 +4845,17 @@ supports-color@^3.1.0, supports-color@^3.2.3:
   dependencies:
     has-flag "^1.0.0"
 
-svg-baker-runtime@^1.2.94:
-  version "1.2.94"
-  resolved "https://registry.yarnpkg.com/svg-baker-runtime/-/svg-baker-runtime-1.2.94.tgz#4e1110b8e163d09497f2a942998a4cce4bda0a46"
+svg-baker-runtime@^1.2.96:
+  version "1.2.96"
+  resolved "https://registry.yarnpkg.com/svg-baker-runtime/-/svg-baker-runtime-1.2.96.tgz#154d007e625bd9928947245d8b5205afe62b151f"
   dependencies:
     deepmerge "1.3.2"
     mitt "1.1.2"
     svg-baker "^1.2.0"
 
-svg-baker@^1.2.0, svg-baker@^1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.6.tgz#ac248af722b20c8933161c463a65c1b5f896ef9e"
+svg-baker@^1.2.0, svg-baker@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.7.tgz#4147c13b55bc400972af5535c9c50a1508277bf3"
   dependencies:
     bluebird "^3.5.0"
     clone "^2.1.1"
