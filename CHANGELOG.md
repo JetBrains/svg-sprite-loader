@@ -27,7 +27,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 <a name="2.1.0-3"></a>
-# [2.1.0-3](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v2.1.0-2...v2.1.0-3) (2017-05-10)
+## [2.1.0-3](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v2.1.0-2...v2.1.0-3) [beta] (2017-05-10)
 
 
 ### Bug Fixes
@@ -37,7 +37,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 <a name="2.1.0-2"></a>
-# [2.1.0-2](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v2.1.0-1...v2.1.0-2) (2017-05-09)
+## [2.1.0-2](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v2.1.0-1...v2.1.0-2) [beta] (2017-05-09)
 
 
 ### Bug Fixes
@@ -47,7 +47,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 <a name="2.1.0-1"></a>
-# [2.1.0-1](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v2.1.0-0...v2.1.0-1) (2017-05-08)
+## [2.1.0-1](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v2.1.0-0...v2.1.0-1) [beta] (2017-05-08)
 
 
 ### Bug Fixes
@@ -57,7 +57,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 <a name="2.1.0-0"></a>
-# [2.1.0-0](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v2.0.5...v2.1.0-0) (2017-05-07)
+## [2.1.0-0](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v2.0.5...v2.1.0-0) [beta] (2017-05-07)
 
 
 ### Bug Fixes
