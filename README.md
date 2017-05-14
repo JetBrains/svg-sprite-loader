@@ -1,4 +1,4 @@
-# SVG sprite loader
+# SVG sprite loader [![TravisCI](https://img.shields.io/travis/kisenka/svg-sprite-loader.svg?style=flat-square)](https://travis-ci.org/kisenka/svg-sprite-loader) [![Code Climate](https://img.shields.io/codeclimate/github/kisenka/svg-sprite-loader.svg?style=flat-square)](https://codeclimate.com/github/kisenka/svg-sprite-loader) [![Inch CI](https://inch-ci.org/github/kisenka/svg-sprite-loader.svg?branch=master&style=flat-square)](https://inch-ci.org/github/kisenka/svg-sprite-loader)
 
 Webpack loader for creating SVG sprites.
 
