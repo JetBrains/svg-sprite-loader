@@ -16,4 +16,5 @@ node_modules
 coverage
 .idea
 .current-env
+.nyc_output
 runtime/*.build.js
