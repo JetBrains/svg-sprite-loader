@@ -8,7 +8,11 @@ branches:
   except:
     - v0
 
-script: scripts/ci.sh
+script:
+ - yarn bootstrap
+ - yarn lint
+ - yarn test:webpack-1
+ - yarn test:webpack-2
 
 env:
   global:
