@@ -20,4 +20,3 @@ script:
 
 after_success:
  - yarn upload-coverage
- - yarn release

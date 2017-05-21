@@ -14,6 +14,7 @@ module.exports = {
 
   scopes: [
     {name: 'loader'},
+    {name: 'runtime'},
     {name: 'plugin'},
     {name: 'utils'},
     {name: 'configuration'},
