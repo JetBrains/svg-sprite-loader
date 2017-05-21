@@ -46,6 +46,7 @@
     "codeclimate-test-reporter": "0.4.1",
     "commitizen": "2.9.6",
     "css-loader": "^0.28.0",
+    "cz-customizable": "^5.0.0",
     "eslint": "^3.18.0",
     "eslint-config-airbnb-base": "^11.1.2",
     "eslint-plugin-import": "^2.2.0",
@@ -75,7 +76,10 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.js"
     }
   },
   "scripts": {
