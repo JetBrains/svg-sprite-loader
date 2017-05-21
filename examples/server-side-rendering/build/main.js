@@ -234,9 +234,9 @@ var Sprite = function Sprite(config) {
 };
 
 /**
- * TODO return add | replace instead of symbol instance
+ * Add new symbol. If symbol with the same id exists it will be replaced.
  * @param {SpriteSymbol} symbol
- * @return {SpriteSymbol}
+ * @return {boolean} `true` - symbol was added, `false` - replaced
  */
 Sprite.prototype.add = function add (symbol) {
   var ref = this;
@@ -245,16 +245,17 @@ Sprite.prototype.add = function add (symbol) {
 
   if (existing) {
     symbols[symbols.indexOf(existing)] = symbol;
-    return symbol;
+    return false;
   }
 
   symbols.push(symbol);
-  return symbol;
+  return true;
 };
 
 /**
- * Remove from list & destroy symbol
+ * Remove symbol & destroy it
  * @param {string} id
+ * @return {boolean} `true` - symbol was found & successfully destroyed, `false` - otherwise
  */
 Sprite.prototype.remove = function remove (id) {
   var ref = this;
@@ -264,7 +265,10 @@ Sprite.prototype.remove = function remove (id) {
   if (symbol) {
     symbols.splice(symbols.indexOf(symbol), 1);
     symbol.destroy();
+    return true;
   }
+
+  return false;
 };
 
 /**
@@ -298,6 +302,10 @@ Sprite.prototype.stringify = function stringify () {
  */
 Sprite.prototype.toString = function toString () {
   return this.stringify();
+};
+
+Sprite.prototype.destroy = function destroy () {
+  this.symbols.forEach(function (s) { return s.destroy(); });
 };
 
 var sprite = new Sprite();

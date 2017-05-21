@@ -68,26 +68,6 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build__);
-
-
-var symbol = new __WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol___default.a({
-  "id": "twitter",
-  "use": "twitter-usage",
-  "viewBox": "0 0 273.4 222.2",
-  "content": "<symbol viewBox=\"0 0 273.4 222.2\" id=\"twitter\"><path d=\"M273.4 26.3c-10.1 4.5-20.9 7.5-32.2 8.8 11.6-6.9 20.5-17.9 24.7-31-10.9 6.4-22.9 11.1-35.7 13.6A55.919 55.919 0 0 0 189.3 0c-31 0-56.1 25.1-56.1 56.1 0 4.4.5 8.7 1.5 12.8C88 66.5 46.7 44.2 19 10.3c-4.8 8.3-7.6 17.9-7.6 28.2 0 19.5 9.9 36.6 25 46.7-9.2-.3-17.8-2.8-25.4-7v.7c0 27.2 19.3 49.8 45 55-4.7 1.3-9.7 2-14.8 2-3.6 0-7.1-.4-10.6-1 7.1 22.3 27.9 38.5 52.4 39-19.2 15-43.4 24-69.7 24-4.5 0-9-.3-13.4-.8 24.8 15.9 54.3 25.2 86 25.2 103.2 0 159.6-85.5 159.6-159.6 0-2.4-.1-4.9-.2-7.3 11.1-8 20.6-17.9 28.1-29.1z\" /></symbol>"
-});
-var result = __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build___default.a.add(symbol);
-/* unused harmony default export */ var _unused_webpack_default_export = (symbol);
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
 var g;
@@ -114,12 +94,32 @@ module.exports = g;
 
 
 /***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build__);
+
+
+var symbol = new __WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol___default.a({
+  "id": "twitter",
+  "use": "twitter-usage",
+  "viewBox": "0 0 273.4 222.2",
+  "content": "<symbol viewBox=\"0 0 273.4 222.2\" id=\"twitter\"><path d=\"M273.4 26.3c-10.1 4.5-20.9 7.5-32.2 8.8 11.6-6.9 20.5-17.9 24.7-31-10.9 6.4-22.9 11.1-35.7 13.6A55.919 55.919 0 0 0 189.3 0c-31 0-56.1 25.1-56.1 56.1 0 4.4.5 8.7 1.5 12.8C88 66.5 46.7 44.2 19 10.3c-4.8 8.3-7.6 17.9-7.6 28.2 0 19.5 9.9 36.6 25 46.7-9.2-.3-17.8-2.8-25.4-7v.7c0 27.2 19.3 49.8 45 55-4.7 1.3-9.7 2-14.8 2-3.6 0-7.1-.4-10.6-1 7.1 22.3 27.9 38.5 52.4 39-19.2 15-43.4 24-69.7 24-4.5 0-9-.3-13.4-.8 24.8 15.9 54.3 25.2 86 25.2 103.2 0 159.6-85.5 159.6-159.6 0-2.4-.1-4.9-.2-7.3 11.1-8 20.6-17.9 28.1-29.1z\" /></symbol>"
+});
+var result = __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build___default.a.add(symbol);
+/* unused harmony default export */ var _unused_webpack_default_export = (symbol);
+
+/***/ }),
 /* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__ = __webpack_require__(1);
 
 
 
@@ -127,7 +127,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-(function (global, factory) {
+/* WEBPACK VAR INJECTION */(function(global) {(function (global, factory) {
 	 true ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
 	(global.BrowserSpriteSymbol = factory());
@@ -184,6 +184,148 @@ var parse = function (content) {
   return doc;
 };
 
+var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+
+
+
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var index = createCommonjsModule(function (module, exports) {
+(function (root, factory) {
+    if (false) {
+        undefined(factory);
+    } else {
+        module.exports = factory();
+    }
+}(commonjsGlobal, function () {
+
+function isMergeableObject(val) {
+    var nonNullObject = val && typeof val === 'object';
+
+    return nonNullObject
+        && Object.prototype.toString.call(val) !== '[object RegExp]'
+        && Object.prototype.toString.call(val) !== '[object Date]'
+}
+
+function emptyTarget(val) {
+    return Array.isArray(val) ? [] : {}
+}
+
+function cloneIfNecessary(value, optionsArgument) {
+    var clone = optionsArgument && optionsArgument.clone === true;
+    return (clone && isMergeableObject(value)) ? deepmerge(emptyTarget(value), value, optionsArgument) : value
+}
+
+function defaultArrayMerge(target, source, optionsArgument) {
+    var destination = target.slice();
+    source.forEach(function(e, i) {
+        if (typeof destination[i] === 'undefined') {
+            destination[i] = cloneIfNecessary(e, optionsArgument);
+        } else if (isMergeableObject(e)) {
+            destination[i] = deepmerge(target[i], e, optionsArgument);
+        } else if (target.indexOf(e) === -1) {
+            destination.push(cloneIfNecessary(e, optionsArgument));
+        }
+    });
+    return destination
+}
+
+function mergeObject(target, source, optionsArgument) {
+    var destination = {};
+    if (isMergeableObject(target)) {
+        Object.keys(target).forEach(function (key) {
+            destination[key] = cloneIfNecessary(target[key], optionsArgument);
+        });
+    }
+    Object.keys(source).forEach(function (key) {
+        if (!isMergeableObject(source[key]) || !target[key]) {
+            destination[key] = cloneIfNecessary(source[key], optionsArgument);
+        } else {
+            destination[key] = deepmerge(target[key], source[key], optionsArgument);
+        }
+    });
+    return destination
+}
+
+function deepmerge(target, source, optionsArgument) {
+    var array = Array.isArray(source);
+    var options = optionsArgument || { arrayMerge: defaultArrayMerge };
+    var arrayMerge = options.arrayMerge || defaultArrayMerge;
+
+    if (array) {
+        return Array.isArray(target) ? arrayMerge(target, source, optionsArgument) : cloneIfNecessary(source, optionsArgument)
+    } else {
+        return mergeObject(target, source, optionsArgument)
+    }
+}
+
+deepmerge.all = function deepmergeAll(array, optionsArgument) {
+    if (!Array.isArray(array) || array.length < 2) {
+        throw new Error('first argument should be an array with at least two elements')
+    }
+
+    // we are sure there are at least 2 values, so it is safe to have no initial value
+    return array.reduce(function(prev, next) {
+        return deepmerge(prev, next, optionsArgument)
+    })
+};
+
+return deepmerge
+
+}));
+});
+
+var namespaces_1 = createCommonjsModule(function (module, exports) {
+var namespaces = {
+  svg: {
+    name: 'xmlns',
+    uri: 'http://www.w3.org/2000/svg'
+  },
+  xlink: {
+    name: 'xmlns:xlink',
+    uri: 'http://www.w3.org/1999/xlink'
+  }
+};
+
+exports.default = namespaces;
+module.exports = exports.default;
+});
+
+/**
+ * @param {Object} attrs
+ * @return {string}
+ */
+var objectToAttrsString = function (attrs) {
+  return Object.keys(attrs).map(function (attr) {
+    var value = attrs[attr].toString().replace(/"/g, '&quot;');
+    return (attr + "=\"" + value + "\"");
+  }).join(' ');
+};
+
+var svg = namespaces_1.svg;
+var xlink = namespaces_1.xlink;
+
+var defaultAttrs = {};
+defaultAttrs[svg.name] = svg.uri;
+defaultAttrs[xlink.name] = xlink.uri;
+
+/**
+ * @param {string} [content]
+ * @param {Object} [attributes]
+ * @return {string}
+ */
+var wrapInSvgString = function (content, attributes) {
+  if ( content === void 0 ) content = '';
+
+  var attrs = index(defaultAttrs, attributes || {});
+  var attrsRendered = objectToAttrsString(attrs);
+  return ("<svg " + attrsRendered + ">" + content + "</svg>");
+};
+
 var BrowserSpriteSymbol = (function (SpriteSymbol$$1) {
   function BrowserSpriteSymbol () {
     SpriteSymbol$$1.apply(this, arguments);
@@ -193,9 +335,50 @@ var BrowserSpriteSymbol = (function (SpriteSymbol$$1) {
   BrowserSpriteSymbol.prototype = Object.create( SpriteSymbol$$1 && SpriteSymbol$$1.prototype );
   BrowserSpriteSymbol.prototype.constructor = BrowserSpriteSymbol;
 
-  BrowserSpriteSymbol.prototype.render = function render () {
-    return parse(this.stringify());
+  var prototypeAccessors = { isMounted: {} };
+
+  prototypeAccessors.isMounted.get = function () {
+    return !!this.node;
   };
+
+  BrowserSpriteSymbol.prototype.destroy = function destroy () {
+    if (this.isMounted) {
+      this.unmount();
+    }
+    SpriteSymbol$$1.prototype.destroy.call(this);
+  };
+
+  /**
+   * @param {Element|string} target
+   * @return {Element}
+   */
+  BrowserSpriteSymbol.prototype.mount = function mount (target) {
+    if (this.isMounted) {
+      return this.node;
+    }
+
+    var mountTarget = typeof target === 'string' ? document.querySelector(target) : target;
+    var node = this.render();
+    this.node = node;
+
+    mountTarget.appendChild(node);
+
+    return node;
+  };
+
+  /**
+   * @return {Element}
+   */
+  BrowserSpriteSymbol.prototype.render = function render () {
+    var content = this.stringify();
+    return parse(wrapInSvgString(content)).childNodes[0];
+  };
+
+  BrowserSpriteSymbol.prototype.unmount = function unmount () {
+    this.node.parentNode.removeChild(this.node);
+  };
+
+  Object.defineProperties( BrowserSpriteSymbol.prototype, prototypeAccessors );
 
   return BrowserSpriteSymbol;
 }(SpriteSymbol));
@@ -204,6 +387,7 @@ return BrowserSpriteSymbol;
 
 })));
 
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 4 */
@@ -431,9 +615,9 @@ var Sprite = function Sprite(config) {
 };
 
 /**
- * TODO return add | replace instead of symbol instance
+ * Add new symbol. If symbol with the same id exists it will be replaced.
  * @param {SpriteSymbol} symbol
- * @return {SpriteSymbol}
+ * @return {boolean} `true` - symbol was added, `false` - replaced
  */
 Sprite.prototype.add = function add (symbol) {
   var ref = this;
@@ -442,16 +626,17 @@ Sprite.prototype.add = function add (symbol) {
 
   if (existing) {
     symbols[symbols.indexOf(existing)] = symbol;
-    return symbol;
+    return false;
   }
 
   symbols.push(symbol);
-  return symbol;
+  return true;
 };
 
 /**
- * Remove from list & destroy symbol
+ * Remove symbol & destroy it
  * @param {string} id
+ * @return {boolean} `true` - symbol was found & successfully destroyed, `false` - otherwise
  */
 Sprite.prototype.remove = function remove (id) {
   var ref = this;
@@ -461,7 +646,10 @@ Sprite.prototype.remove = function remove (id) {
   if (symbol) {
     symbols.splice(symbols.indexOf(symbol), 1);
     symbol.destroy();
+    return true;
   }
+
+  return false;
 };
 
 /**
@@ -495,6 +683,10 @@ Sprite.prototype.stringify = function stringify () {
  */
 Sprite.prototype.toString = function toString () {
   return this.stringify();
+};
+
+Sprite.prototype.destroy = function destroy () {
+  this.symbols.forEach(function (s) { return s.destroy(); });
 };
 
 var defaultConfig$1 = {
@@ -597,7 +789,7 @@ var locationChangeAngularEmitter = function (eventName) {
   angular.module('ng').run(['$rootScope', function ($rootScope) {
     $rootScope.$on('$locationChangeSuccess', function (e, newUrl) {
       dispatchEvent(eventName, {
-        oldURL: window.localtion.href,
+        oldURL: window.location.href,
         newUrl: newUrl
       });
     });
@@ -671,6 +863,7 @@ function selectAttributes(nodes, matcher) {
 var xLinkNS = namespaces_1.xlink.uri;
 var xLinkAttrName = 'xlink:href';
 
+// eslint-disable-next-line no-useless-escape
 var specialUrlCharsPattern = /[(){}|\\\^~\[\]`"<>]/g;
 
 function encoder(url) {
@@ -753,7 +946,6 @@ var updateUrls = function (svg, references, startsWith, replaceWith) {
  * @private
  */
 var Events = {
-  RENDER: 'render',
   MOUNT: 'mount'
 };
 
@@ -766,8 +958,7 @@ var BrowserSprite = (function (Sprite$$1) {
 
     var emitter = mitt();
     this._emitter = emitter;
-    this.node = false;
-    this.isMounted = false;
+    this.node = null;
 
     var ref = this;
     var config = ref.config;
@@ -795,7 +986,7 @@ var BrowserSprite = (function (Sprite$$1) {
     }
 
     if (config.moveGradientsOutsideSymbol) {
-      emitter.on(Events.RENDER, function (node) {
+      emitter.on(Events.MOUNT, function (node) {
         moveGradientsOutsideSymbol(node);
       });
     }
@@ -804,6 +995,15 @@ var BrowserSprite = (function (Sprite$$1) {
   if ( Sprite$$1 ) BrowserSprite.__proto__ = Sprite$$1;
   BrowserSprite.prototype = Object.create( Sprite$$1 && Sprite$$1.prototype );
   BrowserSprite.prototype.constructor = BrowserSprite;
+
+  var prototypeAccessors = { isMounted: {} };
+
+  /**
+   * @return {boolean}
+   */
+  prototypeAccessors.isMounted.get = function () {
+    return !!this.node;
+  };
 
   /**
    * Automatically configure following options
@@ -833,8 +1033,8 @@ var BrowserSprite = (function (Sprite$$1) {
   /**
    * @param {Event} event
    * @param {Object} event.detail
-   * @param {string} event.oldUrl
-   * @param {string} event.newUrl
+   * @param {string} event.detail.oldUrl
+   * @param {string} event.detail.newUrl
    * @private
    */
   BrowserSprite.prototype._handleLocationChange = function _handleLocationChange (event) {
@@ -845,39 +1045,41 @@ var BrowserSprite = (function (Sprite$$1) {
   };
 
   /**
-   * Update URLs in sprite and usage elements
-   * @param {string} oldUrl
-   * @param {string} newUrl
+   * Add new symbol. If symbol with the same id exists it will be replaced.
+   * If sprite already mounted - `symbol.mount(sprite.node)` will be called.
+   * @param {BrowserSpriteSymbol} symbol
+   * @return {boolean} `true` - symbol was added, `false` - replaced
    */
-  BrowserSprite.prototype.updateUrls = function updateUrls$1 (oldUrl, newUrl) {
-    if (!this.isMounted) {
-      throw new Error('Sprite should be mounted to apply updateUrls');
+  BrowserSprite.prototype.add = function add (symbol) {
+    var isNewSymbol = Sprite$$1.prototype.add.call(this, symbol);
+
+    if (this.isMounted && isNewSymbol) {
+      symbol.mount(this.node);
     }
 
-    var usages = document.querySelectorAll(this.config.usagesToUpdate);
-
-    updateUrls(
-      this.node,
-      usages,
-      ((getUrlWithoutFragment(oldUrl)) + "#"),
-      ((getUrlWithoutFragment(newUrl)) + "#")
-    );
+    return isNewSymbol;
   };
 
-  /**
-   * @return {Element}
-   * @fires Events#RENDER
-   */
-  BrowserSprite.prototype.render = function render () {
-    var node = parse(this.stringify());
-    this._emitter.emit(Events.RENDER, node);
-    return node;
+  BrowserSprite.prototype.destroy = function destroy () {
+    var ref = this;
+    var config = ref.config;
+    var symbols = ref.symbols;
+    var _emitter = ref._emitter;
+
+    symbols.forEach(function (s) { return s.destroy(); });
+
+    _emitter.off('*');
+    window.removeEventListener(config.locationChangeEvent, this._handleLocationChange);
+
+    if (this.isMounted) {
+      this.unmount();
+    }
   };
 
   /**
    * @param {Element|string} [target]
    * @param {boolean} [prepend=false]
-   * @return {Element} rendered sprite element
+   * @return {Element} rendered sprite node
    * @fires Events#MOUNT
    */
   BrowserSprite.prototype.mount = function mount (target, prepend) {
@@ -898,11 +1100,16 @@ var BrowserSprite = (function (Sprite$$1) {
     }
 
     this.node = node;
-    this.isMounted = true;
-
     this._emitter.emit(Events.MOUNT, node);
 
     return node;
+  };
+
+  /**
+   * @return {Element}
+   */
+  BrowserSprite.prototype.render = function render () {
+    return parse(this.stringify());
   };
 
   /**
@@ -912,21 +1119,30 @@ var BrowserSprite = (function (Sprite$$1) {
     this.node.parentNode.removeChild(this.node);
   };
 
-  BrowserSprite.prototype.destroy = function destroy () {
-    var ref = this;
-    var config = ref.config;
-    var symbols = ref.symbols;
-    var _emitter = ref._emitter;
-
-    symbols.forEach(function (s) { return s.destroy(); });
-
-    _emitter.off('*');
-    window.removeEventListener(config.locationChangeEvent, this._handleLocationChange);
-
-    if (this.isMounted) {
-      this.unmount();
+  /**
+   * Update URLs in sprite and usage elements
+   * @param {string} oldUrl
+   * @param {string} newUrl
+   * @return {boolean} `true` - URLs was updated, `false` - sprite is not mounted
+   */
+  BrowserSprite.prototype.updateUrls = function updateUrls$1 (oldUrl, newUrl) {
+    if (!this.isMounted) {
+      return false;
     }
+
+    var usages = document.querySelectorAll(this.config.usagesToUpdate);
+
+    updateUrls(
+      this.node,
+      usages,
+      ((getUrlWithoutFragment(oldUrl)) + "#"),
+      ((getUrlWithoutFragment(newUrl)) + "#")
+    );
+
+    return true;
   };
+
+  Object.defineProperties( BrowserSprite.prototype, prototypeAccessors );
 
   return BrowserSprite;
 }(Sprite));
@@ -970,7 +1186,7 @@ return sprite;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ })
 /******/ ]);
