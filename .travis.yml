@@ -8,15 +8,16 @@ branches:
   except:
     - v0
 
+env:
+  global:
+    - ISTANBUL_COVERAGE: yes
+
 script:
  - yarn bootstrap
  - yarn lint
  - yarn test:webpack-1
  - yarn test:webpack-2
 
-env:
-  global:
-    - ISTANBUL_COVERAGE: yes
-
 after_success:
  - yarn upload-coverage
+ - yarn release
