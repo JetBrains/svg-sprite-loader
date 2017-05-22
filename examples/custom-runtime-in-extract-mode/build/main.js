@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "build/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 1);
@@ -91,7 +91,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 console.log(__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */]);
 
 window.addEventListener('DOMContentLoaded', () => {
-  const image = `<img src="build/${__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */].url}" width="${__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */].width}" height="${__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */].height}">`;
+  const image = `<img src="${__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */].url}" width="${__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */].width}" height="${__WEBPACK_IMPORTED_MODULE_0__assets_twitter_svg__["a" /* default */].height}">`;
   document.body.innerHTML = image;
 });
 

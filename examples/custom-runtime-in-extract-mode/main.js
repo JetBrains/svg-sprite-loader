@@ -4,6 +4,6 @@ import symbolData from '../assets/twitter.svg';
 console.log(symbolData);
 
 window.addEventListener('DOMContentLoaded', () => {
-  const image = `<img src="build/${symbolData.url}" width="${symbolData.width}" height="${symbolData.height}">`;
+  const image = `<img src="${symbolData.url}" width="${symbolData.width}" height="${symbolData.height}">`;
   document.body.innerHTML = image;
 });

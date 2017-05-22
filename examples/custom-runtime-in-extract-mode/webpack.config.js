@@ -9,7 +9,8 @@ const config = merge(baseConfig, {
   entry: './main',
 
   output: {
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, 'build'),
+    publicPath: 'build/'
   },
 
   module: {
