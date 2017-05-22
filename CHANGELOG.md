@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.0.0...v3.0.1) (2017-05-22)
+
+
+### Bug Fixes
+
+* **runtime-generator:** runtime generator in extract mode return object instead of string ([208b6dc](https://github.com/kisenka/webpack-svg-sprite-loader/commit/208b6dc))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v2.1.0...v3.0.0) (2017-05-21)
 
