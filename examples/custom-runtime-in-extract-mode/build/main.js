@@ -75,7 +75,7 @@
   "width": 273,
   "height": 222,
   "viewBox": "0 0 273.4 222.2",
-  "url": "sprite.svg#twitter-usage"
+  "url": "build/sprite.svg#twitter-usage"
 });
 
 /***/ }),

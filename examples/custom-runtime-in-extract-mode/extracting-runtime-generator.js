@@ -1,7 +1,8 @@
-const { generateSpritePlaceholder } = require('../../lib/utils');
+const { generateSpritePlaceholder, stringify } = require('../../lib/utils');
 
-module.exports = function runtimeGenerator({ symbol }) {
+module.exports = function runtimeGenerator({ symbol, loaderContext }) {
   // this will be replaced with real symbol url, e.g. sprite.svg#twitter-usage
+  const publicPath = loaderContext._compiler.options.output.publicPath;
   const spritePlaceholder = generateSpritePlaceholder(symbol.request.file);
   const viewBoxParts = symbol.viewBox.split(' ');
   const width = parseInt(viewBoxParts[2], 10);
@@ -11,10 +12,8 @@ module.exports = function runtimeGenerator({ symbol }) {
     width,
     height,
     viewBox: symbol.viewBox,
-    url: spritePlaceholder
+    url: publicPath + spritePlaceholder
   };
 
-  const stringified = JSON.stringify(data, null, 2);
-
-  return `export default ${stringified}`;
+  return `export default ${stringify(data)}`;
 };
