@@ -10,6 +10,8 @@ glob.sync(`${examplesDir}/*/webpack.config.js`, {
   absolute: true
 }).forEach((p) => {
   const config = require(p);
+  const exampleDir = path.basename(path.dirname(p));
+
   webpack(config, (err, stats) => {
     if (err) {
       throw err;
@@ -29,5 +31,7 @@ glob.sync(`${examplesDir}/*/webpack.config.js`, {
     if (msgs.length > 0) {
       throw new Error(msgs.join('\n'));
     }
+
+    console.log(`${exampleDir} built`);
   });
 });
