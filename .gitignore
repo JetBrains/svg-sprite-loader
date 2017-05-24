@@ -18,3 +18,4 @@ coverage
 .current-env
 .nyc_output
 runtime/*.build.js
+examples/*/build
