@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 import TwitterIcon from '../assets/twitter.svg';
+import WikipediaIcon from '../assets/wikipedia.svg';
 
 document.addEventListener('DOMContentLoaded', () => {
   render(
     <div>
       <TwitterIcon width="100" />
-      <TwitterIcon fill="red" style={{width: 300}} />
-      <TwitterIcon fill="blue" style={{width: 600}} />
+      <WikipediaIcon width="200" />
     </div>,
     document.querySelector('.app')
   );

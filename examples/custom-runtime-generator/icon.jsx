@@ -2,11 +2,10 @@ import React, {PureComponent} from 'react';
 
 export default class Icon extends PureComponent {
   render() {
-    const {className, glyph, width, height, ...restProps} = this.props;
-    const viewBox = `0 0 ${width} ${height}`;
+    const {className, glyph, ...restProps} = this.props;
 
     return (
-      <svg className={className} viewBox={viewBox} {...restProps}>
+      <svg className={className} {...restProps}>
         <use xlinkHref={`#${glyph}`} />
       </svg>
     );
@@ -15,7 +14,5 @@ export default class Icon extends PureComponent {
 
 Icon.defaultProps = {
   glyph: '',
-  width: 16,
-  height: 16,
   className: 'icon'
 };

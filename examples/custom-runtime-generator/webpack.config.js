@@ -2,6 +2,11 @@ const path = require('path');
 const merge = require('deepmerge');
 const baseConfig = require('../base-webpack.config');
 
+const babelOptions = {
+  presets: ['react', 'es2015'],
+  plugins: ['transform-object-rest-spread']
+};
+
 const config = merge(baseConfig, {
   context: __dirname,
 
@@ -16,20 +21,25 @@ const config = merge(baseConfig, {
       {
         test: /\.jsx$/,
         loader: 'babel-loader',
-        options: {
-          presets: ['react', 'es2015'],
-          plugins: ['transform-object-rest-spread']
-        }
+        options: babelOptions
       },
       {
         test: /\.svg$/,
-        loader: 'svg-sprite-loader',
-        options: {
-          runtimeGenerator: require.resolve('./svg-to-icon-component-runtime-generator'),
-          runtimeOptions: {
-            iconModule: './icon.jsx' // Relative to current build context folder
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelOptions
+          },
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              runtimeGenerator: require.resolve('./svg-to-icon-component-runtime-generator'),
+              runtimeOptions: {
+                iconModule: './icon.jsx' // Relative to current build context folder
+              }
+            }
           }
-        }
+        ],
       }
     ]
   }

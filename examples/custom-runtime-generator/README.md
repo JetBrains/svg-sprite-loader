@@ -24,17 +24,19 @@ import TwitterIcon from '../assets/twitter.svg';
 Will be generated to:
 
 ```js
-import React, {PureComponent} from 'react';
+import React from 'react';
 import SpriteSymbol from 'svg-sprite-loader/runtime/symbol';
 import sprite from 'svg-sprite-loader/runtime/browser-sprite';
-import Icon from './icon.jsx';
+import SpriteSymbolComponent from './icon.jsx';
 
 const symbol = new SpriteSymbol({ /* symbol data */ });
 sprite.add(symbol);
 
-export default class TwitterIcon extends Icon {}
-
-TwitterIcon.defaultProps.glyph = symbol.id;
+export default class TwitterIcon extends React.Component {
+  render() {
+    return <SpriteSymbolComponent glyph="${symbol.id}" {...this.props} />;
+  }
+}
 ```
 
 So when you import SVG, actually React component returns with configured glyph:

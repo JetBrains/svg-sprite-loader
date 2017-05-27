@@ -14,19 +14,22 @@ module.exports = function runtimeGenerator({ symbol, config, context, loaderCont
 
   const spriteRequest = stringifyRequest({ context }, spriteModule);
   const symbolRequest = stringifyRequest({ context }, symbolModule);
-  const displayName = `${pascalCase(symbol.id)}Icon`;
+  const parentComponentDisplayName = 'SpriteSymbolComponent';
+  const displayName = `${pascalCase(symbol.id)}${parentComponentDisplayName}`;
 
   return `
-    import React, {PureComponent} from 'react';
+    import React from 'react';
     import SpriteSymbol from ${symbolRequest};
     import sprite from ${spriteRequest};
-    import Icon from ${iconModuleRequest};
+    import ${parentComponentDisplayName} from ${iconModuleRequest};
     
     const symbol = new SpriteSymbol(${stringifySymbol(symbol)});
     sprite.add(symbol);
-    
-    export default class ${displayName} extends Icon {}
-    
-    ${displayName}.defaultProps.glyph = '${symbol.id}';
+
+    export default class ${displayName} extends React.Component {
+      render() {
+        return <${parentComponentDisplayName} glyph="${symbol.id}" {...this.props} />;
+      }
+    }
   `;
 };
