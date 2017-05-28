@@ -84,7 +84,7 @@
   },
   "scripts": {
     "bootstrap": "yarn && node node_modules/husky/bin/install && cd env/webpack-1 && yarn && cd ../webpack-2 && yarn && cd ../.. && yarn env:webpack-2",
-    "build:examples": "node scripts/build-examples",
+    "build:examples": "npm run build:runtime && node scripts/build-examples-dll && node scripts/build-examples",
     "build:runtime": "node scripts/build-runtime.js",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",

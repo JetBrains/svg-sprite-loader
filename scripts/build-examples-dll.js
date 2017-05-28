@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 const examplesDir = path.resolve(__dirname, '../examples');
 
-glob.sync(`${examplesDir}/*/webpack.config.js`, {
+glob.sync(`${examplesDir}/*/webpack.dll.config.js`, {
   nodir: true,
   absolute: true
 }).forEach((p) => {
