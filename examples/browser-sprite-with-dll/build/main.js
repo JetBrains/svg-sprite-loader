@@ -96,7 +96,7 @@ var result = __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprit
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(0);
+module.exports = (__webpack_require__(0))(1)
 
 /***/ }),
 /* 3 */
@@ -116,13 +116,13 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__dll__["dll"])();
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(2);
+module.exports = (__webpack_require__(0))(3)
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(0))(4);
+module.exports = (__webpack_require__(0))(4)
 
 /***/ })
 /******/ ]);

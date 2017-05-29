@@ -71,8 +71,8 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = dll;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_facebook_svg__ = __webpack_require__(3);
+/* harmony export (immutable) */ __webpack_exports__["a"] = dll;
 
 
 // => {id string, width: string, height: string, viewBox: string, url: string}

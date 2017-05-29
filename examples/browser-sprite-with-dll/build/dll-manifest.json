@@ -1,1 +1,35 @@
-{"name":"dll","content":{"./dll.js":{"id":0,"meta":{"harmonyModule":true},"exports":["dll"]},"../assets/facebook.svg":{"id":1,"meta":{"harmonyModule":true},"exports":["default"]},"../../node_modules/svg-baker-runtime/browser-symbol.js":{"id":2,"meta":{}},"../../node_modules/webpack/buildin/global.js":{"id":3,"meta":{}},"../../runtime/browser-sprite.build.js":{"id":4,"meta":{}}}}
+{
+  "name": "dll",
+  "content": {
+    "../../env/webpack-2/node_modules/webpack/buildin/global.js": {
+      "id": 0,
+      "meta": {}
+    },
+    "./dll.js": {
+      "id": 1,
+      "meta": {
+        "harmonyModule": true
+      },
+      "exports": [
+        "dll"
+      ]
+    },
+    "../assets/facebook.svg": {
+      "id": 2,
+      "meta": {
+        "harmonyModule": true
+      },
+      "exports": [
+        "default"
+      ]
+    },
+    "../../node_modules/svg-baker-runtime/browser-symbol.js": {
+      "id": 3,
+      "meta": {}
+    },
+    "../../runtime/browser-sprite.build.js": {
+      "id": 4,
+      "meta": {}
+    }
+  }
+}

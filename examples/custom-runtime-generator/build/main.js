@@ -10713,26 +10713,26 @@ var symbol = new _browserSymbol2.default({
 });
 _browserSprite2.default.add(symbol);
 
-var TwitterSpriteComponent = function (_React$Component) {
-  _inherits(TwitterSpriteComponent, _React$Component);
+var TwitterSpriteSymbolComponent = function (_React$Component) {
+  _inherits(TwitterSpriteSymbolComponent, _React$Component);
 
-  function TwitterSpriteComponent() {
-    _classCallCheck(this, TwitterSpriteComponent);
+  function TwitterSpriteSymbolComponent() {
+    _classCallCheck(this, TwitterSpriteSymbolComponent);
 
-    return _possibleConstructorReturn(this, (TwitterSpriteComponent.__proto__ || Object.getPrototypeOf(TwitterSpriteComponent)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (TwitterSpriteSymbolComponent.__proto__ || Object.getPrototypeOf(TwitterSpriteSymbolComponent)).apply(this, arguments));
   }
 
-  _createClass(TwitterSpriteComponent, [{
+  _createClass(TwitterSpriteSymbolComponent, [{
     key: "render",
     value: function render() {
       return _react2.default.createElement(_icon2.default, _extends({ glyph: "twitter" }, this.props));
     }
   }]);
 
-  return TwitterSpriteComponent;
+  return TwitterSpriteSymbolComponent;
 }(_react2.default.Component);
 
-exports.default = TwitterSpriteComponent;
+exports.default = TwitterSpriteSymbolComponent;
 
 /***/ }),
 /* 86 */
@@ -10781,26 +10781,26 @@ var symbol = new _browserSymbol2.default({
 });
 _browserSprite2.default.add(symbol);
 
-var WikipediaSpriteComponent = function (_React$Component) {
-  _inherits(WikipediaSpriteComponent, _React$Component);
+var WikipediaSpriteSymbolComponent = function (_React$Component) {
+  _inherits(WikipediaSpriteSymbolComponent, _React$Component);
 
-  function WikipediaSpriteComponent() {
-    _classCallCheck(this, WikipediaSpriteComponent);
+  function WikipediaSpriteSymbolComponent() {
+    _classCallCheck(this, WikipediaSpriteSymbolComponent);
 
-    return _possibleConstructorReturn(this, (WikipediaSpriteComponent.__proto__ || Object.getPrototypeOf(WikipediaSpriteComponent)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (WikipediaSpriteSymbolComponent.__proto__ || Object.getPrototypeOf(WikipediaSpriteSymbolComponent)).apply(this, arguments));
   }
 
-  _createClass(WikipediaSpriteComponent, [{
+  _createClass(WikipediaSpriteSymbolComponent, [{
     key: "render",
     value: function render() {
       return _react2.default.createElement(_icon2.default, _extends({ glyph: "wikipedia" }, this.props));
     }
   }]);
 
-  return WikipediaSpriteComponent;
+  return WikipediaSpriteSymbolComponent;
 }(_react2.default.Component);
 
-exports.default = WikipediaSpriteComponent;
+exports.default = WikipediaSpriteSymbolComponent;
 
 /***/ }),
 /* 87 */

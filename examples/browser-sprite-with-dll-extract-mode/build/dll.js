@@ -73,8 +73,8 @@ var dll =
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["dll"] = dll;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_facebook_svg__ = __webpack_require__(1);
+/* harmony export (immutable) */ __webpack_exports__["dll"] = dll;
 
 
 // => {id string, width: string, height: string, viewBox: string, url: string}
