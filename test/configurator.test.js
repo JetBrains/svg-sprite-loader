@@ -12,6 +12,8 @@ describe('configurator', () => {
     context = {
       version: 2,
 
+      target: 'web',
+
       options: {
         target: 'web'
       },
