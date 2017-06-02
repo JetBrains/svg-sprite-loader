@@ -106,20 +106,28 @@ describe('loader and plugin', () => {
     });
 
     describe('extract-text-webpack-plugin interop', () => {
-      it('should properly extract sprite from extractable CSS', async () => {
+      it('should properly extract sprite file and refer to it', async () => {
+        const spriteFilename = defaultSpriteFilename;
         const extractor = extractPlugin('[name].css');
         const { assets } = await compile({
-          entry: './entry.css',
+          entry: './styles3.css',
           module: rules(
-            svgRule(),
+            svgRule({ spriteFilename }),
             extractCSSRule(extractor)
           ),
           plugins: [new SpritePlugin(), extractor]
         });
 
+        const cssSource = assets['main.css'].source();
+
         Object.keys(assets).should.be.lengthOf(3);
-        assets.should.have.property(defaultSpriteFilename);
-        assets['main.css'].source().should.contain(defaultSpriteFilename);
+        assets.should.have.property(spriteFilename);
+
+        cssSource.should.be.equal(`.a {background-image: url(${spriteFilename}#image-usage);}
+.a2 {background-image: url(${spriteFilename}#image-usage);}
+.b {background-image: url(${spriteFilename}#image2-usage);}
+.b2 {background-image: url(${spriteFilename}#image2-usage);}
+`);
       });
 
       it('should work properly with `allChunks: true` config option', async () => {
@@ -303,7 +311,7 @@ describe('loader and plugin', () => {
       assets.should.have.property('entry2-sprite.svg');
     });
 
-    it('should allow to use [hash] substitution token in `spriteFilename`', async () => {
+    it.only('should allow to use [hash] substitution token in `spriteFilename`', async () => {
       const { assets } = await compile({
         entry: './entry',
         module: rules(
