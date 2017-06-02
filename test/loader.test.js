@@ -311,7 +311,7 @@ describe('loader and plugin', () => {
       assets.should.have.property('entry2-sprite.svg');
     });
 
-    it.only('should allow to use [hash] substitution token in `spriteFilename`', async () => {
+    it('should allow to use [hash] substitution token in `spriteFilename`', async () => {
       const { assets } = await compile({
         entry: './entry',
         module: rules(
