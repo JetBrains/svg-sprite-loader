@@ -92,6 +92,9 @@ yarn add svg-sprite-loader -D
 How `<symbol>` `id` attribute should be named.
 Complete list of supported patterns: [loader-utils#interpolatename docs](https://github.com/webpack/loader-utils#interpolatename).
 
+### `symbolRegExp` (default `''`)
+Passed to the symbolId interpolator to support the [N] pattern in the loader-utils name interpolator
+
 ### `esModule` (default `true`, autoconfigured)
 
 Generated export format:
