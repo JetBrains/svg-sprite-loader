@@ -3,6 +3,10 @@ import domready from 'domready';
 
 const sprite = new BrowserSprite();
 
-domready(() => sprite.mount(document.body, true));
+if (document.body) {
+  sprite.mount(document.body, true);
+} else {
+  domready(() => sprite.mount(document.body, true));
+}
 
 export default sprite;
