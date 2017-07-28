@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.8"></a>
+## [3.0.8](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.0.7...v3.0.8) (2017-07-28)
+
+
+### Bug Fixes
+
+* **runtime:** fallback to early sprite mount when document.body appears ([a71e67a](https://github.com/kisenka/webpack-svg-sprite-loader/commit/a71e67a))
+
+
+
 <a name="3.0.7"></a>
 ## [3.0.7](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.0.6...v3.0.7) (2017-07-24)
 

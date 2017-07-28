@@ -10658,7 +10658,11 @@ var ready$1 = createCommonjsModule(function (module) {
 
 var sprite = new BrowserSprite();
 
-ready$1(function () { return sprite.mount(document.body, true); });
+if (document.body) {
+  sprite.mount(document.body, true);
+} else {
+  ready$1(function () { return sprite.mount(document.body, true); });
+}
 
 return sprite;
 
