@@ -10658,10 +10658,27 @@ var ready$1 = createCommonjsModule(function (module) {
 
 var sprite = new BrowserSprite();
 
+var loadSprite = function () {
+  var svg = sprite.mount(document.body, true);
+
+  // :WORKAROUND:
+  // IE doesn't evaluate <style> tags in SVGs that are dynamically added to the page.
+  // This trick will trigger IE to read and use any existing SVG <style> tags.
+  //
+  // Reference: https://github.com/iconic/SVGInjector/issues/23
+  var ua = window.navigator.userAgent || '';
+  if (ua.indexOf('Trident') > 0 || ua.indexOf('Edge/') > 0) {
+    var styles = svg.querySelectorAll('style');
+    for (var i = 0, l = styles.length; i < l; i += 1) {
+      styles[i].textContent += '';
+    }
+  }
+};
+
 if (document.body) {
-  sprite.mount(document.body, true);
+  loadSprite();
 } else {
-  ready$1(function () { return sprite.mount(document.body, true); });
+  ready$1(loadSprite);
 }
 
 return sprite;
