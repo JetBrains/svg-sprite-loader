@@ -1,6 +1,6 @@
 {
   "name": "svg-sprite-loader",
-  "version": "3.0.10",
+  "version": "3.0.11",
   "description": "SVG sprite loader for Webpack",
   "homepage": "https://github.com/kisenka/webpack-svg-sprite-loader#readme",
   "main": "lib/loader.js",

@@ -163,13 +163,69 @@ SpriteSymbol.prototype.destroy = function destroy () {
   ['id', 'viewBox', 'content'].forEach(function (prop) { return delete this$1[prop]; });
 };
 
-var hasImportNode = !!document.importNode;
+var arrayFrom = function (arrayLike) {
+  return Array.prototype.slice.call(arrayLike, 0);
+};
+
+var ua = navigator.userAgent;
+
+var browser = {
+  isChrome: /chrome/i.test(ua),
+  isFirefox: /firefox/i.test(ua),
+  isIE: /msie/i.test(ua),
+  isEdge: /edge/i.test(ua)
+};
+
+/**
+ * @param {string} name
+ * @param {*} data
+ */
+
+/**
+ * @param {string} [url] If not provided - current URL will be used
+ * @return {string}
+ */
+
+/* global angular */
+/**
+ * @param {string} eventName
+ */
+
+var defaultSelector = 'linearGradient, radialGradient, pattern';
+
+/**
+ * @param {Element} svg
+ * @param {string} [selector]
+ * @return {Element}
+ */
+var moveGradientsOutsideSymbol = function (svg, selector) {
+  if ( selector === void 0 ) selector = defaultSelector;
+
+  arrayFrom(svg.querySelectorAll('symbol')).forEach(function (symbol) {
+    arrayFrom(symbol.querySelectorAll(selector)).forEach(function (node) {
+      symbol.parentNode.insertBefore(node, symbol);
+    });
+  });
+  return svg;
+};
+
+/**
+ * @param {Object} attrs
+ * @return {string}
+ */
+var objectToAttrsString = function (attrs) {
+  return Object.keys(attrs).map(function (attr) {
+    var value = attrs[attr].toString().replace(/"/g, '&quot;');
+    return (attr + "=\"" + value + "\"");
+  }).join(' ');
+};
 
 /**
  * @param {string} content
  * @return {Element}
  */
 var parse = function (content) {
+  var hasImportNode = !!document.importNode;
   var doc = new DOMParser().parseFromString(content, 'image/svg+xml').documentElement;
 
   /**
@@ -184,6 +240,12 @@ var parse = function (content) {
   return doc;
 };
 
+/**
+ * @param {NodeList|Node} nodes
+ * @param {boolean} [clone=true]
+ * @return {string}
+ */
+
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 
@@ -193,6 +255,57 @@ var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
+
+var namespaces_1 = createCommonjsModule(function (module, exports) {
+var namespaces = {
+  svg: {
+    name: 'xmlns',
+    uri: 'http://www.w3.org/2000/svg'
+  },
+  xlink: {
+    name: 'xmlns:xlink',
+    uri: 'http://www.w3.org/1999/xlink'
+  }
+};
+
+exports.default = namespaces;
+module.exports = exports.default;
+});
+
+/**
+ * List of SVG attributes to update url() target in them
+ */
+var attList = [
+  'clipPath',
+  'colorProfile',
+  'src',
+  'cursor',
+  'fill',
+  'filter',
+  'marker',
+  'markerStart',
+  'markerMid',
+  'markerEnd',
+  'mask',
+  'stroke',
+  'style'
+];
+
+var attSelector = attList.map(function (attr) { return ("[" + attr + "]"); }).join(',');
+
+/**
+ * Update URLs in svg image (like `fill="url(...)"`) and update referencing elements
+ * @param {Element} svg
+ * @param {NodeList} references
+ * @param {string|RegExp} startsWith
+ * @param {string} replaceWith
+ * @return {void}
+ *
+ * @example
+ * const sprite = document.querySelector('svg.sprite');
+ * const usages = document.querySelectorAll('use');
+ * updateUrls(sprite, usages, '#', 'prefix#');
+ */
 
 var index = createCommonjsModule(function (module, exports) {
 (function (root, factory) {
@@ -279,33 +392,6 @@ return deepmerge
 }));
 });
 
-var namespaces_1 = createCommonjsModule(function (module, exports) {
-var namespaces = {
-  svg: {
-    name: 'xmlns',
-    uri: 'http://www.w3.org/2000/svg'
-  },
-  xlink: {
-    name: 'xmlns:xlink',
-    uri: 'http://www.w3.org/1999/xlink'
-  }
-};
-
-exports.default = namespaces;
-module.exports = exports.default;
-});
-
-/**
- * @param {Object} attrs
- * @return {string}
- */
-var objectToAttrsString = function (attrs) {
-  return Object.keys(attrs).map(function (attr) {
-    var value = attrs[attr].toString().replace(/"/g, '&quot;');
-    return (attr + "=\"" + value + "\"");
-  }).join(' ');
-};
-
 var svg = namespaces_1.svg;
 var xlink = namespaces_1.xlink;
 
@@ -362,6 +448,11 @@ var BrowserSpriteSymbol = (function (SpriteSymbol$$1) {
     this.node = node;
 
     mountTarget.appendChild(node);
+
+    // TODO cache moved nodes somewhere and cleanup on destroy()
+    if (browser.isFirefox) {
+      moveGradientsOutsideSymbol(mountTarget);
+    }
 
     return node;
   };
@@ -787,11 +878,8 @@ var getUrlWithoutFragment = function (url) {
  */
 var locationChangeAngularEmitter = function (eventName) {
   angular.module('ng').run(['$rootScope', function ($rootScope) {
-    $rootScope.$on('$locationChangeSuccess', function (e, newUrl) {
-      dispatchEvent(eventName, {
-        oldURL: window.location.href,
-        newUrl: newUrl
-      });
+    $rootScope.$on('$locationChangeSuccess', function (e, newUrl, oldUrl) {
+      dispatchEvent(eventName, { oldUrl: oldUrl, newUrl: newUrl });
     });
   }]);
 };
@@ -814,13 +902,12 @@ var moveGradientsOutsideSymbol = function (svg, selector) {
   return svg;
 };
 
-var hasImportNode = !!document.importNode;
-
 /**
  * @param {string} content
  * @return {Element}
  */
 var parse = function (content) {
+  var hasImportNode = !!document.importNode;
   var doc = new DOMParser().parseFromString(content, 'image/svg+xml').documentElement;
 
   /**
