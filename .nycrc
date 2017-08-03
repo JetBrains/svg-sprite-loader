@@ -1,7 +1,7 @@
 {
   "check-coverage": false,
-  "statements": 95,
-  "branches": 85,
+  "statements": 94,
+  "branches": 84,
   "functions": 90,
   "lines": 90,
   "reporter": [
