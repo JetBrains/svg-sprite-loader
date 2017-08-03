@@ -25,6 +25,10 @@ All notable changes to this project will be documented in this file. See [standa
 <a name="3.0.10"></a>
 ## [3.0.10](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.0.9...v3.0.10) (2017-07-31)
 
+### Configuration
+
+* **configuration:** add support for `symbolRegExp` pattern in symbol name interpolation ([e9de712](https://github.com/kisenka/svg-sprite-loader/commit/e9de712))
+
 
 
 <a name="3.0.9"></a>
