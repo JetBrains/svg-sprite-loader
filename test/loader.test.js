@@ -277,7 +277,7 @@ describe('loader and plugin', () => {
 
     // webpack 3 scope hoisting interop
     if (webpackVersion.IS_3) {
-      // eslint-disable-next-line global-require
+      // eslint-disable-next-line global-require,import/no-unresolved
       const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
 
       describe('webpack ModuleConcatenationPlugin interop', () => {
