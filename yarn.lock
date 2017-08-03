@@ -5461,9 +5461,9 @@ supports-color@^3.1.0, supports-color@^3.1.2, supports-color@^3.2.3:
   dependencies:
     has-flag "^1.0.0"
 
-svg-baker-runtime@^1.2.96:
-  version "1.2.96"
-  resolved "https://registry.yarnpkg.com/svg-baker-runtime/-/svg-baker-runtime-1.2.96.tgz#154d007e625bd9928947245d8b5205afe62b151f"
+svg-baker-runtime@^1.2.98:
+  version "1.2.98"
+  resolved "https://registry.yarnpkg.com/svg-baker-runtime/-/svg-baker-runtime-1.2.98.tgz#44304d92f6221310bc266ff6b17b73dec3c352a9"
   dependencies:
     deepmerge "1.3.2"
     mitt "1.1.2"
