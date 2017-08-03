@@ -65,6 +65,10 @@ All notable changes to this project will be documented in this file. See [standa
 ## [3.0.6](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.0.5...v3.0.6) (2017-07-17)
 
 
+### Bug Fixes
+
+* **loader:** add support for issuer when matching rules ([5d21b2f](https://github.com/kisenka/svg-sprite-loader/commit/5d21b2f))
+
 
 <a name="3.0.5"></a>
 ## [3.0.5](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.0.4...v3.0.5) (2017-06-02)
