@@ -1,0 +1,1 @@
+import './img/image.svg';

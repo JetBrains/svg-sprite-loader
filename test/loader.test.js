@@ -3,6 +3,7 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const HtmlPlugin = require('html-webpack-plugin');
 
 const { isWebpack1 } = require('../lib/utils');
+const webpackVersion = require('../lib/utils/get-webpack-version');
 const { loaderPath, fixturesPath } = require('./_config');
 const {
   rule,
@@ -273,6 +274,36 @@ describe('loader and plugin', () => {
         assets['index.html'].source().should.contain(defaultSpriteFilename);
       });
     });
+
+    // webpack 3 scope hoisting interop
+    if (webpackVersion.IS_3) {
+      // eslint-disable-next-line global-require
+      const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
+
+      describe('webpack ModuleConcatenationPlugin interop', () => {
+        it('should work', async () => {
+          const spriteFilename = 'qwe.svg';
+          const { assets } = await compile({
+            entry: './entry-es6-import',
+            module: rules(
+              svgRule({ extract: true, spriteFilename })
+            ),
+            plugins: [
+              new SpritePlugin(),
+              new ModuleConcatenationPlugin()
+            ]
+          });
+
+          Object.keys(assets).should.be.lengthOf(2);
+          assets.should.have.property(spriteFilename);
+        });
+
+        // TODO
+        it('should properly interpolate [chunkname]', () => {
+
+        });
+      });
+    }
 
     it('should automatically detect modules to extract', async () => {
       const { assets } = await compile({
