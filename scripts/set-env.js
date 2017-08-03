@@ -12,14 +12,14 @@ if (!env) {
 }
 const envDir = path.resolve(rootDir, `${rootDir}/env/${env}`);
 // eslint-disable-next-line import/no-dynamic-require
-const envPackages = require(`${envDir}/package.json`).envPackages;
+const packagesToLink = require(`${envDir}/package.json`).packagesToLink;
 
 const envData = {
   name: env,
   packages: []
 };
 
-envPackages.forEach((packageName) => {
+packagesToLink.forEach((packageName) => {
   const packageDir = `${envDir}/node_modules/${packageName}`;
   // eslint-disable-next-line import/no-dynamic-require,global-require
   const version = require(`${packageDir}/package.json`).version;
@@ -31,7 +31,7 @@ envPackages.forEach((packageName) => {
 });
 
 cd(rootDir);
-envPackages.forEach(packageName => exec(`yarn link ${packageName} || true`));
+packagesToLink.forEach(packageName => exec(`yarn link ${packageName} || true`));
 
 const envFileData = JSON.stringify(envData, null, 2);
 

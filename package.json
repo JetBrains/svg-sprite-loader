@@ -84,13 +84,14 @@
     }
   },
   "scripts": {
-    "bootstrap": "yarn && node node_modules/husky/bin/install && cd env/webpack-1 && yarn && cd ../webpack-2 && yarn && cd ../.. && yarn env:webpack-2",
+    "bootstrap": "yarn && node node_modules/husky/bin/install && cd env/webpack-1 && yarn && cd ../webpack-2 && yarn && cd ../webpack-3 && yarn && cd ../.. && yarn env:webpack-2",
     "build:examples": "npm run build:runtime && node scripts/build-examples-dll && node scripts/build-examples",
     "build:runtime": "node scripts/build-runtime.js",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
     "env:webpack-1": "node scripts/set-env --env webpack-1",
     "env:webpack-2": "node scripts/set-env --env webpack-2",
+    "env:webpack-3": "node scripts/set-env --env webpack-3",
     "lint": "eslint --quiet lib runtime scripts test",
     "precommit": "yarn lint",
     "pretest": "yarn build:runtime",
@@ -100,7 +101,8 @@
     "test": "nyc --check-coverage mocha test/*.test.js",
     "test:webpack-1": "yarn env:webpack-1 && yarn test",
     "test:webpack-2": "yarn env:webpack-2 && yarn test",
-    "test:all": "yarn test:webpack-1 && yarn test:webpack-2",
+    "test:webpack-3": "yarn env:webpack-3 && yarn test",
+    "test:all": "yarn test:webpack-1 && yarn test:webpack-2 && yarn test:webpack-3",
     "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
   }
 }

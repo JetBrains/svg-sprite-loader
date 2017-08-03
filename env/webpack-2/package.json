@@ -4,7 +4,7 @@
     "extract-text-webpack-plugin": "2",
     "webpack": "2"
   },
-  "envPackages": [
+  "packagesToLink": [
     "enhanced-resolve",
     "extract-text-webpack-plugin",
     "webpack"
