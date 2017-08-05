@@ -366,7 +366,7 @@ describe('loader and plugin', () => {
         plugins: [new SpritePlugin()]
       });
 
-      assets.should.have.property('sprite-f016181b.svg');
+      assets.should.have.property('sprite-55f2b4ab.svg');
     });
 
     // Fails when webpack buildin runtime will change

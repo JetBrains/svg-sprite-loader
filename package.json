@@ -32,7 +32,7 @@
     "domready": "1.0.8",
     "escape-string-regexp": "1.0.5",
     "loader-utils": "^1.1.0",
-    "svg-baker": "^1.2.7",
+    "svg-baker": "^1.2.10",
     "svg-baker-runtime": "^1.2.98",
     "url-slug": "2.0.0"
   },
