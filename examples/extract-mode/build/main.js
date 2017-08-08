@@ -89,7 +89,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
       id: "twitter-usage",
       viewBox: "0 0 273.4 222.2",
-      url: __webpack_require__.p + "sprite-7a54e6.svg#twitter-usage",
+      url: __webpack_require__.p + "sprite-7f42ba.svg#twitter-usage",
       toString: function () {
         return this.url;
       }
