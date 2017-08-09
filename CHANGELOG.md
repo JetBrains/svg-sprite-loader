@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.1.4"></a>
+## [3.1.4](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.1.3...v3.1.4) (2017-08-09)
+
+
+### Bug Fixes
+
+* **loader:** quick workaround for breaking changes in webpack[@3](https://github.com/3).5 (modules prop dropped in Concatena ([f15030d](https://github.com/kisenka/webpack-svg-sprite-loader/commit/f15030d))
+
+
+
 <a name="3.1.3"></a>
 ## [3.1.3](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.1.2...v3.1.3) (2017-08-08)
 
