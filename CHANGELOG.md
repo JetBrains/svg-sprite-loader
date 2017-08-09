@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **loader:** quick workaround for breaking changes in webpack[@3](https://github.com/3).5 (modules prop dropped in Concatena ([f15030d](https://github.com/kisenka/webpack-svg-sprite-loader/commit/f15030d))
+* **loader:** quick workaround for breaking changes in webpack@3.5 (`modules` prop dropped in ConcatenatedModule) ([f15030d](https://github.com/kisenka/webpack-svg-sprite-loader/commit/f15030d))
 
 
 
