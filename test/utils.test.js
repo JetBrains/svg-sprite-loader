@@ -8,6 +8,7 @@ const {
   isModuleShouldBeExtracted,
   getMatchedRule,
   getLoadersRules,
+  hashTokens,
   isWebpack1
 } = require('../lib/utils');
 
@@ -105,6 +106,13 @@ describe('utils', () => {
     it('should work with webpack 2', () => {
       compilerMock.options.module.rules = rules;
       getLoadersRules(compilerMock).should.be.deep.equal(rules);
+    });
+  });
+
+  describe('hashTokens', () => {
+    it('should work', () => {
+      const result = hashTokens('content-[customhash:6]', { customhash: '123' });
+      result.should.be.equals('content-202cb9');
     });
   });
 });
