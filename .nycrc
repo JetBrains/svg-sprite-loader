@@ -1,13 +1,21 @@
 {
   "check-coverage": false,
+  "per-file": true,
   "statements": 94,
   "branches": 84,
   "functions": 90,
   "lines": 90,
   "reporter": [
     "lcov",
-    "text-summary",
+    "text",
     "html"
   ],
-  "cache": true
+  "cache": true,
+  "include": [
+    "lib/**"
+  ],
+  "exclude": [
+    "lib/utils/generate-import.js",
+    "lib/utils/get-all-modules.js"
+  ]
 }

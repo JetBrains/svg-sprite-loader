@@ -59,6 +59,7 @@
     "istanbul": "^0.4.5",
     "minimist": "^1.2.0",
     "mocha": "^3.2.0",
+    "npm-run-all": "^4.0.2",
     "nyc": "^10.3.2",
     "pascal-case": "2.0.1",
     "react": "15.5.4",
@@ -84,14 +85,12 @@
     }
   },
   "scripts": {
-    "bootstrap": "yarn && node node_modules/husky/bin/install && cd env/webpack-1 && yarn && cd ../webpack-2 && yarn && cd ../webpack-3 && yarn && cd ../.. && yarn env:webpack-2",
+    "bootstrap": "node scripts/bootstrap",
     "build:examples": "npm run build:runtime && node scripts/build-examples-dll && node scripts/build-examples",
     "build:runtime": "node scripts/build-runtime.js",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
-    "env:webpack-1": "node scripts/set-env --env webpack-1",
-    "env:webpack-2": "node scripts/set-env --env webpack-2",
-    "env:webpack-3": "node scripts/set-env --env webpack-3",
+    "env": "node scripts/select-env",
     "lint": "eslint --quiet lib runtime scripts test",
     "precommit": "yarn lint",
     "pretest": "yarn build:runtime",
@@ -99,10 +98,11 @@
     "release": "yarn build:examples && git add examples && standard-version -a && git push --follow-tags origin master",
     "release:dry-run": "standard-version --no-verify",
     "test": "nyc --check-coverage mocha test/*.test.js",
-    "test:webpack-1": "yarn env:webpack-1 && yarn test",
-    "test:webpack-2": "yarn env:webpack-2 && yarn test",
-    "test:webpack-3": "yarn env:webpack-3 && yarn test",
-    "test:all": "yarn test:webpack-1 && yarn test:webpack-2 && yarn test:webpack-3",
+    "test:webpack-1": "yarn env webpack-1 && yarn test",
+    "test:webpack-2": "yarn env webpack-2 && yarn test",
+    "test:webpack-3": "yarn env webpack-3 && yarn test",
+    "test:webpack-3.5": "yarn env webpack-3.5 && yarn test",
+    "test:all": "npm-run-all test:webpack-*",
     "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
   }
 }
