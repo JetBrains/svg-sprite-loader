@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.1.6"></a>
+## [3.1.6](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.1.5...v3.1.6) (2017-08-10)
+
+
+### Bug Fixes
+
+* **loader:** interpolate sprite filename properly ([b17e5e0](https://github.com/kisenka/webpack-svg-sprite-loader/commit/b17e5e0))
+
+
+
 <a name="3.1.5"></a>
 ## [3.1.5](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.1.4...v3.1.5) (2017-08-10)
 
