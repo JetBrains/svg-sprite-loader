@@ -39,7 +39,7 @@ describe('loader and plugin', () => {
       });
 
       it('should warn if several rules applied to module without issuer applied', async () => {
-        const { warnings } = await compile({
+        const { warnings } = await compileAndNotReject({
           entry: './entry',
           module: rules(
             svgRule(),
@@ -67,7 +67,7 @@ describe('loader and plugin', () => {
     });
 
     it('should filter rules against issuer', async () => {
-      const { warnings } = await compile({
+      const { warnings } = await compileAndNotReject({
         entry: './entry',
         module: rules(
           svgRule(),
