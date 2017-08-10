@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.1.5"></a>
+## [3.1.5](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.1.4...v3.1.5) (2017-08-10)
+
+
+### Bug Fixes
+
+* **loader:** throw an exception if input is not valid SVG ([413246e](https://github.com/kisenka/webpack-svg-sprite-loader/commit/413246e)), closes [#170](https://github.com/kisenka/webpack-svg-sprite-loader/issues/170)
+
+
+
 <a name="3.1.4"></a>
 ## [3.1.4](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.1.3...v3.1.4) (2017-08-09)
 
