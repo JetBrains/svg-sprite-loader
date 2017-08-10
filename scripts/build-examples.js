@@ -1,37 +1,26 @@
 /* eslint-disable global-require,import/no-dynamic-require,import/no-extraneous-dependencies,no-console */
 const path = require('path');
 const glob = require('glob');
-const webpack = require('webpack');
+const { exec, echo } = require('shelljs');
 
-const examplesDir = path.resolve(__dirname, '../examples');
+const projectDir = path.resolve(__dirname, '..');
 
-glob.sync(`${examplesDir}/*/webpack.config.js`, {
-  nodir: true,
-  absolute: true
-}).forEach((p) => {
-  const config = require(p);
-  const exampleDir = path.basename(path.dirname(p));
+const configsPaths = glob.sync(
+  `${projectDir}/examples/*/webpack.config.js`,
+  { nodir: true, absolute: true }
+);
 
-  webpack(config, (err, stats) => {
-    if (err) {
-      throw err;
-    }
+configsPaths.forEach((configPath) => {
+  const dirname = path.basename(path.dirname(configPath));
+  const result = exec(
+    `node ${projectDir}/node_modules/webpack/bin/webpack.js --config ${configPath}`,
+    { silent: true }
+  );
 
-    const msgs = [];
-    const { errors, warnings } = stats.compilation;
-
-    if (warnings.length > 0) {
-      msgs.push(`BUILD EXAMPLES WARNINGS\n${warnings.map(w => w.message).join('\n\n')}`);
-    }
-
-    if (errors.length > 0) {
-      msgs.push(`BUILD EXAMPLES ERRORS\n${errors.map(e => e.message).join('\n\n')}`);
-    }
-
-    if (msgs.length > 0) {
-      throw new Error(msgs.join('\n'));
-    }
-
-    console.log(`${exampleDir} built`);
-  });
+  if (result.code === 0) {
+    echo(`Example "${dirname}" successfully built`);
+  } else {
+    echo(result.stderr);
+    process.exit(result.code);
+  }
 });
