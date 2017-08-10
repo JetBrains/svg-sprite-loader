@@ -8,7 +8,6 @@ const {
   isModuleShouldBeExtracted,
   getMatchedRule,
   getLoadersRules,
-  hashTokens,
   isWebpack1
 } = require('../lib/utils');
 
