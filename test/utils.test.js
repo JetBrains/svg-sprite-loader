@@ -108,11 +108,4 @@ describe('utils', () => {
       getLoadersRules(compilerMock).should.be.deep.equal(rules);
     });
   });
-
-  describe('hashTokens', () => {
-    it('should work', () => {
-      const result = hashTokens('content-[customhash:6]', { customhash: '123' });
-      result.should.be.equals('content-202cb9');
-    });
-  });
 });

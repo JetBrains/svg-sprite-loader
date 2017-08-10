@@ -361,12 +361,12 @@ describe('loader and plugin', () => {
       const { assets } = await compile({
         entry: './entry',
         module: rules(
-          svgRule({ extract: true, spriteFilename: 'sprite-[hash:8].svg' })
+          svgRule({ extract: true, spriteFilename: '[sha1:hash:base36:10].svg' })
         ),
         plugins: [new SpritePlugin()]
       });
 
-      assets.should.have.property('sprite-55f2b4ab.svg');
+      assets.should.have.property('lvn29bpor3.svg');
     });
 
     // Fails when webpack buildin runtime will change

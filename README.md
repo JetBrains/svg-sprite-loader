@@ -89,8 +89,8 @@ yarn add svg-sprite-loader -D
 
 ### `symbolId` (default `[name]`)
 
-How `<symbol>` `id` attribute should be named.
-Complete list of supported patterns: [loader-utils#interpolatename docs](https://github.com/webpack/loader-utils#interpolatename).
+How `<symbol>` `id` attribute should be named. All patterns from [loader-utils#interpolateName](https://github.com/webpack/loader-utils#interpolatename) 
+are supported.
 
 ### `symbolRegExp` (default `''`)
 Passed to the symbolId interpolator to support the [N] pattern in the loader-utils name interpolator
@@ -221,8 +221,8 @@ module: {
 }
 ```
 
-It is also possible to generate sprite for each chunk by using `[chunkname]` pattern in spriteFilename option. 
-This is experimental feature, so use with caution!
+All patterns from [loader-utils#interpolateName](https://github.com/webpack/loader-utils#interpolatename) are supported.
+It is also possible to generate sprite for each chunk by using `[chunkname]` pattern in spriteFilename option. This is experimental feature, use it with caution!
 
 ## Examples
 
