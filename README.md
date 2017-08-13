@@ -1,4 +1,5 @@
-# SVG sprite loader [![TravisCI](https://img.shields.io/travis/kisenka/svg-sprite-loader.svg?style=flat-square)](https://travis-ci.org/kisenka/svg-sprite-loader) [![Code Climate](https://img.shields.io/codeclimate/github/kisenka/svg-sprite-loader.svg?style=flat-square)](https://codeclimate.com/github/kisenka/svg-sprite-loader) [![Inch CI](https://inch-ci.org/github/kisenka/svg-sprite-loader.svg?branch=master&style=flat-square)](https://inch-ci.org/github/kisenka/svg-sprite-loader)
+# SVG sprite loader 
+[![NPM version][version-img]][npm-url] [![Build status][ci-img]][ci-url] [![CodeClimate score][codeclimate-img]][codeclimate-url] [![Documentation score][docs-coverage-img]][docs-coverage-url] [![Dependencies status][deps-img]][deps-url] [![Dev dependencies status][dev-deps-img]][dev-deps-url] [![NPM downloads][downloads-img]][npm-url]
 
 Webpack loader for creating SVG sprites.
 
@@ -230,12 +231,27 @@ See [examples](examples) folder.
 
 ## Contributing guidelines
 
-TODO
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-MIT
+See [LICENSE](LICENSE)
 
 ## Credits
 
-TODO
+Huge thanks for [all this people](https://github.com/kisenka/svg-sprite-loader/graphs/contributors).
+
+
+[npm-url]: https://www.npmjs.com/package/svg-sprite-loader
+[version-img]: https://img.shields.io/npm/v/svg-sprite-loader.svg?style=flat-square
+[downloads-img]: https://img.shields.io/npm/dm/svg-sprite-loader.svg
+[deps-url]: https://david-dm.org/kisenka/svg-sprite-loader
+[deps-img]: https://img.shields.io/david/kisenka/svg-sprite-loader.svg
+[dev-deps-url]: https://david-dm.org/kisenka/svg-sprite-loader?type=dev
+[dev-deps-img]: https://img.shields.io/david/dev/kisenka/svg-sprite-loader.svg
+[ci-url]: https://travis-ci.org/kisenka/svg-sprite-loader
+[ci-img]: https://img.shields.io/travis/kisenka/svg-sprite-loader.svg?style=flat-square
+[codeclimate-url]: https://codeclimate.com/github/kisenka/svg-sprite-loader
+[codeclimate-img]: https://img.shields.io/codeclimate/github/kisenka/svg-sprite-loader.svg?style=flat-square
+[docs-coverage-url]: https://inch-ci.org/github/kisenka/svg-sprite-loader
+[docs-coverage-img]: https://inch-ci.org/github/kisenka/svg-sprite-loader.svg?branch=master&style=flat-square
