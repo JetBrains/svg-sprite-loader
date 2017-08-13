@@ -244,11 +244,11 @@ Huge thanks for [all this people](https://github.com/kisenka/svg-sprite-loader/g
 
 [npm-url]: https://www.npmjs.com/package/svg-sprite-loader
 [version-img]: https://img.shields.io/npm/v/svg-sprite-loader.svg?style=flat-square
-[downloads-img]: https://img.shields.io/npm/dm/svg-sprite-loader.svg
+[downloads-img]: https://img.shields.io/npm/dm/svg-sprite-loader.svg?style=flat-square
 [deps-url]: https://david-dm.org/kisenka/svg-sprite-loader
-[deps-img]: https://img.shields.io/david/kisenka/svg-sprite-loader.svg
+[deps-img]: https://img.shields.io/david/kisenka/svg-sprite-loader.svg?style=flat-square
 [dev-deps-url]: https://david-dm.org/kisenka/svg-sprite-loader?type=dev
-[dev-deps-img]: https://img.shields.io/david/dev/kisenka/svg-sprite-loader.svg
+[dev-deps-img]: https://img.shields.io/david/dev/kisenka/svg-sprite-loader.svg?style=flat-square
 [ci-url]: https://travis-ci.org/kisenka/svg-sprite-loader
 [ci-img]: https://img.shields.io/travis/kisenka/svg-sprite-loader.svg?style=flat-square
 [codeclimate-url]: https://codeclimate.com/github/kisenka/svg-sprite-loader
