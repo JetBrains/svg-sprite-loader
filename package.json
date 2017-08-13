@@ -14,9 +14,7 @@
     "webpack plugin"
   ],
   "homepage": "https://github.com/kisenka/svg-sprite-loader#readme",
-  "bugs": {
-    "url": "https://github.com/kisenka/svg-sprite-loader/issues"
-  },
+  "bugs": "https://github.com/kisenka/svg-sprite-loader/issues",
   "license": "MIT",
   "author": "kisenka",
   "repository": "kisenka/svg-sprite-loader",
