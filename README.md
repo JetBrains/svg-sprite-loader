@@ -1,5 +1,5 @@
 # SVG sprite loader 
-[![NPM version][version-img]][npm-url] [![Build status][ci-img]][ci-url] [![CodeClimate score][codeclimate-img]][codeclimate-url] [![Documentation score][docs-coverage-img]][docs-coverage-url] [![Dependencies status][deps-img]][deps-url] [![Dev dependencies status][dev-deps-img]][dev-deps-url] [![NPM downloads][downloads-img]][npm-url]
+[![NPM version][version-img]][versions-img] [![Build status][ci-img]][ci-url] [![CodeClimate score][codeclimate-img]][codeclimate-url] [![Documentation score][docs-coverage-img]][docs-coverage-url] [![Dependencies status][deps-img]][deps-url] [![Dev dependencies status][dev-deps-img]][dev-deps-url] [![NPM downloads][downloads-img]][npm-url]
 
 Webpack loader for creating SVG sprites.
 
@@ -241,9 +241,9 @@ See [LICENSE](LICENSE)
 
 Huge thanks for [all this people](https://github.com/kisenka/svg-sprite-loader/graphs/contributors).
 
-
 [npm-url]: https://www.npmjs.com/package/svg-sprite-loader
 [version-img]: https://img.shields.io/npm/v/svg-sprite-loader.svg?style=flat-square
+[versions-img]: https://libraries.io/npm/svg-sprite-loader/versions
 [downloads-img]: https://img.shields.io/npm/dm/svg-sprite-loader.svg?style=flat-square
 [deps-url]: https://david-dm.org/kisenka/svg-sprite-loader
 [deps-img]: https://img.shields.io/david/kisenka/svg-sprite-loader.svg?style=flat-square
