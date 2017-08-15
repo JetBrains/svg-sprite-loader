@@ -9550,63 +9550,6 @@ SpriteSymbol.prototype.destroy = function destroy () {
   ['id', 'viewBox', 'content'].forEach(function (prop) { return delete this$1[prop]; });
 };
 
-var arrayFrom = function (arrayLike) {
-  return Array.prototype.slice.call(arrayLike, 0);
-};
-
-var ua = navigator.userAgent;
-
-var browser = {
-  isChrome: /chrome/i.test(ua),
-  isFirefox: /firefox/i.test(ua),
-  isIE: /msie/i.test(ua),
-  isEdge: /edge/i.test(ua)
-};
-
-/**
- * @param {string} name
- * @param {*} data
- */
-
-/**
- * @param {string} [url] If not provided - current URL will be used
- * @return {string}
- */
-
-/* global angular */
-/**
- * @param {string} eventName
- */
-
-var defaultSelector = 'linearGradient, radialGradient, pattern';
-
-/**
- * @param {Element} svg
- * @param {string} [selector]
- * @return {Element}
- */
-var moveGradientsOutsideSymbol = function (svg, selector) {
-  if ( selector === void 0 ) selector = defaultSelector;
-
-  arrayFrom(svg.querySelectorAll('symbol')).forEach(function (symbol) {
-    arrayFrom(symbol.querySelectorAll(selector)).forEach(function (node) {
-      symbol.parentNode.insertBefore(node, symbol);
-    });
-  });
-  return svg;
-};
-
-/**
- * @param {Object} attrs
- * @return {string}
- */
-var objectToAttrsString = function (attrs) {
-  return Object.keys(attrs).map(function (attr) {
-    var value = attrs[attr].toString().replace(/"/g, '&quot;');
-    return (attr + "=\"" + value + "\"");
-  }).join(' ');
-};
-
 /**
  * @param {string} content
  * @return {Element}
@@ -9627,12 +9570,6 @@ var parse = function (content) {
   return doc;
 };
 
-/**
- * @param {NodeList|Node} nodes
- * @param {boolean} [clone=true]
- * @return {string}
- */
-
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 
@@ -9642,57 +9579,6 @@ var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
-
-var namespaces_1 = createCommonjsModule(function (module, exports) {
-var namespaces = {
-  svg: {
-    name: 'xmlns',
-    uri: 'http://www.w3.org/2000/svg'
-  },
-  xlink: {
-    name: 'xmlns:xlink',
-    uri: 'http://www.w3.org/1999/xlink'
-  }
-};
-
-exports.default = namespaces;
-module.exports = exports.default;
-});
-
-/**
- * List of SVG attributes to update url() target in them
- */
-var attList = [
-  'clipPath',
-  'colorProfile',
-  'src',
-  'cursor',
-  'fill',
-  'filter',
-  'marker',
-  'markerStart',
-  'markerMid',
-  'markerEnd',
-  'mask',
-  'stroke',
-  'style'
-];
-
-var attSelector = attList.map(function (attr) { return ("[" + attr + "]"); }).join(',');
-
-/**
- * Update URLs in svg image (like `fill="url(...)"`) and update referencing elements
- * @param {Element} svg
- * @param {NodeList} references
- * @param {string|RegExp} startsWith
- * @param {string} replaceWith
- * @return {void}
- *
- * @example
- * const sprite = document.querySelector('svg.sprite');
- * const usages = document.querySelectorAll('use');
- * updateUrls(sprite, usages, '#', 'prefix#');
- */
 
 var index = createCommonjsModule(function (module, exports) {
 (function (root, factory) {
@@ -9779,6 +9665,33 @@ return deepmerge
 }));
 });
 
+var namespaces_1 = createCommonjsModule(function (module, exports) {
+var namespaces = {
+  svg: {
+    name: 'xmlns',
+    uri: 'http://www.w3.org/2000/svg'
+  },
+  xlink: {
+    name: 'xmlns:xlink',
+    uri: 'http://www.w3.org/1999/xlink'
+  }
+};
+
+exports.default = namespaces;
+module.exports = exports.default;
+});
+
+/**
+ * @param {Object} attrs
+ * @return {string}
+ */
+var objectToAttrsString = function (attrs) {
+  return Object.keys(attrs).map(function (attr) {
+    var value = attrs[attr].toString().replace(/"/g, '&quot;');
+    return (attr + "=\"" + value + "\"");
+  }).join(' ');
+};
+
 var svg = namespaces_1.svg;
 var xlink = namespaces_1.xlink;
 
@@ -9814,6 +9727,18 @@ var BrowserSpriteSymbol = (function (SpriteSymbol$$1) {
     return !!this.node;
   };
 
+  /**
+   * @param {Element} node
+   * @return {BrowserSpriteSymbol}
+   */
+  BrowserSpriteSymbol.createFromExistingNode = function createFromExistingNode (node) {
+    return new BrowserSpriteSymbol({
+      id: node.getAttribute('id'),
+      viewBox: node.getAttribute('viewBox'),
+      content: node.outerHTML
+    });
+  };
+
   BrowserSpriteSymbol.prototype.destroy = function destroy () {
     if (this.isMounted) {
       this.unmount();
@@ -9835,11 +9760,6 @@ var BrowserSpriteSymbol = (function (SpriteSymbol$$1) {
     this.node = node;
 
     mountTarget.appendChild(node);
-
-    // TODO cache moved nodes somewhere and cleanup on destroy()
-    if (browser.isFirefox) {
-      moveGradientsOutsideSymbol(mountTarget);
-    }
 
     return node;
   };
@@ -10194,6 +10114,125 @@ Sprite.prototype.destroy = function destroy () {
   this.symbols.forEach(function (s) { return s.destroy(); });
 };
 
+var SpriteSymbol = function SpriteSymbol(ref) {
+  var id = ref.id;
+  var viewBox = ref.viewBox;
+  var content = ref.content;
+
+  this.id = id;
+  this.viewBox = viewBox;
+  this.content = content;
+};
+
+/**
+ * @return {string}
+ */
+SpriteSymbol.prototype.stringify = function stringify () {
+  return this.content;
+};
+
+/**
+ * @return {string}
+ */
+SpriteSymbol.prototype.toString = function toString () {
+  return this.stringify();
+};
+
+SpriteSymbol.prototype.destroy = function destroy () {
+    var this$1 = this;
+
+  ['id', 'viewBox', 'content'].forEach(function (prop) { return delete this$1[prop]; });
+};
+
+/**
+ * @param {string} content
+ * @return {Element}
+ */
+var parse = function (content) {
+  var hasImportNode = !!document.importNode;
+  var doc = new DOMParser().parseFromString(content, 'image/svg+xml').documentElement;
+
+  /**
+   * Fix for browser which are throwing WrongDocumentError
+   * if you insert an element which is not part of the document
+   * @see http://stackoverflow.com/a/7986519/4624403
+   */
+  if (hasImportNode) {
+    return document.importNode(doc, true);
+  }
+
+  return doc;
+};
+
+var BrowserSpriteSymbol = (function (SpriteSymbol$$1) {
+  function BrowserSpriteSymbol () {
+    SpriteSymbol$$1.apply(this, arguments);
+  }
+
+  if ( SpriteSymbol$$1 ) BrowserSpriteSymbol.__proto__ = SpriteSymbol$$1;
+  BrowserSpriteSymbol.prototype = Object.create( SpriteSymbol$$1 && SpriteSymbol$$1.prototype );
+  BrowserSpriteSymbol.prototype.constructor = BrowserSpriteSymbol;
+
+  var prototypeAccessors = { isMounted: {} };
+
+  prototypeAccessors.isMounted.get = function () {
+    return !!this.node;
+  };
+
+  /**
+   * @param {Element} node
+   * @return {BrowserSpriteSymbol}
+   */
+  BrowserSpriteSymbol.createFromExistingNode = function createFromExistingNode (node) {
+    return new BrowserSpriteSymbol({
+      id: node.getAttribute('id'),
+      viewBox: node.getAttribute('viewBox'),
+      content: node.outerHTML
+    });
+  };
+
+  BrowserSpriteSymbol.prototype.destroy = function destroy () {
+    if (this.isMounted) {
+      this.unmount();
+    }
+    SpriteSymbol$$1.prototype.destroy.call(this);
+  };
+
+  /**
+   * @param {Element|string} target
+   * @return {Element}
+   */
+  BrowserSpriteSymbol.prototype.mount = function mount (target) {
+    if (this.isMounted) {
+      return this.node;
+    }
+
+    var mountTarget = typeof target === 'string' ? document.querySelector(target) : target;
+    var node = this.render();
+    this.node = node;
+
+    mountTarget.appendChild(node);
+
+    return node;
+  };
+
+  /**
+   * @return {Element}
+   */
+  BrowserSpriteSymbol.prototype.render = function render () {
+    var content = this.stringify();
+    return parse(wrapInSvgString(content)).childNodes[0];
+  };
+
+  BrowserSpriteSymbol.prototype.unmount = function unmount () {
+    this.node.parentNode.removeChild(this.node);
+  };
+
+  Object.defineProperties( BrowserSpriteSymbol.prototype, prototypeAccessors );
+
+  return BrowserSpriteSymbol;
+}(SpriteSymbol));
+
 var defaultConfig$1 = {
   /**
    * Should following options be automatically configured:
@@ -10255,6 +10294,10 @@ var defaultConfig$1 = {
   moveGradientsOutsideSymbol: false
 };
 
+/**
+ * @param {*} arrayLike
+ * @return {Array}
+ */
 var arrayFrom = function (arrayLike) {
   return Array.prototype.slice.call(arrayLike, 0);
 };
@@ -10264,7 +10307,9 @@ var ua = navigator.userAgent;
 var browser = {
   isChrome: /chrome/i.test(ua),
   isFirefox: /firefox/i.test(ua),
-  isIE: /msie/i.test(ua),
+
+  // https://msdn.microsoft.com/en-us/library/ms537503(v=vs.85).aspx
+  isIE: /msie/i.test(ua) || /trident/i.test(ua),
   isEdge: /edge/i.test(ua)
 };
 
@@ -10276,6 +10321,27 @@ var dispatchEvent = function (name, data) {
   var event = document.createEvent('CustomEvent');
   event.initCustomEvent(name, false, false, data);
   window.dispatchEvent(event);
+};
+
+/**
+ * IE doesn't evaluate <style> tags in SVGs that are dynamically added to the page.
+ * This trick will trigger IE to read and use any existing SVG <style> tags.
+ * @see https://github.com/iconic/SVGInjector/issues/23
+ * @see https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/10898469/
+ *
+ * @param {Element} node DOM Element to search <style> tags in
+ * @return {Array<HTMLStyleElement>}
+ */
+var evalStylesIEWorkaround = function (node) {
+  var updatedNodes = [];
+
+  arrayFrom(node.querySelectorAll('style'))
+    .forEach(function (style) {
+      style.textContent += '';
+      updatedNodes.push(style);
+    });
+
+  return updatedNodes;
 };
 
 /**
@@ -10314,26 +10380,6 @@ var moveGradientsOutsideSymbol = function (svg, selector) {
     });
   });
   return svg;
-};
-
-/**
- * @param {string} content
- * @return {Element}
- */
-var parse = function (content) {
-  var hasImportNode = !!document.importNode;
-  var doc = new DOMParser().parseFromString(content, 'image/svg+xml').documentElement;
-
-  /**
-   * Fix for browser which are throwing WrongDocumentError
-   * if you insert an element which is not part of the document
-   * @see http://stackoverflow.com/a/7986519/4624403
-   */
-  if (hasImportNode) {
-    return document.importNode(doc, true);
-  }
-
-  return doc;
 };
 
 /**
@@ -10447,7 +10493,8 @@ var updateUrls = function (svg, references, startsWith, replaceWith) {
  * @private
  */
 var Events = {
-  MOUNT: 'mount'
+  MOUNT: 'mount',
+  SYMBOL_MOUNT: 'symbol_mount'
 };
 
 var BrowserSprite = (function (Sprite$$1) {
@@ -10486,11 +10533,23 @@ var BrowserSprite = (function (Sprite$$1) {
       locationChangeAngularEmitter(config.locationChangeEvent);
     }
 
-    if (config.moveGradientsOutsideSymbol) {
-      emitter.on(Events.MOUNT, function (node) {
-        moveGradientsOutsideSymbol(node);
-      });
-    }
+    // After sprite mounted
+    emitter.on(Events.MOUNT, function (spriteNode) {
+      if (config.moveGradientsOutsideSymbol) {
+        moveGradientsOutsideSymbol(spriteNode);
+      }
+    });
+
+    // After symbol mounted into sprite
+    emitter.on(Events.SYMBOL_MOUNT, function (symbolNode) {
+      if (config.moveGradientsOutsideSymbol) {
+        moveGradientsOutsideSymbol(symbolNode.parentNode);
+      }
+
+      if (browser.isIE) {
+        evalStylesIEWorkaround(symbolNode);
+      }
+    });
   }
 
   if ( Sprite$$1 ) BrowserSprite.__proto__ = Sprite$$1;
@@ -10548,17 +10607,47 @@ var BrowserSprite = (function (Sprite$$1) {
   /**
    * Add new symbol. If symbol with the same id exists it will be replaced.
    * If sprite already mounted - `symbol.mount(sprite.node)` will be called.
+   * @fires Events#SYMBOL_MOUNT
    * @param {BrowserSpriteSymbol} symbol
    * @return {boolean} `true` - symbol was added, `false` - replaced
    */
   BrowserSprite.prototype.add = function add (symbol) {
+    var sprite = this;
     var isNewSymbol = Sprite$$1.prototype.add.call(this, symbol);
 
     if (this.isMounted && isNewSymbol) {
-      symbol.mount(this.node);
+      symbol.mount(sprite.node);
+      this._emitter.emit(Events.SYMBOL_MOUNT, symbol.node);
     }
 
     return isNewSymbol;
+  };
+
+  /**
+   * Attach to existing DOM node
+   * @param {string|Element} target
+   * @return {Element|null} attached DOM Element. null if node to attach not found.
+   */
+  BrowserSprite.prototype.attach = function attach (target) {
+    var sprite = this;
+
+    if (sprite.isMounted) {
+      return sprite.node;
+    }
+
+    /** @type Element */
+    var node = typeof target === 'string' ? document.querySelector(target) : target;
+
+    arrayFrom(node.querySelectorAll('symbol'))
+      .forEach(function (symbolNode) {
+        var symbol = BrowserSpriteSymbol.createFromExistingNode(symbolNode);
+        symbol.node = symbolNode;
+        sprite.add(symbol);
+      });
+
+    sprite.node = node;
+
+    return node;
   };
 
   BrowserSprite.prototype.destroy = function destroy () {
@@ -10578,29 +10667,31 @@ var BrowserSprite = (function (Sprite$$1) {
   };
 
   /**
-   * @param {Element|string} [target]
-   * @param {boolean} [prepend=false]
-   * @return {Element} rendered sprite node
    * @fires Events#MOUNT
+   * @param {string|Element} [target]
+   * @param {boolean} [prepend=false]
+   * @return {Element|null} rendered sprite node. null if mount node not found.
    */
   BrowserSprite.prototype.mount = function mount (target, prepend) {
+    if ( target === void 0 ) target = this.config.mountTo;
     if ( prepend === void 0 ) prepend = false;
 
-    if (this.isMounted) {
-      return this.node;
+    var sprite = this;
+
+    if (sprite.isMounted) {
+      return sprite.node;
     }
 
-    var mountTarget = target || this.config.mountTo;
-    var parent = typeof mountTarget === 'string' ? document.querySelector(mountTarget) : mountTarget;
-    var node = this.render();
-
-    if (prepend && parent.childNodes[0]) {
-      parent.insertBefore(node, parent.childNodes[0]);
-    } else {
-      parent.appendChild(node);
-    }
-
+    var mountNode = typeof target === 'string' ? document.querySelector(target) : target;
+    var node = sprite.render();
     this.node = node;
+
+    if (prepend && mountNode.childNodes[0]) {
+      mountNode.insertBefore(node, mountNode.childNodes[0]);
+    } else {
+      mountNode.appendChild(node);
+    }
+
     this._emitter.emit(Events.MOUNT, node);
 
     return node;
@@ -10679,23 +10770,21 @@ var ready$1 = createCommonjsModule(function (module) {
 });
 });
 
-var sprite = new BrowserSprite();
+var globaVarName = '__SVG_SPRITE__';
+var isSpriteExists = !!window[globaVarName];
+
+// eslint-disable-next-line import/no-mutable-exports
+var sprite;
+
+if (isSpriteExists) {
+  sprite = window[globaVarName];
+} else {
+  sprite = new BrowserSprite();
+  window[globaVarName] = sprite;
+}
 
 var loadSprite = function () {
-  var svg = sprite.mount(document.body, true);
-
-  // :WORKAROUND:
-  // IE doesn't evaluate <style> tags in SVGs that are dynamically added to the page.
-  // This trick will trigger IE to read and use any existing SVG <style> tags.
-  //
-  // Reference: https://github.com/iconic/SVGInjector/issues/23
-  var ua = window.navigator.userAgent || '';
-  if (ua.indexOf('Trident') > 0 || ua.indexOf('Edge/') > 0) {
-    var styles = svg.querySelectorAll('style');
-    for (var i = 0, l = styles.length; i < l; i += 1) {
-      styles[i].textContent += '';
-    }
-  }
+  sprite.mount(document.body, true);
 };
 
 if (document.body) {
@@ -10704,7 +10793,9 @@ if (document.body) {
   ready$1(loadSprite);
 }
 
-return sprite;
+var sprite$1 = sprite;
+
+return sprite$1;
 
 })));
 

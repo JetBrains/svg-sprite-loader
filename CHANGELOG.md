@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.1.7"></a>
+## [3.1.7](https://github.com/kisenka/svg-sprite-loader/compare/v3.1.6...v3.1.7) (2017-08-15)
+
+
+### Bug Fixes
+
+* **runtime:** store global sprite object in window which allows to mount symbols in one place betwee ([13e3d47](https://github.com/kisenka/svg-sprite-loader/commit/13e3d47))
+
+
+
 <a name="3.1.6"></a>
 ## [3.1.6](https://github.com/kisenka/webpack-svg-sprite-loader/compare/v3.1.5...v3.1.6) (2017-08-10)
 
