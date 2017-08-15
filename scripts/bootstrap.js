@@ -17,7 +17,8 @@ exec(`node ${projectDir}/node_modules/husky/bin/install`);
 envs.forEach((env) => {
   cd(env.path);
   exec('yarn');
-  echo(`${envToSelect.name} env installed`);
+  echo(`${env.name} env installed`);
 });
 
+cd(projectDir);
 exec(`node ${projectDir}/scripts/select-env ${envToSelect.name}`);
