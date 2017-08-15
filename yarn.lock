@@ -5642,9 +5642,9 @@ supports-color@^3.1.0, supports-color@^3.1.2, supports-color@^3.2.3:
   dependencies:
     has-flag "^1.0.0"
 
-svg-baker-runtime@^1.2.98:
-  version "1.2.98"
-  resolved "https://registry.yarnpkg.com/svg-baker-runtime/-/svg-baker-runtime-1.2.98.tgz#44304d92f6221310bc266ff6b17b73dec3c352a9"
+svg-baker-runtime@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/svg-baker-runtime/-/svg-baker-runtime-1.3.0.tgz#ca54a2d2969e6ee590a22dfd07ed52b7d5e6ca9f"
   dependencies:
     deepmerge "1.3.2"
     mitt "1.1.2"
@@ -5666,9 +5666,9 @@ svg-baker@^1.2.0:
     query-string "^4.3.2"
     traverse "^0.6.6"
 
-svg-baker@^1.2.10:
-  version "1.2.10"
-  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.10.tgz#486a44434539142cedc583222c8f2788fd84a0af"
+svg-baker@^1.2.12:
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.12.tgz#ee219b36c44feb46a32f47278d19417bb64a8f82"
   dependencies:
     bluebird "^3.5.0"
     clone "^2.1.1"
