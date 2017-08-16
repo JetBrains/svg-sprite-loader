@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.2.1"></a>
+## [3.2.1](https://github.com/kisenka/svg-sprite-loader/compare/v3.2.0...v3.2.1) (2017-08-16)
+
+
+### Bug Fixes
+
+* **runtime:** apply styles in dynamically appended symbols in Edge ([299bfe2](https://github.com/kisenka/svg-sprite-loader/commit/299bfe2))
+
+
+
 <a name="3.2.0"></a>
 # [3.2.0](https://github.com/kisenka/svg-sprite-loader/compare/v3.1.7...v3.2.0) (2017-08-16)
 

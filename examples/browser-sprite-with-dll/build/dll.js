@@ -1142,7 +1142,7 @@ var BrowserSprite = (function (Sprite$$1) {
         moveGradientsOutsideSymbol(symbolNode.parentNode);
       }
 
-      if (browser.isIE) {
+      if (browser.isIE || browser.isEdge) {
         evalStylesIEWorkaround(symbolNode);
       }
     });
