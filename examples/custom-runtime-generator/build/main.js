@@ -10629,6 +10629,8 @@ var BrowserSprite = (function (Sprite$$1) {
    * @return {Element|null} attached DOM Element. null if node to attach not found.
    */
   BrowserSprite.prototype.attach = function attach (target) {
+    var this$1 = this;
+
     var sprite = this;
 
     if (sprite.isMounted) {
@@ -10637,15 +10639,23 @@ var BrowserSprite = (function (Sprite$$1) {
 
     /** @type Element */
     var node = typeof target === 'string' ? document.querySelector(target) : target;
+    sprite.node = node;
 
+    // Already added symbols needs to be mounted
+    this.symbols.forEach(function (symbol) {
+      symbol.mount(sprite.node);
+      this$1._emitter.emit(Events.SYMBOL_MOUNT, symbol.node);
+    });
+
+    // Create symbols from existing DOM nodes, add and mount them
     arrayFrom(node.querySelectorAll('symbol'))
       .forEach(function (symbolNode) {
         var symbol = BrowserSpriteSymbol.createFromExistingNode(symbolNode);
-        symbol.node = symbolNode;
+        symbol.node = symbolNode; // hack to prevent symbol mounting to sprite when adding
         sprite.add(symbol);
       });
 
-    sprite.node = node;
+    this._emitter.emit(Events.MOUNT, node);
 
     return node;
   };
@@ -10770,21 +10780,33 @@ var ready$1 = createCommonjsModule(function (module) {
 });
 });
 
-var globaVarName = '__SVG_SPRITE__';
-var isSpriteExists = !!window[globaVarName];
+var spriteNodeId = '__SVG_SPRITE_NODE__';
+var spriteGlobalVarName = '__SVG_SPRITE__';
+var isSpriteExists = !!window[spriteGlobalVarName];
 
 // eslint-disable-next-line import/no-mutable-exports
 var sprite;
 
 if (isSpriteExists) {
-  sprite = window[globaVarName];
+  sprite = window[spriteGlobalVarName];
 } else {
-  sprite = new BrowserSprite();
-  window[globaVarName] = sprite;
+  sprite = new BrowserSprite({ attrs: { id: spriteNodeId } });
+  window[spriteGlobalVarName] = sprite;
 }
 
 var loadSprite = function () {
-  sprite.mount(document.body, true);
+  /**
+   * Check for page already contains sprite node
+   * If found - attach to and reuse it's content
+   * If not - render and mount the new sprite
+   */
+  var existing = document.getElementById(spriteNodeId);
+
+  if (existing) {
+    sprite.attach(existing);
+  } else {
+    sprite.mount(document.body, true);
+  }
 };
 
 if (document.body) {

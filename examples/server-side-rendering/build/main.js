@@ -305,7 +305,7 @@ Sprite.prototype.destroy = function destroy () {
   this.symbols.forEach(function (s) { return s.destroy(); });
 };
 
-var sprite = new Sprite();
+var sprite = new Sprite({ attrs: { id: '__SVG_SPRITE_NODE__' } });
 
 return sprite;
 

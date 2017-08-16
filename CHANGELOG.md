@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.2.0"></a>
+# [3.2.0](https://github.com/kisenka/svg-sprite-loader/compare/v3.1.7...v3.2.0) (2017-08-16)
+
+
+### Features
+
+* **runtime:** add ability to create sprite from existing DOM node ([4056d7b](https://github.com/kisenka/svg-sprite-loader/commit/4056d7b))
+
+
+
 <a name="3.1.7"></a>
 ## [3.1.7](https://github.com/kisenka/svg-sprite-loader/compare/v3.1.6...v3.1.7) (2017-08-15)
 
