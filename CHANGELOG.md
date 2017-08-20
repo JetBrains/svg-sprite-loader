@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.2.4"></a>
+## [3.2.4](https://github.com/kisenka/svg-sprite-loader/compare/v3.2.3...v3.2.4) (2017-08-20)
+
+
+### Bug Fixes
+
+* preserve \`fill\` and \`stroke\` attrs when transform svg to symbol ([d845aa3](https://github.com/kisenka/svg-sprite-loader/commit/d845aa3))
+
+
+
 <a name="3.2.3"></a>
 ## [3.2.3](https://github.com/kisenka/svg-sprite-loader/compare/v3.2.2...v3.2.3) (2017-08-18)
 
