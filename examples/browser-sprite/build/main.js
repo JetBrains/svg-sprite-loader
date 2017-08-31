@@ -994,7 +994,7 @@ var xLinkNS = namespaces_1.xlink.uri;
 var xLinkAttrName = 'xlink:href';
 
 // eslint-disable-next-line no-useless-escape
-var specialUrlCharsPattern = /[(){}|\\\^~\[\]`"<>]/g;
+var specialUrlCharsPattern = /[{}|\\\^\[\]`"<>]/g;
 
 function encoder(url) {
   return url.replace(specialUrlCharsPattern, function (match) {
