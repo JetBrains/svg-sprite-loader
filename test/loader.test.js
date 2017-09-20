@@ -389,5 +389,22 @@ describe('loader and plugin', () => {
     it('should emit only built chunks', () => {
       // TODO test with webpack-recompilation-emulator
     });
+
+    if (!webpackVersion.IS_1) {
+      it('should emit sprite svg when using resourceQuery', async () => {
+        const { assets } = await compile({
+          entry: './styles4.css',
+          module: rules(
+            Object.assign(svgRule({ extract: true }), {
+              resourceQuery: /sprite/
+            }),
+            cssRule()
+          ),
+          plugins: [new SpritePlugin()]
+        });
+
+        Object.keys(assets).should.be.lengthOf(2);
+      });
+    }
   });
 });
