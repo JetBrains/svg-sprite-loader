@@ -389,5 +389,27 @@ describe('loader and plugin', () => {
     it('should emit only built chunks', () => {
       // TODO test with webpack-recompilation-emulator
     });
+
+    if (!webpackVersion.IS_1) {
+      it('should allow to generate specify svg sprite with rule.oneOf config', async () => {
+        const { assets } = await compile({
+          entry: './styles.css',
+          module: rules(
+            {
+              test: /\.svg$/,
+              oneOf: [
+                { loader: loaderPath, options: { extract: true, spriteFilename: '[sha1:hash:base36:10].svg' } },
+                { loader: 'svgo-loader' }
+              ]
+            },
+            cssRule()
+          ),
+          plugins: [new SpritePlugin()]
+        });
+
+        Object.keys(assets).should.be.lengthOf(2);
+        assets.should.have.property('lvn29bpor3.svg');
+      });
+    }
   });
 });
