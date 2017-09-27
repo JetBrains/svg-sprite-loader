@@ -410,6 +410,21 @@ describe('loader and plugin', () => {
         Object.keys(assets).should.be.lengthOf(2);
         assets.should.have.property('lvn29bpor3.svg');
       });
+
+      it('should emit sprite svg when using resourceQuery', async () => {
+        const { assets } = await compile({
+          entry: './styles4.css',
+          module: rules(
+            Object.assign(svgRule({ extract: true }), {
+              resourceQuery: /sprite/
+            }),
+            cssRule()
+          ),
+          plugins: [new SpritePlugin()]
+        });
+
+        Object.keys(assets).should.be.lengthOf(2);
+      });
     }
   });
 });
