@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.2.6"></a>
+## [3.2.6](https://github.com/kisenka/svg-sprite-loader/compare/v3.2.5...v3.2.6) (2017-09-28)
+
+
+### Bug Fixes
+
+* **loader:** #187 support rule.oneOf config ([75df92e](https://github.com/kisenka/svg-sprite-loader/commit/75df92e))
+* **loader:** support resourceQuery in extract mode with webpack version above 1 ([6652d78](https://github.com/kisenka/svg-sprite-loader/commit/6652d78))
+
+
+
 <a name="3.2.5"></a>
 ## [3.2.5](https://github.com/kisenka/svg-sprite-loader/compare/v3.2.4...v3.2.5) (2017-08-31)
 
