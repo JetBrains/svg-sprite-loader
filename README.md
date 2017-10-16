@@ -23,6 +23,7 @@ Webpack loader for creating SVG sprites.
   - [Extract configuration](#extract-configuration)
     - [`extract`](#extract-default-false-autoconfigured)
     - [`spriteFilename`](#spritefilename-default-spritesvg)
+    - [plain sprite](#plain-sprite)
 - [Examples](#examples)
 - [Contributing guidelines](#contributing-guidelines)
 - [License](#license)
@@ -224,6 +225,19 @@ module: {
 
 All patterns from [loader-utils#interpolateName](https://github.com/webpack/loader-utils#interpolatename) are supported.
 It is also possible to generate sprite for each chunk by using `[chunkname]` pattern in spriteFilename option. This is experimental feature, use it with caution!
+
+<a id="plain-sprite"></a>
+### Plain sprite
+
+You can render plain sprite without styles and usages in extract mode. Pass `plainSprite: true` option to plugin constructor:
+
+```js
+{
+  plugins: [
+    new SpriteLoaderPlugin({ plainSprite: true })
+  ]
+}
+```
 
 ## Examples
 
