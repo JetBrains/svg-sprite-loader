@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.3.0"></a>
+# [3.3.0](https://github.com/kisenka/svg-sprite-loader/compare/v3.2.6...v3.3.0) (2017-10-16)
+
+
+### Features
+
+* **plugin:** allow to render external sprite without styles and usages ([fcf3939](https://github.com/kisenka/svg-sprite-loader/commit/fcf3939))
+
+
+
 <a name="3.2.6"></a>
 ## [3.2.6](https://github.com/kisenka/svg-sprite-loader/compare/v3.2.5...v3.2.6) (2017-09-28)
 
