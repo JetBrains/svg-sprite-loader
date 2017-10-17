@@ -1,48 +1,34 @@
 const path = require('path');
-const merge = require('deepmerge');
+const merge = require('webpack-merge');
 const baseConfig = require('../base-webpack.config');
 
-const babelOptions = {
-  presets: ['react', 'es2015'],
-  plugins: ['transform-object-rest-spread']
-};
+module.exports = (env = {}) => {
+  return merge(baseConfig(env), {
+    entry: './main.jsx',
 
-const config = merge(baseConfig, {
-  context: __dirname,
-
-  entry: './main.jsx',
-
-  output: {
-    path: path.resolve(__dirname, 'build')
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.jsx$/,
-        loader: 'babel-loader',
-        options: babelOptions
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: babelOptions
-          },
-          {
-            loader: 'svg-sprite-loader',
-            options: {
-              runtimeGenerator: require.resolve('./svg-to-icon-component-runtime-generator'),
-              runtimeOptions: {
-                iconModule: './icon.jsx' // Relative to current build context folder
+    module: {
+      rules: [
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                babelrc: path.resolve(__dirname, '../.babelrc')
+              }
+            },
+            {
+              loader: 'svg-sprite-loader',
+              options: {
+                runtimeGenerator: require.resolve('./svg-to-icon-component-runtime-generator'),
+                runtimeOptions: {
+                  iconModule: './icon.jsx' // Relative to current build context folder
+                }
               }
             }
-          }
-        ],
-      }
-    ]
-  }
-});
-
-module.exports = config;
+          ]
+        }
+      ]
+    }
+  });
+};

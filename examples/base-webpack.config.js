@@ -1,22 +1,45 @@
 const path = require('path');
-const packageName = require('../package.json').name;
+const spriteLoaderPackageName = require('../package.json').name;
 
-const config = {
-  output: {
-    filename: '[name].js'
-  },
+const spriteLoaderPackageRoot = path.resolve(__dirname, '..');
+const babelRcPath = path.resolve(__dirname, '.babelrc');
 
-  resolve: {
-    alias: {
-      [packageName]: path.resolve(__dirname, '..')
+module.exports = (env = {}) => {
+  // folder with target webpack.config.js file
+  const workingDir = env.cwd || process.cwd();
+
+  return {
+    context: workingDir,
+
+    entry: './main',
+
+    output: {
+      filename: '[name].js',
+      path: path.resolve(workingDir, 'build')
+    },
+
+    resolve: {
+      alias: {
+        [spriteLoaderPackageName]: spriteLoaderPackageRoot
+      }
+    },
+
+    resolveLoader: {
+      alias: {
+        [spriteLoaderPackageName]: spriteLoaderPackageRoot
+      }
+    },
+
+    module: {
+      rules: [
+        {
+          test: /\.jsx$/,
+          loader: 'babel-loader',
+          options: {
+            babelrc: babelRcPath
+          }
+        }
+      ]
     }
-  },
-
-  resolveLoader: {
-    alias: {
-      [packageName]: path.resolve(__dirname, '..')
-    }
-  }
+  };
 };
-
-module.exports = config;

@@ -1,25 +1,18 @@
-const path = require('path');
-const merge = require('deepmerge');
+const merge = require('webpack-merge');
 const baseConfig = require('../base-webpack.config');
 
-module.exports = merge(baseConfig, {
-  context: __dirname,
-
-  entry: './main',
-
-  output: {
-    path: path.resolve(__dirname, 'build')
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.svg$/,
-        use: [
-          'svg-sprite-loader',
-          'svgo-loader'
-        ]
-      }
-    ]
-  }
-});
+module.exports = (env = {}) => {
+  return merge(baseConfig(env), {
+    module: {
+      rules: [
+        {
+          test: /\.svg$/,
+          use: [
+            'svg-sprite-loader',
+            'svgo-loader'
+          ]
+        }
+      ]
+    }
+  });
+};

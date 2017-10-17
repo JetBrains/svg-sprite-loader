@@ -1,32 +1,35 @@
 const path = require('path');
 const webpack = require('webpack');
-const merge = require('deepmerge');
+const merge = require('webpack-merge');
 const baseConfig = require('../base-webpack.config');
+const dllManifest = require('./build/dll-manifest.json');
 
-module.exports = merge(baseConfig, {
-  context: __dirname,
+module.exports = (env = {}) => {
+  return merge(baseConfig(env), {
+    context: __dirname,
 
-  entry: './main',
+    entry: './main',
 
-  output: {
-    path: path.resolve(__dirname, 'build')
-  },
+    output: {
+      path: path.resolve(__dirname, 'build')
+    },
 
-  module: {
-    rules: [
-      {
-        test: /\.svg$/,
-        use: [
-          'svg-sprite-loader',
-          'svgo-loader'
-        ]
-      }
+    module: {
+      rules: [
+        {
+          test: /\.svg$/,
+          use: [
+            'svg-sprite-loader',
+            'svgo-loader'
+          ]
+        }
+      ]
+    },
+
+    plugins: [
+      new webpack.DllReferencePlugin({
+        manifest: dllManifest
+      })
     ]
-  },
-
-  plugins: [
-    new webpack.DllReferencePlugin({
-      manifest: require('./build/dll-manifest.json')
-    })
-  ]
-});
+  });
+};

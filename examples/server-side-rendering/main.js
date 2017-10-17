@@ -1,7 +1,7 @@
-import symbol from '../assets/twitter.svg';
-
 // Import sprite instance which already contains twitter logo required above
 import sprite from 'svg-sprite-loader/runtime/sprite.build';
+
+import symbol from '../assets/twitter.svg';
 
 // Render sprite
 const spriteContent = sprite.stringify();

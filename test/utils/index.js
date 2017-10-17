@@ -1,4 +1,5 @@
 const merge = require('deepmerge');
+// eslint-disable-next-line import/no-unresolved
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { isWebpack1 } = require('../../lib/utils');
 const { loaderPath } = require('../_config');
