@@ -47,10 +47,6 @@ yarn add svg-sprite-loader -D
 
 ## Configuration
 
-<details>
-
-<summary>Example config</summary>
-
 ```js
 // webpack 1
 {
@@ -69,14 +65,14 @@ yarn add svg-sprite-loader -D
   ]
 }
 
-// webpack 2
+// webpack >= 2
 {
   test: /\.svg$/,
   loader: 'svg-sprite-loader',
   options: { ... }
 }
 
-// webpack 2 multiple loaders
+// webpack >= 2 multiple loaders
 {
   test: /\.svg$/,
   use: [
@@ -86,7 +82,6 @@ yarn add svg-sprite-loader -D
   ]
 }
 ```
-</details>
 
 
 ### `symbolId` (default `[name]`)
