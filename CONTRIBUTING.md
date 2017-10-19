@@ -9,6 +9,7 @@ Table of contents
 - [Code contribution](#code-contribution)
   - [Setup](#setup)
   - [Develop](#develop)
+- [Releasing](#releasing)
 
 ## Code of conduct
 
@@ -118,3 +119,12 @@ Please follow these steps to contribute effectively.
    # Delete the local branch
    git branch -D my-fix
    ```
+
+<a name="releasing"></a>
+## Releasing
+
+* Commits of type `fix` will trigger bugfix releases, e.g. `0.0.1`.
+* Commits of type `feat` will trigger feature releases, e.g. `0.1.0`.
+* Commits with `BREAKING CHANGE` in body or footer will trigger breaking releases, e.g. `1.0.0`.
+
+All other commit types will trigger no new release.
