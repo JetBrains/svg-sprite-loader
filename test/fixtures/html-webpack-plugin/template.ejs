@@ -5,12 +5,6 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-<% if (htmlWebpackPlugin.files.sprites) { %>
-  <% for (var spriteFileName in htmlWebpackPlugin.files.sprites) { %>
-    <%= htmlWebpackPlugin.files.sprites[spriteFileName] %>
-  <% } %>
-<% } %>
-
 <img src="../img/image.svg" alt="">
 </body>
 </html>
