@@ -258,7 +258,7 @@ describe('loader and plugin', () => {
           module: rules(
             svgRule({ extract: true }),
             rule({
-              test: /\.html$/,
+              test: /template\.ejs$/,
               loader: 'html-loader'
             })
           ),
@@ -266,7 +266,7 @@ describe('loader and plugin', () => {
             new SpritePlugin(),
             new HtmlPlugin({
               filename: 'index.html',
-              template: path.resolve(fixturesPath, 'html-webpack-plugin/template.html')
+              template: path.resolve(fixturesPath, 'html-webpack-plugin/template.ejs')
             })
           ]
         });
