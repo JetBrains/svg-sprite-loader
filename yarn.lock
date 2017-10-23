@@ -6096,9 +6096,9 @@ svg-baker@^1.2.0:
     query-string "^4.3.2"
     traverse "^0.6.6"
 
-svg-baker@^1.2.13:
-  version "1.2.14"
-  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.14.tgz#3a57022cc65dbe915c49bb3394e50b5dda8a821c"
+svg-baker@^1.2.16:
+  version "1.2.16"
+  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.2.16.tgz#675853ac37da6bf02bee4a643ec1c444489b5e36"
   dependencies:
     bluebird "^3.5.0"
     clone "^2.1.1"
