@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.4.1"></a>
+## [3.4.1](https://github.com/kisenka/svg-sprite-loader/compare/v3.4.0...v3.4.1) (2017-10-23)
+
+
+### Bug Fixes
+
+* **plugin:** make sprite file hash more stable ([7e9c53e](https://github.com/kisenka/svg-sprite-loader/commit/7e9c53e))
+
+
+
 <a name="3.4.0"></a>
 # [3.4.0](https://github.com/kisenka/svg-sprite-loader/compare/v3.3.1...v3.4.0) (2017-10-19)
 
