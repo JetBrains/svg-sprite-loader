@@ -146,6 +146,31 @@ describe('loader and plugin', () => {
 `);
       });
 
+      it('should properly extract sprite file by function spriteFilename `svgPath -> spritePath`', async () => {
+        const spriteFilename = svgPath => `sprite${svgPath.substr(-4)}`;
+        const universalResult = spriteFilename('path/to/some/icon.svg');
+        const extractor = extractPlugin('[name].css');
+        const { assets } = await compile({
+          entry: './styles3.css',
+          module: rules(
+            svgRule({ spriteFilename }),
+            extractCSSRule(extractor)
+          ),
+          plugins: [new SpritePlugin(), extractor]
+        });
+
+        const cssSource = assets['main.css'].source();
+
+        Object.keys(assets).should.be.lengthOf(3);
+        assets.should.have.property(universalResult);
+
+        cssSource.should.be.equal(`.a {background-image: url(${universalResult}#image-usage);}
+.a2 {background-image: url(${universalResult}#image-usage);}
+.b {background-image: url(${universalResult}#image2-usage);}
+.b2 {background-image: url(${universalResult}#image2-usage);}
+`);
+      });
+
       it('should work properly with `allChunks: true` config option', async () => {
         const spriteFilename = 'qwe.svg';
         const extractor = extractPlugin('[name].css', { allChunks: true });
