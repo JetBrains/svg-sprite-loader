@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.5.1"></a>
+## [3.5.1](https://github.com/kisenka/svg-sprite-loader/compare/v3.5.0...v3.5.1) (2017-12-08)
+
+
+### Bug Fixes
+
+* **package:** drop postinstall script ([8a46c78](https://github.com/kisenka/svg-sprite-loader/commit/8a46c78))
+
+
+
 <a name="3.5.0"></a>
 # [3.5.0](https://github.com/kisenka/svg-sprite-loader/compare/v3.4.1...v3.5.0) (2017-12-08)
 
