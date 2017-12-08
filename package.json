@@ -95,7 +95,6 @@
     "commitmsg": "validate-commit-msg",
     "env": "node scripts/select-env",
     "lint": "eslint --quiet lib runtime scripts test",
-    "postinstall": "yarn env webpack-3",
     "precommit": "yarn lint",
     "pretest": "yarn build:runtime",
     "prerelease": "yarn build:runtime && yarn lint && yarn test:all",
