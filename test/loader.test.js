@@ -117,6 +117,35 @@ describe('loader and plugin', () => {
 `);
       });
 
+      it('should properly extract sprite file and refer to it in `plainSprite` mode', async () => {
+        const spriteFilename = defaultSpriteFilename;
+        const extractor = extractPlugin('[name].css');
+        const { assets } = await compile({
+          entry: './styles3.css',
+          module: rules(
+            svgRule({ spriteFilename }),
+            extractCSSRule(extractor)
+          ),
+          plugins: [
+            new SpritePlugin({
+              plainSprite: true
+            }),
+            extractor
+          ]
+        });
+
+        const cssSource = assets['main.css'].source();
+
+        Object.keys(assets).should.be.lengthOf(3);
+        assets.should.have.property(spriteFilename);
+
+        cssSource.should.be.equal(`.a {background-image: url(${spriteFilename}#image);}
+.a2 {background-image: url(${spriteFilename}#image);}
+.b {background-image: url(${spriteFilename}#image2);}
+.b2 {background-image: url(${spriteFilename}#image2);}
+`);
+      });
+
       it('should properly extract sprite file by function spriteFilename `svgPath -> spritePath`', async () => {
         const spriteFilename = svgPath => `sprite${svgPath.substr(-4)}`;
         const universalResult = spriteFilename('path/to/some/icon.svg');
