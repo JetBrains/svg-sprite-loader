@@ -83,7 +83,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* unused harmony default export */ var _unused_webpack_default_export = ({
       id: "twitter-usage",
       viewBox: "0 0 273.4 222.2",
-      url: __webpack_require__.p + "sprite.svg#twitter-usage",
+      url: __webpack_require__.p + "sprite.svg#twitter",
       toString: function () {
         return this.url;
       }
@@ -97,7 +97,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* unused harmony default export */ var _unused_webpack_default_export = ({
       id: "facebook-usage",
       viewBox: "0 0 1000 1000",
-      url: __webpack_require__.p + "sprite.svg#facebook-usage",
+      url: __webpack_require__.p + "sprite.svg#facebook",
       toString: function () {
         return this.url;
       }
