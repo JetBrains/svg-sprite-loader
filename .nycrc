@@ -2,7 +2,7 @@
   "check-coverage": false,
   "per-file": true,
   "statements": 94,
-  "branches": 84,
+  "branches": 83,
   "functions": 90,
   "lines": 90,
   "reporter": [
