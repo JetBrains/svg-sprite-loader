@@ -37,20 +37,6 @@ describe('loader and plugin', () => {
         errors.should.be.lengthOf(1);
         errors[0].error.should.be.instanceOf(Exceptions.InvalidRuntimeException);
       });
-
-      it('should warn if several rules applied to module without issuer applied', async () => {
-        const { warnings } = await compileAndNotReject({
-          entry: './entry',
-          module: rules(
-            svgRule(),
-            rule({ test: /\.svg$/, loader: loaderPath })
-          )
-        });
-
-        // TODO loader applies 2 times so warning also will me emitted 2 times
-        warnings.should.be.lengthOf(2);
-        warnings[0].warning.should.be.instanceOf(Exceptions.SeveralRulesAppliedException);
-      });
     });
 
     it('should allow to use custom runtime generator', async () => {
@@ -64,21 +50,6 @@ describe('loader and plugin', () => {
       });
 
       assets['main.js'].source().should.contain('olala');
-    });
-
-    it('should filter rules against issuer', async () => {
-      const { warnings } = await compileAndNotReject({
-        entry: './entry',
-        module: rules(
-          svgRule(),
-          rule({ test: /\.svg$/, loader: loaderPath, issuer: /\.css$/ })
-        )
-      });
-
-      warnings.should.be.lengthOf(isWebpack1 ? 2 : 0);
-      if (isWebpack1) {
-        warnings[0].warning.should.be.instanceOf(Exceptions.SeveralRulesAppliedException);
-      }
     });
   });
 
