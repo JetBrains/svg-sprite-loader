@@ -24,6 +24,7 @@ Webpack loader for creating SVG sprites.
     - [`extract`](#extract-default-false-autoconfigured)
     - [`spriteFilename`](#spritefilename-default-spritesvg)
     - [plain sprite](#plain-sprite)
+    - [sprite attributes](#sprite-attributes)
 - [Examples](#examples)
 - [Contributing guidelines](#contributing-guidelines)
 - [License](#license)
@@ -207,12 +208,31 @@ It is also possible to generate sprite for each chunk by using `[chunkname]` pat
 <a id="plain-sprite"></a>
 ### Plain sprite
 
-You can render plain sprite without styles and usages in extract mode. Pass `plainSprite: true` option to plugin constructor:
+You can render plain sprite in extract mode without styles, usages and hidden by default (`syle="position: absolute; width: 0; height: 0"`). 
+Pass `plainSprite: true` option to plugin constructor:
 
 ```js
 {
   plugins: [
     new SpriteLoaderPlugin({ plainSprite: true })
+  ]
+}
+```
+
+<a id="sprite-attributes"></a>
+### Sprite attributes
+
+Sprite `<svg>` tag attributes can be specified via `spriteAttrs` plugin option:
+
+```js
+{
+  plugins: [
+    new SpriteLoaderPlugin({
+      plainSprite: true,
+      spriteAttrs: {
+        id: 'my-custom-sprite-id'
+      }
+    })
   ]
 }
 ```
