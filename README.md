@@ -197,7 +197,7 @@ by providing custom function which recieves SVG file absolute path, e.g.:
   loader: 'svg-sprite-loader', 
   options: {
     extract: true,
-    spriteFileName: svgPath => `sprite${svgPath.substr(-4)}`
+    spriteFilename: svgPath => `sprite${svgPath.substr(-4)}`
   }
 }
 ```
