@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.6.1"></a>
+## [3.6.1](https://github.com/kisenka/svg-sprite-loader/compare/v3.6.0...v3.6.1) (2017-12-25)
+
+
+### Bug Fixes
+
+* **plugin:** don't hide sprite by default ([fd629bd](https://github.com/kisenka/svg-sprite-loader/commit/fd629bd))
+
+
+
 <a name="3.6.0"></a>
 # [3.6.0](https://github.com/kisenka/svg-sprite-loader/compare/v3.5.4...v3.6.0) (2017-12-22)
 
