@@ -208,8 +208,7 @@ It is also possible to generate sprite for each chunk by using `[chunkname]` pat
 <a id="plain-sprite"></a>
 ### Plain sprite
 
-You can render plain sprite in extract mode without styles, usages and hidden by default (`syle="position: absolute; width: 0; height: 0"`). 
-Pass `plainSprite: true` option to plugin constructor:
+You can render plain sprite in extract mode without styles and usages. Pass `plainSprite: true` option to plugin constructor:
 
 ```js
 {
