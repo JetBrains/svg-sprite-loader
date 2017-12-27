@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.6.2"></a>
+## [3.6.2](https://github.com/kisenka/svg-sprite-loader/compare/v3.6.1...v3.6.2) (2017-12-27)
+
+
+### Bug Fixes
+
+* **plugin:** prevent outer symbol ast modifications ([0c8c3d0](https://github.com/kisenka/svg-sprite-loader/commit/0c8c3d0))
+
+
+
 <a name="3.6.1"></a>
 ## [3.6.1](https://github.com/kisenka/svg-sprite-loader/compare/v3.6.0...v3.6.1) (2017-12-25)
 
