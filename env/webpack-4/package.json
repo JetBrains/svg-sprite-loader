@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "devDependencies": {
+    "css-loader": "0.28.10",
+    "extract-text-webpack-plugin": "next",
+    "file-loader": "1.1.10",
+    "html-webpack-plugin": "github:webpack-contrib/html-webpack-plugin",
+    "webpack": "4",
+    "webpack-toolkit": "1.0.0"
+  },
+  "packagesToLink": [
+    "css-loader",
+    "enhanced-resolve",
+    "extract-text-webpack-plugin",
+    "file-loader",
+    "html-webpack-plugin",
+    "tapable",
+    "webpack",
+    "webpack-toolkit"
+  ]
+}
