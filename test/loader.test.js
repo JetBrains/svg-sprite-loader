@@ -206,7 +206,7 @@ describe('loader and plugin', () => {
        * TODO test in webpack 1 with allChunks: true and [chunkname]
        * Currently [chunkname] will not work in webpack 1 with extract-text-webpack-plugin(allChunks: true)
        */
-      it.only('should emit sprite for each extracted chunk if [chunkname] provided in `spriteFilename`', async () => {
+      it('should emit sprite for each extracted chunk if [chunkname] provided in `spriteFilename`', async () => {
         const extractor = extractPlugin('[name].css', { allChunks: true });
         const { assets } = await compile({
           entry: {
