@@ -1,9 +1,9 @@
 const path = require('path');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const webpackVersion = require('../lib/utils/get-webpack-version');
+const webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 
 const { isWebpack1 } = require('../lib/utils');
-const webpackVersion = require('../lib/utils/get-webpack-version');
 const { loaderPath, fixturesPath } = require('./_config');
 const {
   rule,
@@ -72,7 +72,13 @@ describe('loader and plugin', () => {
       });
 
       it('should warn if there is remaining loaders in extract mode', async () => {
-        const { warnings } = await compile({
+        const v4Config = {};
+        if (webpackVersion.IS_4) {
+          v4Config.mode = 'development';
+          v4Config.devtool = false;
+        }
+
+        const { warnings } = await compile(Object.assign(v4Config, {
           entry: './entry',
           module: rules(
             multiRule({
@@ -85,7 +91,7 @@ describe('loader and plugin', () => {
             })
           ),
           plugins: [new SpritePlugin()]
-        });
+        }));
 
         warnings.should.be.lengthOf(1);
         warnings[0].warning.should.be.instanceOf(Exceptions.RemainingLoadersInExtractModeException);
@@ -229,32 +235,35 @@ describe('loader and plugin', () => {
         assets['entry2.css'].source().should.contain('entry2.svg');
       });
 
-      it('should work in combination with CommonsChunkPlugin', async () => {
-        const extractor = extractPlugin('[name].css');
-        const { assets } = await compile({
-          context: path.resolve(fixturesPath, 'extract-text-webpack-plugin/with-commons-chunk-plugin'),
-          entry: {
-            entry: './entry',
-            entry2: './entry2',
-            entry3: './entry3'
-          },
-          module: rules(
-            svgRule({ spriteFilename: '[chunkname].svg' }),
-            extractCSSRule(extractor)
-          ),
-          plugins: [
-            extractor,
-            new SpritePlugin(),
-            new CommonsChunkPlugin({
-              name: 'common'
-            })
-          ]
+      const version = parseInt(webpackVersion(), 10);
+
+      if (version < 4) {
+        it('should work in combination with CommonsChunkPlugin', async () => {
+          const extractor = extractPlugin('[name].css');
+          const { assets } = await compile({
+            context: path.resolve(fixturesPath, 'extract-text-webpack-plugin/with-commons-chunk-plugin'),
+            entry: {
+              entry: './entry',
+              entry2: './entry2',
+              entry3: './entry3'
+            },
+            module: rules(
+              svgRule({ spriteFilename: '[chunkname].svg' }),
+              extractCSSRule(extractor)
+            ),
+            plugins: [
+              extractor,
+              new SpritePlugin(),
+              new webpack.optimize.CommonsChunkPlugin({
+                name: 'common'
+              })
+            ]
+          });
+
+          assets['common.css'].source().should.contain('common.svg');
         });
-
-        assets['common.css'].source().should.contain('common.svg');
-      });
+      }
     });
-
     describe('html-loader interop', () => {
       it('should work in combination with html-loader and extract-text-webpack-plugin', async () => {
         const spriteFilename = defaultSpriteFilename;
@@ -399,14 +408,20 @@ describe('loader and plugin', () => {
       const publicPath = '/olala/';
       const spriteFilename = defaultSpriteFilename;
 
-      const { assets } = await compile({
+      const v4Config = {};
+      if (webpackVersion.IS_4) {
+        v4Config.mode = 'development';
+        v4Config.devtool = false;
+      }
+
+      const { assets } = await compile(Object.assign(v4Config, {
         entry: './entry',
         output: { publicPath },
         module: rules(
           svgRule({ extract: true, spriteFilename })
         ),
         plugins: [new SpritePlugin()]
-      });
+      }));
 
       assets['main.js'].source().should.contain(`__webpack_require__.p + "${spriteFilename}`);
     });
