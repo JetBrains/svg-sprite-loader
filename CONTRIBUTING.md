@@ -58,8 +58,7 @@ Please follow these steps to contribute effectively.
    It will:
    1. Install project dependencies.
    2. Install git hooks.
-   3. Install dependencies for testing in `webpack-1` and `webpack-2` environments.
-   4. Set `webpack-2` environment as current.
+   3. Install dependencies for testing.
    
    Don't use `yarn install` or `npm install`.
 
@@ -79,14 +78,11 @@ Please follow these steps to contribute effectively.
 
    Linter runs each time before the commit happens (via git hook).
 
-3. **Test your code** in each environment (webpack-1 and webpack-2):
+3. **Test your code**:
 
    ```bash
-   # It will run tests in webpack-1 & webpack-2 environments
-   yarn test:all
-
-   # Test only in webpack-2
-   yarn test:webpack-2
+   # It will run tests
+   yarn test
    ```
 
    Test coverage is collected in each test run. If it decrease too much, tests will fails.

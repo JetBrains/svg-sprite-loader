@@ -3,7 +3,7 @@
 
 Webpack loader for creating SVG sprites.
 
-> :tada: 2.0 is out, please read the [migration guide & overview](2.0.md).
+> :warning: For old v2.x versions see [the README in the v2 branch](https://github.com/kisenka/svg-sprite-loader/blob/v2/README.md).
 
 > :warning: For old v0.x versions see [the README in the v0 branch](https://github.com/kisenka/svg-sprite-loader/blob/v0/README.md).
 
@@ -49,31 +49,15 @@ yarn add svg-sprite-loader -D
 ## Configuration
 
 ```js
-// webpack 1
-{
-  test: /\.svg$/,
-  loader: 'svg-sprite-loader',
-  query: { ... }
-}
 
-// webpack 1 multiple loaders
-{
-  test: /\.svg$/,
-  loaders: [
-    `svg-sprite-loader?${JSON.stringify({ ... })}`,
-    'svg-fill-loader',
-    'svgo-loader'
-  ]
-}
-
-// webpack >= 2
+// webpack >= 4
 {
   test: /\.svg$/,
   loader: 'svg-sprite-loader',
   options: { ... }
 }
 
-// webpack >= 2 multiple loaders
+// webpack >= 4 multiple loaders
 {
   test: /\.svg$/,
   use: [

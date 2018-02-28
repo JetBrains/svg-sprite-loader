@@ -10,35 +10,35 @@ const { fixturesPath, rootDir } = require('../_config');
  * @return {Promise<InMemoryCompiler>}
  */
 function createCompiler(config = {}) {
-  const cfg = merge({
-    context: fixturesPath,
-    resolve: {
-      alias: {
-        [packageName]: rootDir
+  const cfg = merge(
+    {
+      context: fixturesPath,
+      resolve: {
+        alias: {
+          [packageName]: rootDir
+        }
       }
-    }
-  }, config);
+    },
+    config
+  );
 
   if (!cfg.files) {
     const inputFS = createCachedInputFileSystem();
-    return Promise.resolve(
-      new InMemoryCompiler(cfg, { inputFS })
-    );
+    return Promise.resolve(new InMemoryCompiler(cfg, { inputFS }));
   }
 
   const promisedInputFS = new MemoryFileSystem();
 
-  return Promise.map(Object.keys(cfg.files), (filename) => {
+  return Promise.map(Object.keys(cfg.files), filename => {
     const rawContent = cfg.files[filename];
-    const content = rawContent instanceof Buffer === false ? new Buffer(rawContent) : rawContent;
+    const content = rawContent instanceof Buffer === false ? Buffer.from(rawContent) : rawContent;
     const filepath = path.resolve(cfg.context, filename);
 
     return promisedInputFS.writep(filepath, content);
-  })
-    .then(() => {
-      delete cfg.files;
-      return new InMemoryCompiler(cfg, { inputFS: promisedInputFS.fs });
-    });
+  }).then(() => {
+    delete cfg.files;
+    return new InMemoryCompiler(cfg, { inputFS: promisedInputFS.fs });
+  });
 }
 
 module.exports = createCompiler;
