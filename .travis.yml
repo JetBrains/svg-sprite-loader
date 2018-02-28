@@ -15,8 +15,7 @@ env:
 script:
  - yarn bootstrap
  - yarn lint
- - yarn test:webpack-1
- - yarn test:webpack-2
+ - yarn test
 
 after_success:
  - yarn upload-coverage
