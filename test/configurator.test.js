@@ -31,7 +31,7 @@ describe('configurator', () => {
   });
 
   it('should properly autodetect runtime modules', () => {
-    const options = context.options;
+    const { options } = context;
     let config;
     let target;
 
@@ -49,14 +49,14 @@ describe('configurator', () => {
   });
 
   it('should properly autodetect extract mode', () => {
-    const issuer = context._module.issuer;
+    const { issuer } = context._module;
 
-    ['css', 'scss', 'sass', 'styl', 'less', 'html'].forEach((ext) => {
+    ['css', 'scss', 'sass', 'styl', 'less', 'html'].forEach(ext => {
       issuer.resource = `styles.${ext}`;
       strictEqual(configure({ context }).extract, true);
     });
 
-    ['js', 'jsx', 'ts'].forEach((ext) => {
+    ['js', 'jsx', 'ts'].forEach(ext => {
       issuer.resource = `index.${ext}`;
       strictEqual(configure({ context }).extract, false);
     });
