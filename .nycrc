@@ -1,10 +1,10 @@
 {
   "check-coverage": false,
   "per-file": true,
-  "statements": 94,
-  "branches": 83,
-  "functions": 90,
-  "lines": 90,
+  "statements": 85,
+  "branches": 75,
+  "functions": 85,
+  "lines": 85,
   "reporter": [
     "lcov",
     "text",
