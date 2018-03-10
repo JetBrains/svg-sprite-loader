@@ -31,16 +31,13 @@ describe('configurator', () => {
   });
 
   it('should properly autodetect runtime modules', () => {
-    const options = context.options;
     let config;
 
-    options.target = 'web';
-    config = configure({ context });
+    config = configure({ context, target: 'web' });
     strictEqual(config.spriteModule, loaderDefaults.spriteModule);
     strictEqual(config.symbolModule, loaderDefaults.symbolModule);
 
-    options.target = 'node';
-    config = configure({ context });
+    config = configure({ context, target: 'node' });
     strictEqual(config.spriteModule, 'svg-sprite-loader/runtime/sprite.build');
     strictEqual(config.symbolModule, 'svg-baker-runtime/symbol');
   });
