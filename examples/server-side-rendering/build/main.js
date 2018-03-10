@@ -83,7 +83,7 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var index$1 = createCommonjsModule(function (module, exports) {
+var deepmerge$1 = createCommonjsModule(function (module, exports) {
 (function (root, factory) {
     if (false) {
         undefined(factory);
@@ -210,7 +210,7 @@ defaultAttrs[xlink.name] = xlink.uri;
 var wrapInSvgString = function (content, attributes) {
   if ( content === void 0 ) content = '';
 
-  var attrs = index$1(defaultAttrs, attributes || {});
+  var attrs = deepmerge$1(defaultAttrs, attributes || {});
   var attrsRendered = objectToAttrsString(attrs);
   return ("<svg " + attrsRendered + ">" + content + "</svg>");
 };
@@ -226,7 +226,7 @@ var defaultConfig = {
 var obj;
 
 var Sprite = function Sprite(config) {
-  this.config = index$1(defaultConfig, config || {});
+  this.config = deepmerge$1(defaultConfig, config || {});
   this.symbols = [];
 };
 

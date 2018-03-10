@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.7.0"></a>
+# [3.7.0](https://github.com/kisenka/svg-sprite-loader/compare/v3.6.2...v3.7.0) (2018-03-10)
+
+
+### Features
+
+* add webpack 4 support ([20f59ca](https://github.com/kisenka/svg-sprite-loader/commit/20f59ca))
+
+
+
 <a name="3.6.2"></a>
 ## [3.6.2](https://github.com/kisenka/svg-sprite-loader/compare/v3.6.1...v3.6.2) (2017-12-27)
 

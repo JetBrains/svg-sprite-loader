@@ -430,7 +430,7 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var index = createCommonjsModule(function (module, exports) {
+var deepmerge = createCommonjsModule(function (module, exports) {
 (function (root, factory) {
     if (false) {
         undefined(factory);
@@ -615,7 +615,7 @@ defaultAttrs[xlink.name] = xlink.uri;
 var wrapInSvgString = function (content, attributes) {
   if ( content === void 0 ) content = '';
 
-  var attrs = index(defaultAttrs, attributes || {});
+  var attrs = deepmerge(defaultAttrs, attributes || {});
   var attrsRendered = objectToAttrsString(attrs);
   return ("<svg " + attrsRendered + ">" + content + "</svg>");
 };
@@ -631,7 +631,7 @@ var defaultConfig = {
 var obj;
 
 var Sprite = function Sprite(config) {
-  this.config = index(defaultConfig, config || {});
+  this.config = deepmerge(defaultConfig, config || {});
   this.symbols = [];
 };
 
@@ -1098,7 +1098,7 @@ var BrowserSprite = (function (Sprite$$1) {
     var this$1 = this;
     if ( cfg === void 0 ) cfg = {};
 
-    Sprite$$1.call(this, index(defaultConfig$1, cfg));
+    Sprite$$1.call(this, deepmerge(defaultConfig$1, cfg));
 
     var emitter = mitt();
     this._emitter = emitter;
