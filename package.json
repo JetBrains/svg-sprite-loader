@@ -58,6 +58,7 @@
     "glob": "7.1.1",
     "husky": "^0.13.3",
     "istanbul": "^0.4.5",
+    "memory-fs": "^0.4.1",
     "minimist": "^1.2.0",
     "mocha": "^3.2.0",
     "nyc": "^10.3.2",
@@ -74,7 +75,7 @@
     "svgo-loader": "^1.2.1",
     "validate-commit-msg": "^2.12.1",
     "wallaby-webpack": "0.0.38",
-    "webpack-toolkit": "0.11.0"
+    "webpack-toolkit": "^1.0.0"
   },
   "config": {
     "commitizen": {
