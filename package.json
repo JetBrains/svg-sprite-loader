@@ -94,6 +94,7 @@
     "lint": "eslint --quiet lib runtime scripts test",
     "precommit": "yarn lint",
     "pretest": "yarn build:runtime",
+    "prerelease": "yarn build:runtime && yarn lint && yarn test:all",
     "release": "yarn build:examples && git add examples && standard-version -a && git push --follow-tags origin master",
     "release:dry-run": "standard-version --no-verify",
     "test": "nyc --check-coverage mocha test/*.test.js",
