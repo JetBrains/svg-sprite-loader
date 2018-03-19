@@ -75,6 +75,7 @@
     "svgo-loader": "^1.2.1",
     "validate-commit-msg": "^2.12.1",
     "wallaby-webpack": "0.0.38",
+    "webpack-cli": "^2.0.12",
     "webpack-toolkit": "^1.0.0"
   },
   "config": {
