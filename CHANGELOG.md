@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.7.3"></a>
+## [3.7.3](https://github.com/kisenka/svg-sprite-loader/compare/v3.7.2...v3.7.3) (2018-03-19)
+
+
+### Bug Fixes
+
+* **utils:** fix linting errors ([f5239a0](https://github.com/kisenka/svg-sprite-loader/commit/f5239a0))
+* **utils:** prevent errors for modules without resources ([467daa6](https://github.com/kisenka/svg-sprite-loader/commit/467daa6))
+
+
+
 <a name="3.7.2"></a>
 ## [3.7.2](https://github.com/kisenka/svg-sprite-loader/compare/v3.7.1...v3.7.2) (2018-03-19)
 
