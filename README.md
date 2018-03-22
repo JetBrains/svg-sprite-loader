@@ -104,11 +104,13 @@ By default depends on used webpack version: `true` for webpack >= 2, `false` oth
 ## Runtime configuration
 
 When you require an image, loader transforms it to SVG `<symbol>`, adds it to the special sprite storage and returns class instance 
-that represents symbol. It contains `id`, `viewBox` and `content` fields and can later be used for referencing the sprite image, e.g: 
+that represents symbol. It contains `id`, `viewBox` and `content` (`id`, `viewBox` and `url` in extract mode) 
+fields and can later be used for referencing the sprite image, e.g: 
 
 ```js
 import twitterLogo from './logos/twitter.svg';
 // twitterLogo === SpriteSymbol<id: string, viewBox: string, content: string>
+// Extract mode: SpriteSymbol<id: string, viewBox: string, url: string, toString: Function>
 
 const rendered = `
 <svg viewBox="${twitterLogo.viewBox}">
