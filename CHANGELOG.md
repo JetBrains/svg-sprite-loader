@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.8.0"></a>
+# [3.8.0](https://github.com/kisenka/svg-sprite-loader/compare/v3.7.3...v3.8.0) (2018-05-26)
+
+
+### Bug Fixes
+
+* error link in pr template ([7b6cf30](https://github.com/kisenka/svg-sprite-loader/commit/7b6cf30))
+
+
+### Features
+
+* support `publicPath` option ([793a7bf](https://github.com/kisenka/svg-sprite-loader/commit/793a7bf))
+* support custom outputPath ([80f7520](https://github.com/kisenka/svg-sprite-loader/commit/80f7520))
+
+
+
 <a name="3.7.3"></a>
 ## [3.7.3](https://github.com/kisenka/svg-sprite-loader/compare/v3.7.2...v3.7.3) (2018-03-19)
 
