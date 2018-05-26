@@ -87,10 +87,16 @@ yarn add svg-sprite-loader -D
 ```
 
 <a id="symbol-id"></a>
-### `symbolId` (default `[name]`)
+### `symbolId` (`string | function(path, query)`, default `[name]`)
 
 How `<symbol>` `id` attribute should be named. All patterns from [loader-utils#interpolateName](https://github.com/webpack/loader-utils#interpolatename)
-are supported.
+are supported. Also can be a function which accepts 2 args - file path and query string and return symbol id:
+
+```js
+{
+  symbolId: (path) => path.basename(path)
+}
+```
 
 <a id="symbol-regexp"></a>
 ### `symbolRegExp` (default `''`)
