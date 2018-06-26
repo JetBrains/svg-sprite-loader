@@ -20,7 +20,10 @@ module.exports = merge(baseConfig, {
         use: [
           {
             loader: 'svg-sprite-loader',
-            options: { extract: true }
+            options: {
+              extract: true,
+              publicPath: '/static/'
+            }
           },
           'svgo-loader'
         ]

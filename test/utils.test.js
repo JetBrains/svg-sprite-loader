@@ -7,7 +7,6 @@ const {
   replaceInModuleSource,
   isModuleShouldBeExtracted,
   getMatchedRule,
-  getLoadersRules,
   isWebpack1
 } = require('../lib/utils');
 
@@ -73,38 +72,44 @@ describe('utils', () => {
   });
 
   describe('getMatchedRule', () => {
-    const rules = [
-      { test: /\.svg$/, loader: 'first-matched-loader' },
-      { test: /\.svg$/, loader: 'second-matched-loader' },
-      { test: /\.foo$/, loader: 'foo-loader' }
-    ];
-
-    it('should always return last matched rule', () => {
-      strictEqual(getMatchedRule('image.svg', [rules[0]]), rules[0]);
-      strictEqual(getMatchedRule('image.svg', rules), rules[1]);
-    });
-  });
-
-  describe('getLoadersRules', () => {
-    const rules = [{ test: /\.svg$/, loader: 'tralala-loader' }];
-    let compilerMock;
-
-    beforeEach(() => {
-      compilerMock = {
-        options: {
-          module: {}
+    const compilerMock = {
+      options: {
+        module: {
+          rules: [
+            { test: /\.svg$/, loader: 'svg-sprite-loader', options: { extra: true } },
+            { test: /\.svg$/, loader: 'another-loader' },
+            { test: /\.foo$/, loader: 'foo-loader' }
+          ]
         }
-      };
+      }
+    };
+
+    const compilerMock2 = {
+      options: {
+        module: {
+          rules: [
+            {
+              test: /\.svg$/,
+              use: [
+                { loader: 'svg-sprite-loader', options: { extra: true, a: 1 } },
+                'svgo-loader'
+              ]
+            },
+            { test: /\.svg$/, loader: 'another-loader' },
+            { test: /\.foo$/, loader: 'foo-loader' }
+          ]
+        }
+      }
+    };
+
+    it('should get the right options', () => {
+      const rule = getMatchedRule(compilerMock);
+      rule.should.be.deep.equal({ extra: true });
     });
 
-    it('should work with webpack 1', () => {
-      compilerMock.options.module.loaders = rules;
-      getLoadersRules(compilerMock).should.be.deep.equal(rules);
-    });
-
-    it('should work with webpack 2', () => {
-      compilerMock.options.module.rules = rules;
-      getLoadersRules(compilerMock).should.be.deep.equal(rules);
+    it('should get the right options when mutiple loader', () => {
+      const rule = getMatchedRule(compilerMock2);
+      rule.should.be.deep.equal({ extra: true, a: 1 });
     });
   });
 });
