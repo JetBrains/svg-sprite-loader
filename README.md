@@ -162,8 +162,8 @@ It's highly recommended to extend default sprite classes:
 ### `symbolModule` (autoconfigured)
 
 Same as `spriteModule`, but for sprite symbol. By default also depends on `target` webpack config option:
-- `svg-sprite-loader/runtime/browser-symbol.build` for 'web' target.
-- `svg-sprite-loader/runtime/symbol.build` for other targets.
+- `svg-baker-runtime/browser-symbol` for 'web' target.
+- `svg-baker-runtime/symbol` for other targets.
 
 <a id="runtime-generator"></a>
 ### `runtimeGenerator` ([default generator](https://github.com/kisenka/svg-sprite-loader/blob/master/lib/runtime-generator.js))
