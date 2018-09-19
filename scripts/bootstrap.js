@@ -9,7 +9,7 @@ const envFromCli = getCliArgs().env;
 const envs = getEnvsList(projectDir);
 const envToSelect = envFromCli
   ? envs.find(e => e.name === envFromCli)
-  : 'webpack-3';
+  : envs.find(e => e.name === 'webpack-3');
 
 exec('yarn');
 exec(`node ${projectDir}/node_modules/husky/bin/install`);
