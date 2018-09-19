@@ -13,9 +13,8 @@ env:
     - ISTANBUL_COVERAGE: yes
 
 script:
- - yarn bootstrap --env webpack-2
+ - yarn bootstrap --env webpack-4
  - yarn lint
- - yarn test:webpack-1
  - yarn test:webpack-2
  - yarn test:webpack-3
  - yarn test:webpack-4
