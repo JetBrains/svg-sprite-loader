@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/kisenka/svg-sprite-loader/compare/v4.0.0...v4.1.0) (2018-09-19)
+
+
+### Features
+
+* add ARIA attrs to whitelist symbol attributes ([4bbccab](https://github.com/kisenka/svg-sprite-loader/commit/4bbccab)), closes [#304](https://github.com/kisenka/svg-sprite-loader/issues/304)
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/kisenka/svg-sprite-loader/compare/v3.9.0...v4.0.0) (2018-09-19)
 
