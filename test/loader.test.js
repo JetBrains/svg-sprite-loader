@@ -397,18 +397,6 @@ describe('loader and plugin', () => {
       assets.should.have.property('entry2-sprite.svg');
     });
 
-    it('should allow to use [hash] substitution token in `spriteFilename`', async () => {
-      const { assets } = await compile({
-        entry: './entry',
-        module: rules(
-          svgRule({ extract: true, spriteFilename: '[sha1:hash:base36:10].svg' })
-        ),
-        plugins: [new SpritePlugin()]
-      });
-
-      assets.should.have.property('lvn29bpor3.svg');
-    });
-
     // Fails when webpack buildin runtime will change
     it('should replace with proper publicPath', async () => {
       const publicPath = '/olala/';
