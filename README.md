@@ -94,7 +94,7 @@ are supported. Also can be a function which accepts 2 args - file path and query
 
 ```js
 {
-  symbolId: (path) => path.basename(path)
+  symbolId: filePath => path.basename(filePath)
 }
 ```
 
