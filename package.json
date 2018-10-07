@@ -39,7 +39,8 @@
     "loader-utils": "^1.1.0",
     "svg-baker": "^1.3.0",
     "svg-baker-runtime": "^1.3.3",
-    "url-slug": "2.0.0"
+    "url-slug": "2.0.0",
+    "webpack": "^4.20.2"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -78,7 +79,6 @@
     "svgo-loader": "^1.2.1",
     "validate-commit-msg": "^2.12.1",
     "wallaby-webpack": "0.0.38",
-    "webpack": "^4.20.2",
     "webpack-cli": "^2.1.5",
     "webpack-toolkit": "^1.0.0"
   },
