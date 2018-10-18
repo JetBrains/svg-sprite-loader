@@ -63,7 +63,7 @@ yarn add svg-sprite-loader -D
   test: /\.svg$/,
   loaders: [
     `svg-sprite-loader?${JSON.stringify({ ... })}`,
-    'svg-fill-loader',
+    'svg-transform-loader',
     'svgo-loader'
   ]
 }
@@ -80,7 +80,7 @@ yarn add svg-sprite-loader -D
   test: /\.svg$/,
   use: [
     { loader: 'svg-sprite-loader', options: { ... } },
-    'svg-fill-loader',
+    'svg-transform-loader',
     'svgo-loader'
   ]
 }
