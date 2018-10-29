@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.1.3"></a>
+## [4.1.3](https://github.com/kisenka/svg-sprite-loader/compare/v4.1.2...v4.1.3) (2018-10-29)
+
+
+### Bug Fixes
+
+* update svg-baker to fix security vulnerability ([4408ccd](https://github.com/kisenka/svg-sprite-loader/commit/4408ccd))
+
+
+
 <a name="4.1.2"></a>
 ## [4.1.2](https://github.com/kisenka/svg-sprite-loader/compare/v4.1.1...v4.1.2) (2018-09-28)
 
