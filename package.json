@@ -37,8 +37,8 @@
     "escape-string-regexp": "1.0.5",
     "html-webpack-plugin": "^3.2.0",
     "loader-utils": "^1.1.0",
-    "svg-baker": "^1.3.0",
-    "svg-baker-runtime": "^1.3.3",
+    "svg-baker": "^1.4.0",
+    "svg-baker-runtime": "^1.4.0",
     "url-slug": "2.0.0"
   },
   "devDependencies": {
@@ -103,7 +103,7 @@
     "prerelease": "yarn build:runtime && yarn lint && yarn test:all",
     "release": "yarn build:examples && git add examples && standard-version -a && git push --follow-tags origin master",
     "release:dry-run": "standard-version --no-verify",
-    "test": "nyc --check-coverage mocha test/*.test.js",
+    "test": "mocha test/*.test.js",
     "test:all": "yarn test:webpack-2 && yarn test:webpack-3 && yarn test:webpack-4",
     "test:webpack-2": "yarn env webpack-2 && yarn test",
     "test:webpack-3": "yarn env webpack-3 && yarn test",
