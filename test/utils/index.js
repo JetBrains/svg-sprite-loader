@@ -58,6 +58,30 @@ function svgRule(opts) {
   });
 }
 
+function svgInsideOneOfRule(opts) {
+  const options = merge({}, opts || {});
+
+  return rule({
+    oneOf: [{
+      test: /\.svg$/,
+      loader: loaderPath,
+      options
+    }]
+  });
+}
+
+function svgInsideRulesRule(opts) {
+  const options = merge({}, opts || {});
+
+  return rule({
+    rules: [{
+      test: /\.svg$/,
+      loader: loaderPath,
+      options
+    }]
+  });
+}
+
 /**
  * @see for webpack 1 - https://github.com/webpack-contrib/extract-text-webpack-plugin/blob/webpack-1/README.md#api
  * @see for webpack 2 - https://github.com/webpack-contrib/extract-text-webpack-plugin#options
@@ -109,6 +133,8 @@ module.exports.rule = rule;
 module.exports.rules = rules;
 module.exports.multiRule = multiRule;
 module.exports.svgRule = svgRule;
+module.exports.svgInsideOneOfRule = svgInsideOneOfRule;
+module.exports.svgInsideRulesRule = svgInsideRulesRule;
 module.exports.compile = compile;
 module.exports.compileAndNotReject = compileAndNotReject;
 module.exports.createCompiler = createCompiler;

@@ -10,6 +10,8 @@ const {
   rules,
   multiRule,
   svgRule,
+  svgInsideOneOfRule,
+  svgInsideRulesRule,
   compile,
   extractPlugin,
   extractCSSRule,
@@ -350,6 +352,30 @@ describe('loader and plugin', () => {
         entry: './entry',
         module: rules(
           svgRule()
+        ),
+        plugins: [new SpritePlugin()]
+      });
+
+      Object.keys(assets).should.be.lengthOf(1);
+    });
+
+    it('should support `oneOf` composition of rule', async () => {
+      const { assets } = await compile({
+        entry: './entry',
+        module: rules(
+          svgInsideOneOfRule()
+        ),
+        plugins: [new SpritePlugin()]
+      });
+
+      Object.keys(assets).should.be.lengthOf(1);
+    });
+
+    it('should support `rules` composition of rule', async () => {
+      const { assets } = await compile({
+        entry: './entry',
+        module: rules(
+          svgInsideRulesRule()
         ),
         plugins: [new SpritePlugin()]
       });
