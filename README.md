@@ -77,7 +77,7 @@ Help others in paid 1:1 live sessions to get started.
   test: /\.svg$/,
   loaders: [
     `svg-sprite-loader?${JSON.stringify({ ... })}`,
-    'svg-fill-loader',
+    'svg-transform-loader',
     'svgo-loader'
   ]
 }
@@ -94,7 +94,7 @@ Help others in paid 1:1 live sessions to get started.
   test: /\.svg$/,
   use: [
     { loader: 'svg-sprite-loader', options: { ... } },
-    'svg-fill-loader',
+    'svg-transform-loader',
     'svgo-loader'
   ]
 }
