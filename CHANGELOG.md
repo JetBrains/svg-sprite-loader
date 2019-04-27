@@ -8,6 +8,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
+* incorrect detection webpack version, closes [#309](https://github.com/kisenka/svg-sprite-loader/issues/309)
+* Fix the bug of publicPath, closes  [#311](https://github.com/kisenka/svg-sprite-loader/issues/311)
+* **configuration** make possible to use `oneOf` in loader rules
 * **configuration:** make default config work with yarn PnP ([dc931e2](https://github.com/kisenka/svg-sprite-loader/commit/dc931e2))
 * **runtime-generator:** fix module not found errors for custom spriteModule or symbolModule ([44bbcfe](https://github.com/kisenka/svg-sprite-loader/commit/44bbcfe))
 
