@@ -885,15 +885,13 @@ var arrayFrom = function (arrayLike) {
   return Array.prototype.slice.call(arrayLike, 0);
 };
 
-var ua = navigator.userAgent;
-
 var browser = {
-  isChrome: /chrome/i.test(ua),
-  isFirefox: /firefox/i.test(ua),
+  isChrome: function () { return /chrome/i.test(navigator.userAgent); },
+  isFirefox: function () { return /firefox/i.test(navigator.userAgent); },
 
   // https://msdn.microsoft.com/en-us/library/ms537503(v=vs.85).aspx
-  isIE: /msie/i.test(ua) || /trident/i.test(ua),
-  isEdge: /edge/i.test(ua)
+  isIE: function () { return /msie/i.test(navigator.userAgent) || /trident/i.test(navigator.userAgent); },
+  isEdge: function () { return /edge/i.test(navigator.userAgent); }
 };
 
 /**
@@ -1002,6 +1000,10 @@ function encoder(url) {
   });
 }
 
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+}
+
 /**
  * @param {NodeList} nodes
  * @param {string} startsWith
@@ -1066,7 +1068,7 @@ var updateUrls = function (svg, references, startsWith, replaceWith) {
     return attList.indexOf(localName) !== -1 && value.indexOf(("url(" + startsWithEncoded)) !== -1;
   });
 
-  attrs.forEach(function (attr) { return attr.value = attr.value.replace(startsWithEncoded, replaceWithEncoded); });
+  attrs.forEach(function (attr) { return attr.value = attr.value.replace(new RegExp(escapeRegExp(startsWithEncoded), 'g'), replaceWithEncoded); });
   updateReferences(references, startsWithEncoded, replaceWithEncoded);
 };
 
@@ -1129,7 +1131,7 @@ var BrowserSprite = (function (Sprite$$1) {
         moveGradientsOutsideSymbol(symbolNode.parentNode);
       }
 
-      if (browser.isIE || browser.isEdge) {
+      if (browser.isIE() || browser.isEdge()) {
         evalStylesIEWorkaround(symbolNode);
       }
     });
@@ -1169,7 +1171,7 @@ var BrowserSprite = (function (Sprite$$1) {
     }
 
     if (typeof cfg.moveGradientsOutsideSymbol === 'undefined') {
-      config.moveGradientsOutsideSymbol = browser.isFirefox;
+      config.moveGradientsOutsideSymbol = browser.isFirefox();
     }
   };
 

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.1.5"></a>
+## [4.1.5](https://github.com/kisenka/svg-sprite-loader/compare/v4.1.4...v4.1.5) (2019-04-27)
+
+
+### Bug Fixes
+
+* replace all instances of urls in attribute ([d6fdf94](https://github.com/kisenka/svg-sprite-loader/commit/d6fdf94)), closes [#300](https://github.com/kisenka/svg-sprite-loader/issues/300)
+
+
+
 <a name="4.1.4"></a>
 ## [4.1.4](https://github.com/kisenka/svg-sprite-loader/compare/v4.1.3...v4.1.4) (2019-04-27)
 
