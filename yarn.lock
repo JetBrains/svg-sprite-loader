@@ -208,6 +208,11 @@ agent-base@2:
     extend "~3.0.0"
     semver "~5.0.1"
 
+ajv-errors@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-1.0.1.tgz#f35986aceb91afadec4102fbd85014950cefa64d"
+  integrity sha512-DCRfO/4nQ+89p/RK43i8Ezd41EqdGIU4ld7nGF8OQ14oc/we5rEntLCUa7+jrn3nn83BosfwZA0wb4pon2o8iQ==
+
 ajv-keywords@^1.0.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-1.5.1.tgz#314dd0a4b3368fad3dfcdc54ede6171b886daf3c"
@@ -3258,6 +3263,14 @@ file-entry-cache@^2.0.0:
   dependencies:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
+
+file-loader@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-3.0.1.tgz#f8e0ba0b599918b51adfe45d66d1e771ad560faa"
+  integrity sha512-4sNIOXgtH/9WZq4NvlfU3Opn5ynUsqBwSLyM+I7UOwdGigTBYfVVQEwe/msZNX/j4pCJTIM14Fsw66Svo1oVrw==
+  dependencies:
+    loader-utils "^1.0.2"
+    schema-utils "^1.0.0"
 
 filename-regex@^2.0.0:
   version "2.0.1"
@@ -7424,6 +7437,15 @@ schema-utils@^0.4.4, schema-utils@^0.4.5:
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.5.tgz#21836f0608aac17b78f9e3e24daff14a5ca13a3e"
   dependencies:
     ajv "^6.1.0"
+    ajv-keywords "^3.1.0"
+
+schema-utils@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-1.0.0.tgz#0b79a93204d7b600d4b2850d1f66c2a34951c770"
+  integrity sha512-i27Mic4KovM/lnGsy8whRCHhc7VicJajAjTrYg11K9zfZXnYIt4k5F+kZkwjnrhKzLic/HLU4j11mjsz2G/75g==
+  dependencies:
+    ajv "^6.1.0"
+    ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
 scoped-regex@^1.0.0:
