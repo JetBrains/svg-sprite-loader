@@ -20,7 +20,7 @@ configsPaths.forEach((configPath) => {
   if (result.code === 0) {
     echo(`Example "${dirname}" successfully built`);
   } else {
-    echo(result.stderr);
+    echo(result);
     process.exit(result.code);
   }
 });

@@ -93,7 +93,7 @@
   },
   "scripts": {
     "bootstrap": "node scripts/bootstrap",
-    "build:examples": "npm run build:runtime && node scripts/build-examples-dll && node scripts/build-examples",
+    "build:examples": "yarn env webpack-3 && yarn run build:runtime && node scripts/build-examples-dll && node scripts/build-examples",
     "build:runtime": "node scripts/build-runtime.js",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
