@@ -38,8 +38,8 @@ describe('configurator', () => {
     strictEqual(config.symbolModule, loaderDefaults.symbolModule);
 
     config = configure({ context, target: 'node' });
-    strictEqual(config.spriteModule, 'svg-sprite-loader/runtime/sprite.build');
-    strictEqual(config.symbolModule, 'svg-baker-runtime/symbol');
+    strictEqual(config.spriteModule, require.resolve('../runtime/sprite.build'));
+    strictEqual(config.symbolModule, require.resolve('svg-baker-runtime/symbol'));
   });
 
   it('should properly autodetect extract mode', () => {
