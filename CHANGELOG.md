@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.1.6"></a>
+## [4.1.6](https://github.com/kisenka/svg-sprite-loader/compare/v4.1.5...v4.1.6) (2019-04-27)
+
+
+### Bug Fixes
+
+* incorrect items order after sorting ([ded8146](https://github.com/kisenka/svg-sprite-loader/commit/ded8146))
+
+
+
 <a name="4.1.5"></a>
 ## [4.1.5](https://github.com/kisenka/svg-sprite-loader/compare/v4.1.4...v4.1.5) (2019-04-27)
 
