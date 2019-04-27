@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.1.4"></a>
+## [4.1.4](https://github.com/kisenka/svg-sprite-loader/compare/v4.1.3...v4.1.4) (2019-04-27)
+
+
+### Bug Fixes
+
+* **configuration:** make default config work with yarn PnP ([dc931e2](https://github.com/kisenka/svg-sprite-loader/commit/dc931e2))
+* **runtime-generator:** fix module not found errors for custom spriteModule or symbolModule ([44bbcfe](https://github.com/kisenka/svg-sprite-loader/commit/44bbcfe))
+
+
+
 <a name="4.1.3"></a>
 ## [4.1.3](https://github.com/kisenka/svg-sprite-loader/compare/v4.1.2...v4.1.3) (2018-10-29)
 

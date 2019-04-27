@@ -118,19 +118,19 @@ function dll() {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_svg_baker_runtime_browser_symbol_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_svg_baker_runtime_browser_symbol_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__node_modules_svg_baker_runtime_browser_symbol_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__runtime_browser_sprite_build_js__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__runtime_browser_sprite_build_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__runtime_browser_sprite_build_js__);
 
 
-var symbol = new __WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol___default.a({
+var symbol = new __WEBPACK_IMPORTED_MODULE_0__node_modules_svg_baker_runtime_browser_symbol_js___default.a({
   "id": "facebook",
   "use": "facebook-usage",
   "viewBox": "0 0 1000 1000",
-  "content": "<symbol viewBox=\"0 0 1000 1000\" id=\"facebook\"><path d=\"M990 500c0-270.6-219.4-490-490-490S10 229.4 10 500s219.4 490 490 490 490-219.4 490-490zm-935.5 0C54.5 254 254 54.5 500 54.5S945.5 254 945.5 500 746.1 945.5 500 945.5C254 945.5 54.5 746 54.5 500z\" /><path d=\"M518.8 782.8V500h93.3l14.7-93.7h-108v-47c0-24.5 8-47.8 43.1-47.8h70.2V218h-99.6c-83.7 0-106.6 55.1-106.6 131.6v56.7h-57.5V500h57.5v282.8h92.9z\" /></symbol>"
+  "content": "<symbol xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1000 1000\" id=\"facebook\"><path d=\"M990 500c0-270.6-219.4-490-490-490S10 229.4 10 500s219.4 490 490 490 490-219.4 490-490zm-935.5 0C54.5 254 254 54.5 500 54.5S945.5 254 945.5 500 746.1 945.5 500 945.5C254 945.5 54.5 746 54.5 500z\" /><path d=\"M518.8 782.8V500h93.3l14.7-93.7h-108v-47c0-24.5 8-47.8 43.1-47.8h70.2V218h-99.6c-83.7 0-106.6 55.1-106.6 131.6v56.7h-57.5V500h57.5v282.8h92.9z\" /></symbol>"
 });
-var result = __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build___default.a.add(symbol);
+var result = __WEBPACK_IMPORTED_MODULE_1__runtime_browser_sprite_build_js___default.a.add(symbol);
 /* harmony default export */ __webpack_exports__["default"] = (symbol);
 
 /***/ }),
@@ -203,7 +203,7 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var index = createCommonjsModule(function (module, exports) {
+var deepmerge = createCommonjsModule(function (module, exports) {
 (function (root, factory) {
     if (false) {
         undefined(factory);
@@ -330,7 +330,7 @@ defaultAttrs[xlink.name] = xlink.uri;
 var wrapInSvgString = function (content, attributes) {
   if ( content === void 0 ) content = '';
 
-  var attrs = index(defaultAttrs, attributes || {});
+  var attrs = deepmerge(defaultAttrs, attributes || {});
   var attrsRendered = objectToAttrsString(attrs);
   return ("<svg " + attrsRendered + ">" + content + "</svg>");
 };
