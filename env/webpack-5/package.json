@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "devDependencies": {
+    "extract-text-webpack-plugin": "3.0.2",
+    "file-loader": "4.2.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^5.0.0-beta"
+  },
+  "packagesToLink": [
+    "enhanced-resolve",
+    "extract-text-webpack-plugin",
+    "file-loader",
+    "html-loader",
+    "html-webpack-plugin",
+    "webpack"
+  ]
+}
