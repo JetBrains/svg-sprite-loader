@@ -26,7 +26,7 @@ const loadSprite = () => {
   if (existing) {
     sprite.attach(existing);
   } else {
-    sprite.mount(document.body, true);
+    sprite.mount(document.body, false);
   }
 };
 
