@@ -1,5 +1,5 @@
 # SVG sprite loader
-[![NPM version][version-img]][versions-img] [![Build status][ci-img]][ci-url] [![CodeClimate score][codeclimate-img]][codeclimate-url] [![Documentation score][docs-coverage-img]][docs-coverage-url] [![Dependencies status][deps-img]][deps-url] [![Dev dependencies status][dev-deps-img]][dev-deps-url] [![NPM downloads][downloads-img]][npm-url]
+[![NPM version][version-img]][versions-img] [![Build status][ci-img]][ci-url] [![Documentation score][docs-coverage-img]][docs-coverage-url] [![Dependencies status][deps-img]][deps-url] [![Dev dependencies status][dev-deps-img]][dev-deps-url] [![NPM downloads][downloads-img]][npm-url]
 
 Webpack loader for creating SVG sprites.
 
@@ -311,7 +311,5 @@ Huge thanks for [all this people](https://github.com/JetBrains/svg-sprite-loader
 [dev-deps-img]: https://img.shields.io/david/dev/JetBrains/svg-sprite-loader.svg?style=flat-square
 [ci-url]: https://travis-ci.org/JetBrains/svg-sprite-loader
 [ci-img]: https://img.shields.io/travis/JetBrains/svg-sprite-loader.svg?style=flat-square
-[codeclimate-url]: https://codeclimate.com/github/JetBrains/svg-sprite-loader
-[codeclimate-img]: https://img.shields.io/codeclimate/github/JetBrains/svg-sprite-loader.svg?style=flat-square
 [docs-coverage-url]: https://inch-ci.org/github/JetBrains/svg-sprite-loader
 [docs-coverage-img]: https://inch-ci.org/github/JetBrains/svg-sprite-loader.svg?branch=master&style=flat-square
