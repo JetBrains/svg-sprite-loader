@@ -19,14 +19,14 @@ By participating in this project you agree to abide by its terms.
 ## What's up?
 
 ### Got a question or problem with setup?
-If you have questions about how to use svg-sprite-loader, please read the [docs](README.md) and [question issues](https://github.com/kisenka/svg-sprite-loader/issues?q=is:issue+label:question) first. 
+If you have questions about how to use svg-sprite-loader, please read the [docs](README.md) and [question issues](https://github.com/JetBrains/svg-sprite-loader/issues?q=is:issue+label:question) first. 
  
 ### Found a bug or inconsistency?
-If you find a bug in the source code or a mistake in the documentation, you can help us by [submitting an issue](https://github.com/kisenka/svg-sprite-loader/issues/new). 
+If you find a bug in the source code or a mistake in the documentation, you can help us by [submitting an issue](https://github.com/JetBrains/svg-sprite-loader/issues/new). 
 __But even better you can submit a [pull request with a fix](#code-contribution).__
 
 ### Want a feature?
-You can request a new feature by [submitting an issue](https://github.com/kisenka/svg-sprite-loader/issues/new).
+You can request a new feature by [submitting an issue](https://github.com/JetBrains/svg-sprite-loader/issues/new).
 If you would like to implement a new feature then follow the [code contribution steps](#code-contribution).
 
 <a name="code-contribution"></a>
@@ -40,7 +40,7 @@ Please follow these steps to contribute effectively.
 2. **Add an upstream remote repo** (original repository that we forked from):
 
    ```bash
-   git remote add upstream https://github.com/kisenka/svg-sprite-loader.git
+   git remote add upstream https://github.com/JetBrains/svg-sprite-loader.git
    ```
 
 3. **Keep your fork up to date**:

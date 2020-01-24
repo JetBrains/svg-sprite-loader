@@ -6,4 +6,4 @@
 
 **Does this PR introduce a breaking change?**
 
-**Please check if the PR fulfills [contributing guidelines](https://github.com/kisenka/svg-sprite-loader/blob/master/CONTRIBUTING.md#develop)**
+**Please check if the PR fulfills [contributing guidelines](https://github.com/JetBrains/svg-sprite-loader/blob/master/CONTRIBUTING.md#develop)**
