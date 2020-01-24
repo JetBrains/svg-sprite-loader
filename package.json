@@ -13,11 +13,11 @@
     "webpack loader",
     "webpack plugin"
   ],
-  "homepage": "https://github.com/kisenka/svg-sprite-loader#readme",
-  "bugs": "https://github.com/kisenka/svg-sprite-loader/issues",
+  "homepage": "https://github.com/JetBrains/svg-sprite-loader#readme",
+  "bugs": "https://github.com/JetBrains/svg-sprite-loader/issues",
   "license": "MIT",
   "author": "kisenka",
-  "repository": "kisenka/svg-sprite-loader",
+  "repository": "JetBrains/svg-sprite-loader",
   "main": "lib/loader.js",
   "files": [
     "examples/**",

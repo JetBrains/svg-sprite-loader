@@ -1,11 +1,11 @@
 # SVG sprite loader
-[![NPM version][version-img]][versions-img] [![Build status][ci-img]][ci-url] [![CodeClimate score][codeclimate-img]][codeclimate-url] [![Documentation score][docs-coverage-img]][docs-coverage-url] [![Dependencies status][deps-img]][deps-url] [![Dev dependencies status][dev-deps-img]][dev-deps-url] [![NPM downloads][downloads-img]][npm-url]
+[![NPM version][version-img]][versions-img] [![Build status][ci-img]][ci-url] [![Documentation score][docs-coverage-img]][docs-coverage-url] [![Dependencies status][deps-img]][deps-url] [![Dev dependencies status][dev-deps-img]][dev-deps-url] [![NPM downloads][downloads-img]][npm-url]
 
 Webpack loader for creating SVG sprites.
 
 > :tada: 2.0 is out, please read the [migration guide & overview](2.0.md).
 
-> :warning: For old v0.x versions see [the README in the v0 branch](https://github.com/kisenka/svg-sprite-loader/blob/v0/README.md).
+> :warning: For old v0.x versions see [the README in the v0 branch](https://github.com/JetBrains/svg-sprite-loader/blob/v0/README.md).
 
 ## Table of contents
 
@@ -54,12 +54,12 @@ yarn add svg-sprite-loader -D
 ### Get help
 
 If you have an urgent problem, hire a mentor for a 1:1 live session on Git-Start:
-[![Get 1:1 live support for your issue.](https://git-start.com/assets/git-start-mentee-banner-medium.svg?sanitize=true)](https://git-start.com/help-request/create/kisenka%2Fsvg-sprite-loader)
+[![Get 1:1 live support for your issue.](https://git-start.com/assets/git-start-mentee-banner-medium.svg?sanitize=true)](https://git-start.com/help-request/create/JetBrains%2Fsvg-sprite-loader)
 
 ### Provide help
 
 Help others in paid 1:1 live sessions to get started.
-[![Give paid 1:1 live support.](https://git-start.com/assets/git-start-mentor-banner-medium.svg?sanitize=true)](https://git-start.com/help-request/overview/kisenka%2Fsvg-sprite-loader)
+[![Give paid 1:1 live support.](https://git-start.com/assets/git-start-mentor-banner-medium.svg?sanitize=true)](https://git-start.com/help-request/overview/JetBrains%2Fsvg-sprite-loader)
 
 
 ## Configuration
@@ -156,7 +156,7 @@ By default it depends on [`target`](https://webpack.js.org/configuration/target)
 If you need custom behavior, use this option to specify a path of your sprite implementation module.
 Path will be resolved relative to the current webpack build folder, e.g. `utils/sprite.js` placed in current project dir should be written as `./utils/sprite`.
 
-Example of sprite with custom mounting target (copypasted from [browser-sprite](https://github.com/kisenka/svg-sprite-loader/blob/master/runtime/browser-sprite.js)):
+Example of sprite with custom mounting target (copypasted from [browser-sprite](https://github.com/JetBrains/svg-sprite-loader/blob/master/runtime/browser-sprite.js)):
 
 ```js
 import BrowserSprite from 'svg-baker-runtime/src/browser-sprite';
@@ -169,8 +169,8 @@ export default sprite; // don't forget to export!
 ```
 
 It's highly recommended to extend default sprite classes:
-- [for browser-specific env](https://github.com/kisenka/svg-baker/blob/master/packages/svg-baker-runtime/src/browser-sprite.js)
-- [for isomorphic env](https://github.com/kisenka/svg-baker/blob/master/packages/svg-baker-runtime/src/sprite.js)
+- [for browser-specific env](https://github.com/JetBrains/svg-baker/blob/master/packages/svg-baker-runtime/src/browser-sprite.js)
+- [for isomorphic env](https://github.com/JetBrains/svg-baker/blob/master/packages/svg-baker-runtime/src/sprite.js)
 
 <a id="symbol-module"></a>
 ### `symbolModule` (autoconfigured)
@@ -180,10 +180,10 @@ Same as `spriteModule`, but for sprite symbol. By default also depends on `targe
 - `svg-baker-runtime/symbol` for other targets.
 
 <a id="runtime-generator"></a>
-### `runtimeGenerator` ([default generator](https://github.com/kisenka/svg-sprite-loader/blob/master/lib/runtime-generator.js))
+### `runtimeGenerator` ([default generator](https://github.com/JetBrains/svg-sprite-loader/blob/master/lib/runtime-generator.js))
 
 Path to node.js script that generates client runtime.
-Use this option if you need to produce your own runtime, e.g. React component configured with imported symbol. [Example](https://github.com/kisenka/svg-sprite-loader/tree/master/examples/custom-runtime-generator).
+Use this option if you need to produce your own runtime, e.g. React component configured with imported symbol. [Example](https://github.com/JetBrains/svg-sprite-loader/tree/master/examples/custom-runtime-generator).
 
 <a id="runtime-compat"></a>
 ### `runtimeCompat` (default `false`, deprecated)
@@ -299,19 +299,17 @@ See [LICENSE](LICENSE)
 
 ## Credits
 
-Huge thanks for [all this people](https://github.com/kisenka/svg-sprite-loader/graphs/contributors).
+Huge thanks for [all this people](https://github.com/JetBrains/svg-sprite-loader/graphs/contributors).
 
 [npm-url]: https://www.npmjs.com/package/svg-sprite-loader
 [version-img]: https://img.shields.io/npm/v/svg-sprite-loader.svg?style=flat-square
 [versions-img]: https://libraries.io/npm/svg-sprite-loader/versions
 [downloads-img]: https://img.shields.io/npm/dm/svg-sprite-loader.svg?style=flat-square
-[deps-url]: https://david-dm.org/kisenka/svg-sprite-loader
-[deps-img]: https://img.shields.io/david/kisenka/svg-sprite-loader.svg?style=flat-square
-[dev-deps-url]: https://david-dm.org/kisenka/svg-sprite-loader?type=dev
-[dev-deps-img]: https://img.shields.io/david/dev/kisenka/svg-sprite-loader.svg?style=flat-square
-[ci-url]: https://travis-ci.org/kisenka/svg-sprite-loader
-[ci-img]: https://img.shields.io/travis/kisenka/svg-sprite-loader.svg?style=flat-square
-[codeclimate-url]: https://codeclimate.com/github/kisenka/svg-sprite-loader
-[codeclimate-img]: https://img.shields.io/codeclimate/github/kisenka/svg-sprite-loader.svg?style=flat-square
-[docs-coverage-url]: https://inch-ci.org/github/kisenka/svg-sprite-loader
-[docs-coverage-img]: https://inch-ci.org/github/kisenka/svg-sprite-loader.svg?branch=master&style=flat-square
+[deps-url]: https://david-dm.org/JetBrains/svg-sprite-loader
+[deps-img]: https://img.shields.io/david/JetBrains/svg-sprite-loader.svg?style=flat-square
+[dev-deps-url]: https://david-dm.org/JetBrains/svg-sprite-loader?type=dev
+[dev-deps-img]: https://img.shields.io/david/dev/JetBrains/svg-sprite-loader.svg?style=flat-square
+[ci-url]: https://travis-ci.org/JetBrains/svg-sprite-loader
+[ci-img]: https://img.shields.io/travis/JetBrains/svg-sprite-loader.svg?style=flat-square
+[docs-coverage-url]: https://inch-ci.org/github/JetBrains/svg-sprite-loader
+[docs-coverage-img]: https://inch-ci.org/github/JetBrains/svg-sprite-loader.svg?branch=master&style=flat-square
