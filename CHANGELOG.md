@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.1"></a>
+## [4.2.1](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.0...v4.2.1) (2020-01-31)
+
+
+### Bug Fixes
+
+* drop npm-shrinkwrap.json due to it causes installation of old dependencies when npm is used ([7439e61](https://github.com/JetBrains/svg-sprite-loader/commit/7439e61)), closes [#378](https://github.com/JetBrains/svg-sprite-loader/issues/378) [#379](https://github.com/JetBrains/svg-sprite-loader/issues/379)
+
+
+
 <a name="4.2.0"></a>
 # [4.2.0](https://github.com/JetBrains/svg-sprite-loader/compare/v4.1.6...v4.2.0) (2020-01-24)
 
