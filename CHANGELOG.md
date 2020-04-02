@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.2"></a>
+## [4.2.2](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.1...v4.2.2) (2020-04-02)
+
+
+### Bug Fixes
+
+* add aria-hidden attribute to sprite node for proper accessibility behaviour ([bb08665](https://github.com/JetBrains/svg-sprite-loader/commit/bb08665)), closes [#315](https://github.com/JetBrains/svg-sprite-loader/issues/315)
+
+
+
 <a name="4.2.1"></a>
 ## [4.2.1](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.0...v4.2.1) (2020-01-31)
 
