@@ -7491,14 +7491,14 @@ supports-color@^5.4.0:
   dependencies:
     has-flag "^3.0.0"
 
-svg-baker-runtime@^1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/svg-baker-runtime/-/svg-baker-runtime-1.4.4.tgz#91f8bcf27194d33b0b2db2f4e86c6bc99377a6f1"
-  integrity sha512-ffjA5ewpZRllt05vtdAQVglThd15ztNX6AP+bsaOBjMoUaPRU0sApxqXyfy9A8ctJu6p9uB+fVIMj57RCY38Ew==
+svg-baker-runtime@^1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/svg-baker-runtime/-/svg-baker-runtime-1.4.5.tgz#ccec3b7d227e1844348691191a2b446b7b977106"
+  integrity sha512-X9HvVjekaDUBIqnRrZI+fBbalZXpHxZA9F8wmpMOcAFXIltvaJFbJEiT7YBgCeo1eFrANVy7Ey7nkh38HGkESw==
   dependencies:
     deepmerge "1.3.2"
     mitt "1.1.2"
-    svg-baker "^1.6.0"
+    svg-baker "^1.7.0"
 
 svg-baker@^1.5.0:
   version "1.5.0"
@@ -7519,10 +7519,10 @@ svg-baker@^1.5.0:
     query-string "^4.3.2"
     traverse "^0.6.6"
 
-svg-baker@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.6.0.tgz#c40766d3f04993057fcd0efbebbabe199a415510"
-  integrity sha512-uUwkBtAH8YlX7CbEm6Q67n9FHsQ/LQs2SmLBoKYLyir+UEdNFLOg+CvTDJ5qPtVjma4lhT+FuD1DkghUPTeH+A==
+svg-baker@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/svg-baker/-/svg-baker-1.7.0.tgz#8367f78d875550c52fe4756f7303d5c5d7c2e9a7"
+  integrity sha512-nibslMbkXOIkqKVrfcncwha45f97fGuAOn1G99YwnwTj8kF9YiM6XexPcUso97NxOm6GsP0SIvYVIosBis1xLg==
   dependencies:
     bluebird "^3.5.0"
     clone "^2.1.1"
