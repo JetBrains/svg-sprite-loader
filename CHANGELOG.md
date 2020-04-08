@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.3"></a>
+## [4.2.3](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.2...v4.2.3) (2020-04-08)
+
+
+### Bug Fixes
+
+* check properly when window.angular properly ([1c76824](https://github.com/JetBrains/svg-sprite-loader/commit/1c76824))
+
+
+
 <a name="4.2.2"></a>
 ## [4.2.2](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.1...v4.2.2) (2020-04-02)
 
