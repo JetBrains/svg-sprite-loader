@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.4"></a>
+## [4.2.4](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.3...v4.2.4) (2020-04-12)
+
+
+### Bug Fixes
+
+* don't create additional chunk for sprite ([80ebfa3](https://github.com/JetBrains/svg-sprite-loader/commit/80ebfa3)), closes [#364](https://github.com/JetBrains/svg-sprite-loader/issues/364)
+
+
+
 <a name="4.2.3"></a>
 ## [4.2.3](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.2...v4.2.3) (2020-04-08)
 
