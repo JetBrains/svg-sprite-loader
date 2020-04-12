@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.5"></a>
+## [4.2.5](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.4...v4.2.5) (2020-04-12)
+
+
+### Bug Fixes
+
+* refers to transpiled code in svg-baker-runtime ([65ece05](https://github.com/JetBrains/svg-sprite-loader/commit/65ece05)), closes [#385](https://github.com/JetBrains/svg-sprite-loader/issues/385)
+
+
+
 <a name="4.2.4"></a>
 ## [4.2.4](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.3...v4.2.4) (2020-04-12)
 
