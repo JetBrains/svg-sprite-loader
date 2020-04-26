@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.6"></a>
+## [4.2.6](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.5...v4.2.6) (2020-04-26)
+
+
+
+<a name="4.2.5-drop-webpack-version-detector.0"></a>
+## [4.2.5-drop-webpack-version-detector.0](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.4...v4.2.5-drop-webpack-version-detector.0) (2020-04-12)
+
+
+### Bug Fixes
+
+* drop webpack version detector ([7131578](https://github.com/JetBrains/svg-sprite-loader/commit/7131578))
+
+
+
 <a name="4.2.5"></a>
 ## [4.2.5](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.4...v4.2.5) (2020-04-12)
 
