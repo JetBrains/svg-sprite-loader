@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.7"></a>
+## [4.2.7](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.6...v4.2.7) (2020-04-28)
+
+
+### Bug Fixes
+
+* move `mask` & `clipPath` elements outside symbol ([ae70786](https://github.com/JetBrains/svg-sprite-loader/commit/ae70786)), closes [#325](https://github.com/JetBrains/svg-sprite-loader/issues/325)
+
+
+
 <a name="4.2.6"></a>
 ## [4.2.6](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.5...v4.2.6) (2020-04-26)
 
