@@ -446,6 +446,28 @@ describe('loader and plugin', () => {
       assets['main.js'].source().should.contain(`__webpack_require__.p + "${spriteFilename}`);
     });
 
+    it('should generate asset with output path without changing publicPath', async () => {
+      const publicPath = '/olala/';
+      const spriteFilename = defaultSpriteFilename;
+
+      const v4Config = {};
+      if (webpackVersion.IS_4) {
+        v4Config.mode = 'development';
+        v4Config.devtool = false;
+      }
+
+      const { assets } = await compile(Object.assign(v4Config, {
+        entry: './entry',
+        output: { publicPath },
+        module: rules(
+          svgRule({ extract: true, spriteFilename, outputPath: '/foo/' })
+        ),
+        plugins: [new SpritePlugin()]
+      }));
+
+      assets['main.js'].source().should.contain(`__webpack_require__.p + "${spriteFilename}`);
+    });
+
     it('should emit only built chunks', () => {
       // TODO test with webpack-recompilation-emulator
     });
