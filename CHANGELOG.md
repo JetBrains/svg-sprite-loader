@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.3.0"></a>
+# [4.3.0](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.7...v4.3.0) (2020-05-03)
+
+
+### Features
+
+* **outputPath:** add possibility to define output path ([2c7eceb](https://github.com/JetBrains/svg-sprite-loader/commit/2c7eceb))
+
+
+
 <a name="4.2.7"></a>
 ## [4.2.7](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.6...v4.2.7) (2020-04-28)
 
