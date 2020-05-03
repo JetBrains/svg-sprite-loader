@@ -26,6 +26,7 @@ Webpack loader for creating SVG sprites.
     - [`extract`](#extract)
     - [`spriteFilename`](#sprite-filename)
     - [`publicPath`](#public-path)
+    - [`outputPath`](#output-path)
     - [`plainSprite`](#plain-sprite)
     - [`spriteAttrs`](#sprite-attrs)
 - [Examples](#examples)
@@ -237,6 +238,25 @@ Custom public path for sprite file.
   options: {
     extract: true,
     publicPath: '/'
+  }
+}
+```
+
+<a id="output-path"></a>
+### `outputPath` (type: `string`, default: null`)
+
+Custom output path for sprite file.
+By default it will use `publicPath`.
+This param is useful if you want to store sprite is a directory with a custom http access.
+
+```js
+{
+  test: /\.svg$/,
+  loader: 'svg-sprite-loader',
+  options: {
+    extract: true,
+    outputPath: 'custom-dir/sprites/'
+    publicPath: 'sprites/'
   }
 }
 ```
