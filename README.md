@@ -11,7 +11,6 @@ Webpack loader for creating SVG sprites.
 
 - [Why it's cool](#why-its-cool)
 - [Installation](#installation)
-- [Live support](#live-support)
 - [Configuration](#configuration)
   - [`symbolId`](#symbol-id)
   - [`symbolRegExp`](#symbol-regexp)
