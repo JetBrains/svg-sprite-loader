@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="5.0.0"></a>
+# [5.0.0](https://github.com/JetBrains/svg-sprite-loader/compare/v4.3.0...v5.0.0) (2020-05-11)
+
+
+### Bug Fixes
+
+* pass proper context param to runtime generator ([c084ec7](https://github.com/JetBrains/svg-sprite-loader/commit/c084ec7)), closes [#186](https://github.com/JetBrains/svg-sprite-loader/issues/186)
+
+
+### BREAKING CHANGES
+
+* Possible breaks third-party runtime generators. Earlier `context` param was containing _path to compilation root context_, e.g. folder where webpack compilation occurs. This is wrong behaviour, because meaning of this param is a _folder where svg image is located_. So it was changed in this commit.
+If your custom runtime generator breaks after this update use `loaderContext.rootContext` option instead of `context`.
+
+
+
 <a name="4.3.0"></a>
 # [4.3.0](https://github.com/JetBrains/svg-sprite-loader/compare/v4.2.7...v4.3.0) (2020-05-03)
 
