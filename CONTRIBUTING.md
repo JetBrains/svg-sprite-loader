@@ -50,16 +50,17 @@ Please follow these steps to contribute effectively.
    ```
 
 4. **Setup project** properly:
+  now u need install nvm
 
    ```bash
-   yarn bootstrap
+   sh scripts/build.sh
    ```
 
    It will:
    1. Install project dependencies.
    2. Install git hooks.
    3. Install dependencies for testing in `webpack-1` and `webpack-2` environments.
-   4. Set `webpack-2` environment as current.
+   4. Set `webpack-3` environment as current.
    
    Don't use `yarn install` or `npm install`.
 

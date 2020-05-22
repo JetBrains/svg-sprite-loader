@@ -53,7 +53,6 @@
     "commitizen": "2.9.6",
     "css-loader": "^0.28.0",
     "cz-customizable": "^5.0.0",
-    "eslint": "^7.0.0",
     "eslint-config-airbnb-base": "^11.1.2",
     "eslint-plugin-import": "^2.2.0",
     "file-loader": "^3.0.1",
