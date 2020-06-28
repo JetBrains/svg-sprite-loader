@@ -2,7 +2,7 @@ sudo: false
 language: node_js
 
 node_js:
- - 12.0.0
+ - 12.18.1
 
 branches:
   except:
@@ -13,7 +13,7 @@ env:
     - ISTANBUL_COVERAGE: yes
 
 script:
- - nvm install 8.10.0
+ - nvm install 8.17.0
  - sh scripts/build.sh webpack-4
  - yarn lint
  - yarn test:webpack-2
