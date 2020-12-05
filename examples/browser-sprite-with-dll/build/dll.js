@@ -625,7 +625,8 @@ var xlink$1 = namespaces_1.xlink;
 
 var defaultConfig = {
   attrs: ( obj = {
-    style: ['position: absolute', 'width: 0', 'height: 0'].join('; ')
+    style: ['position: absolute', 'width: 0', 'height: 0'].join('; '),
+    'aria-hidden': 'true'
   }, obj[svg$1.name] = svg$1.uri, obj[xlink$1.name] = xlink$1.uri, obj )
 };
 var obj;
@@ -958,7 +959,7 @@ var locationChangeAngularEmitter = function (eventName) {
   }]);
 };
 
-var defaultSelector = 'linearGradient, radialGradient, pattern';
+var defaultSelector = 'linearGradient, radialGradient, pattern, mask, clipPath';
 
 /**
  * @param {Element} svg
@@ -1180,7 +1181,7 @@ var BrowserSprite = (function (Sprite$$1) {
     }
 
     if (typeof cfg.locationChangeAngularEmitter === 'undefined') {
-      config.locationChangeAngularEmitter = 'angular' in window;
+        config.locationChangeAngularEmitter = typeof window.angular !== 'undefined';
     }
 
     if (typeof cfg.moveGradientsOutsideSymbol === 'undefined') {
@@ -1388,7 +1389,12 @@ var sprite;
 if (isSpriteExists) {
   sprite = window[spriteGlobalVarName];
 } else {
-  sprite = new BrowserSprite({ attrs: { id: spriteNodeId } });
+  sprite = new BrowserSprite({
+    attrs: {
+      id: spriteNodeId,
+      'aria-hidden': 'true'
+    }
+  });
   window[spriteGlobalVarName] = sprite;
 }
 
