@@ -2,11 +2,11 @@
   "private": true,
   "devDependencies": {
     "mini-css-extract-plugin": "^0.6.0",
-    "extract-text-webpack-plugin": "next",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "1.1.10",
     "html-loader": "^0.4.5",
-    "html-webpack-plugin": "next",
-    "webpack": "next",
+    "html-webpack-plugin": "^4.5.0",
+    "webpack": "^5.0.0",
     "eslint":"6.8.0"
   },
   "packagesToLink": [
