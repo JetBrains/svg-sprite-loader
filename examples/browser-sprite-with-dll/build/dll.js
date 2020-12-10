@@ -1389,7 +1389,12 @@ var sprite;
 if (isSpriteExists) {
   sprite = window[spriteGlobalVarName];
 } else {
-  sprite = new BrowserSprite({ attrs: { id: spriteNodeId } });
+  sprite = new BrowserSprite({
+    attrs: {
+      id: spriteNodeId,
+      'aria-hidden': 'true'
+    }
+  });
   window[spriteGlobalVarName] = sprite;
 }
 
