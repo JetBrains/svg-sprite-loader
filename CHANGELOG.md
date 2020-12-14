@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="5.2.0"></a>
+# [5.2.0](https://github.com/JetBrains/svg-sprite-loader/compare/v5.1.1...v5.2.0) (2020-12-14)
+
+
+### Features
+
+* update-dependency ([d93c5cf](https://github.com/JetBrains/svg-sprite-loader/commit/d93c5cf))
+
+
+
 <a name="5.1.1"></a>
 ## [5.1.1](https://github.com/JetBrains/svg-sprite-loader/compare/v5.1.0...v5.1.1) (2020-12-05)
 
