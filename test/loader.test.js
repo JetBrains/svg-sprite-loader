@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 
 const { isWebpack1 } = require('../lib/utils');
-const webpackVersion = require('../lib/utils/get-webpack-version');
 const { loaderPath, fixturesPath } = require('./_config');
 const {
   rule,
@@ -75,7 +74,7 @@ describe('loader and plugin', () => {
 
       it('should warn if there is remaining loaders in extract mode', async () => {
         const v4Config = {};
-        if (webpackVersion.IS_4) {
+        if (process.env.WEBPACK_VERSION === '4') {
           v4Config.mode = 'development';
           v4Config.devtool = false;
         }
@@ -212,7 +211,7 @@ describe('loader and plugin', () => {
         const extractor = extractPlugin('[name].css', { allChunks: true });
 
         const v4Config = {};
-        if (webpackVersion.IS_4) {
+        if (process.env.WEBPACK_VERSION === '4') {
           v4Config.mode = 'development';
           v4Config.devtool = false;
         }
@@ -244,8 +243,8 @@ describe('loader and plugin', () => {
         assets['entry2.css'].source().should.contain('entry2.svg');
       });
 
-      if (!webpackVersion.IS_4) {
-        it('should work in combination with CommonsChunkPlugin', async () => {
+      it('should work in combination with CommonsChunkPlugin', async () => {
+        try {
           const extractor = extractPlugin('[name].css');
           const { assets } = await compile({
             context: path.resolve(fixturesPath, 'extract-text-webpack-plugin/with-commons-chunk-plugin'),
@@ -268,8 +267,10 @@ describe('loader and plugin', () => {
           });
 
           assets['common.css'].source().should.contain('common.svg');
-        });
-      }
+        } catch (e) {
+          e.message.should.contain('webpack.optimize.CommonsChunkPlugin has been removed');
+        }
+      });
     });
 
     describe('html-loader interop', () => {
@@ -318,7 +319,7 @@ describe('loader and plugin', () => {
     });
 
     // webpack 3 scope hoisting interop
-    if (webpackVersion.IS_3) {
+    if (process.env.WEBPACK_VERSION === '3') {
       // eslint-disable-next-line global-require,import/no-unresolved
       const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
 
@@ -429,7 +430,7 @@ describe('loader and plugin', () => {
       const spriteFilename = defaultSpriteFilename;
 
       const v4Config = {};
-      if (webpackVersion.IS_4) {
+      if (process.env.WEBPACK_VERSION === '4') {
         v4Config.mode = 'development';
         v4Config.devtool = false;
       }
@@ -451,7 +452,7 @@ describe('loader and plugin', () => {
       const spriteFilename = defaultSpriteFilename;
 
       const v4Config = {};
-      if (webpackVersion.IS_4) {
+      if (process.env.WEBPACK_VERSION === '4') {
         v4Config.mode = 'development';
         v4Config.devtool = false;
       }
