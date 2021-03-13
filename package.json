@@ -100,9 +100,9 @@
     "release:dry-run": "standard-version --no-verify",
     "test": "mocha test/*.test.js",
     "test:all": "yarn test:webpack-2 && yarn test:webpack-3 && yarn test:webpack-4",
-    "test:webpack-2": "yarn env webpack-2 && yarn test",
-    "test:webpack-3": "yarn env webpack-3 && yarn test",
-    "test:webpack-4": "yarn env webpack-4 && yarn test",
+    "test:webpack-2": "yarn env webpack-2 && env WEBPACK_VERSION=2 yarn test",
+    "test:webpack-3": "yarn env webpack-3 && env WEBPACK_VERSION=3 yarn test",
+    "test:webpack-4": "yarn env webpack-4 && env WEBPACK_VERSION=4 yarn test",
     "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
   }
 }
