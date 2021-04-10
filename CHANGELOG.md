@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="6.0.3"></a>
+## [6.0.3](https://github.com/JetBrains/svg-sprite-loader/compare/v6.0.2...v6.0.3) (2021-04-10)
+
+
+### Bug Fixes
+
+* **utils:** fix 'Properties descriptionData are unknown' with webpack5 ([5a4fc6a](https://github.com/JetBrains/svg-sprite-loader/commit/5a4fc6a))
+* **utils:** use moduleGraph and chunkGraph if possible ([9e25d18](https://github.com/JetBrains/svg-sprite-loader/commit/9e25d18))
+
+
+
 <a name="6.0.2"></a>
 ## [6.0.2](https://github.com/JetBrains/svg-sprite-loader/compare/v6.0.1...v6.0.2) (2021-03-18)
 
