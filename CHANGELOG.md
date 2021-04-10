@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="6.0.5"></a>
+## [6.0.5](https://github.com/JetBrains/svg-sprite-loader/compare/v6.0.4...v6.0.5) (2021-04-10)
+
+
+### Bug Fixes
+
+* **utils:** use moduleGraph in is-module-should-be-extracted.js ([6099812](https://github.com/JetBrains/svg-sprite-loader/commit/6099812))
+
+
+
 <a name="6.0.4"></a>
 ## [6.0.4](https://github.com/JetBrains/svg-sprite-loader/compare/v6.0.3...v6.0.4) (2021-04-10)
 
