@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="6.0.7"></a>
+## [6.0.7](https://github.com/JetBrains/svg-sprite-loader/compare/v6.0.6...v6.0.7) (2021-05-28)
+
+
+### Bug Fixes
+
+* **utils:** Account for rule property "generator" ([#454](https://github.com/JetBrains/svg-sprite-loader/issues/454)) ([9fc86f1](https://github.com/JetBrains/svg-sprite-loader/commit/9fc86f1)), closes [#428](https://github.com/JetBrains/svg-sprite-loader/issues/428) [vuejs/vue-loader#1753](https://github.com/vuejs/vue-loader/issues/1753)
+
+
+
 <a name="6.0.6"></a>
 ## [6.0.6](https://github.com/JetBrains/svg-sprite-loader/compare/v6.0.5...v6.0.6) (2021-04-23)
 
