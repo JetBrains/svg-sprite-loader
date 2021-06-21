@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="6.0.8"></a>
+## [6.0.8](https://github.com/JetBrains/svg-sprite-loader/compare/v6.0.7...v6.0.8) (2021-06-21)
+
+
+### Bug Fixes
+
+* **utils:** fix: some options had no effect with webpack5 ([#460](https://github.com/JetBrains/svg-sprite-loader/issues/460)) ([839f878](https://github.com/JetBrains/svg-sprite-loader/commit/839f878)), closes [#446](https://github.com/JetBrains/svg-sprite-loader/issues/446)
+
+
+
 <a name="6.0.7"></a>
 ## [6.0.7](https://github.com/JetBrains/svg-sprite-loader/compare/v6.0.6...v6.0.7) (2021-05-28)
 
