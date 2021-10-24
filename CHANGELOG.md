@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="6.0.11"></a>
+## [6.0.11](https://github.com/JetBrains/svg-sprite-loader/compare/v6.0.10...v6.0.11) (2021-10-24)
+
+
+
 <a name="6.0.10"></a>
 ## [6.0.10](https://github.com/JetBrains/svg-sprite-loader/compare/v6.0.9...v6.0.10) (2021-10-18)
 
