@@ -1,3 +1,5 @@
+[![obsolete JetBrains project](https://jb.gg/badges/obsolete.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
+
 # SVG sprite loader
 [![NPM version][version-img]][versions-img] [![Build status][ci-img]][ci-url] [![Documentation score][docs-coverage-img]][docs-coverage-url] [![Dependencies status][deps-img]][deps-url] [![Dev dependencies status][dev-deps-img]][dev-deps-url] [![NPM downloads][downloads-img]][npm-url]
 
