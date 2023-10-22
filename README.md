@@ -158,8 +158,8 @@ export default sprite; // don't forget to export!
 ```
 
 It's highly recommended to extend default sprite classes:
-- [for browser-specific env](https://github.com/JetBrains/svg-baker/blob/master/packages/svg-baker-runtime/src/browser-sprite.js)
-- [for isomorphic env](https://github.com/JetBrains/svg-baker/blob/master/packages/svg-baker-runtime/src/sprite.js)
+- [for browser-specific env](https://github.com/JetBrains/svg-mixer/blob/v1/packages/svg-baker-runtime/src/browser-sprite.js)
+- [for isomorphic env](https://github.com/JetBrains/svg-mixer/blob/v1/packages/svg-baker-runtime/src/sprite.js)
 
 <a id="symbol-module"></a>
 ### `symbolModule` (autoconfigured)
